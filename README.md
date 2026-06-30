@@ -1,8 +1,22 @@
-# Instrata Demo — AI-Native DSAR (Multi-Model AI)
+# AI-Native DSAR Platform
 
-Interactive Next.js demo of an AI-driven DSAR (Data Subject Access Request) pipeline for automotive privacy teams. Real model API calls via Anthropic, OpenAI, or Gemini with tool-calling, sub-agents, a guarded post-approval execution pipeline that **generates real PowerPoint reports and sends real email**, a live Communications Coordinator with SMTP/IMAP round-trip, and an Operator Inbox where Izzy answers operator emails async. Backed by a real Postgres (Supabase) instance modeling six source systems — DWH, CRM, marketing, dealer DMS, vehicle telematics, and the demo intake table — plus the `comm_coordinator.*` schema for live correspondence.
+Interactive Next.js demo of an AI-driven DSAR (Data Subject Access Request) pipeline for privacy teams.
 
-This is **not** a static export. A running Next.js server is required for the `/api/*` routes, the IMAP cron, the Gmail OAuth flow, and the pipeline execution tool.
+What it includes:
+
+- Multi-model AI support through Anthropic, OpenAI, or Gemini.
+- Tool-calling, governed sub-agents, and approval-gated execution.
+- A post-approval pipeline that **generates real PowerPoint reports and sends real email**.
+- A live Communications Coordinator with SMTP/IMAP round-trip support.
+- An Operator Inbox where Izzy answers operator emails asynchronously.
+- A real Postgres (Supabase) backend modeling source systems such as DWH, CRM, marketing, DMS, telemetry, and demo intake data, plus the `comm_coordinator.*` schema for live correspondence.
+
+This is **not** a static export. A running Next.js server is required for:
+
+- `/api/*` routes
+- IMAP cron ingestion
+- Gmail OAuth
+- pipeline execution tools
 
 ---
 
