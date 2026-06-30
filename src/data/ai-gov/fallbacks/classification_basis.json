@@ -1,0 +1,47 @@
+{
+  "uc-underwriting": {
+    "basis": "This consumer-credit underwriting risk scorer is Covered ADMT in Colorado because it materially influences a 'consequential decision' under C.R.S. §6-1-1701(3)(b)(II): its output is the principal input the deployer relies on to set the auto-decline threshold for an extension of credit. Per §1706(5)(b), the 'materially influence' standard is met where a deployer adopts the system's recommendation without independent re-evaluation in the ordinary course — which is the deployer's current posture here. Confidence is high (0.92) absent contrary AG presumptions.",
+    "confidence": 0.92,
+    "citations": ["C.R.S. §6-1-1701(3)(b)(II)", "C.R.S. §6-1-1706(5)(b)"]
+  },
+  "uc-fraud": {
+    "basis": "This application-fraud detector is an edge case. If the fraud flag merely queues an application for human fraud review, it likely does not 'materially influence' the credit decision under §1706(5)(b). If, however, a high-confidence flag automatically denies the application, the same statutory analysis used for the underwriting scorer would apply. Document the current threshold behavior to fix the basis on the safe side of any AG presumption.",
+    "confidence": 0.6,
+    "citations": ["C.R.S. §6-1-1706(5)(b)"]
+  },
+  "uc-prequal": {
+    "basis": "The pre-qualification optimizer is in scope of Colorado SB 26-189 because personalized credit-term offers fall within 'price determination' under §1701(3)(b)(II). The materially-influence test is satisfied even though no adverse outcome is generated: the consumer sees only the offer the model selects.",
+    "confidence": 0.78,
+    "citations": ["C.R.S. §6-1-1701(3)(b)(II)"]
+  },
+  "uc-ats-rank": {
+    "basis": "This resume-ranking system is an Automated Employment Decision Tool under NYC Administrative Code §20-870 because its output substantially assists the recruiter's decision about which candidates to review. NYC LL144 requires (1) an independent bias audit within the prior year, (2) public summary publication, and (3) pre-use candidate notice at least 10 business days before use. The current Workday integration meets (3); (1) is current; (2) needs renewal within 30 days.",
+    "confidence": 0.95,
+    "citations": ["NYC Admin Code §20-870", "NYC Admin Code §20-871(b)"]
+  },
+  "uc-video-screen": {
+    "basis": "This video-interview sentiment scorer is Covered ADMT and AEDT under nearly every active state regime. NYC LL144 applies because the output materially assists the screening decision; the Illinois AI Video Interview Act applies because video is recorded and analyzed; BIPA applies if any biometric identifier (faceprint, voiceprint) is retained — the current vendor packet is incomplete on this point. Pause IL use until the BIPA posture is documented.",
+    "confidence": 0.97,
+    "citations": ["NYC Admin Code §20-870", "820 ILCS 42/", "740 ILCS 14/15"]
+  },
+  "uc-assessment": {
+    "basis": "Cognitive and job-fit assessments are in scope of NYC LL144 if their output 'substantially assists or replaces' discretionary decisions — a fact question depending on how recruiters use the score. Treat as covered until interview data shows otherwise.",
+    "confidence": 0.78,
+    "citations": ["NYC Admin Code §20-870"]
+  },
+  "uc-captive-finance": {
+    "basis": "Pinetop MAC's captive-financing risk scorer is Covered ADMT in Colorado under §1706(5)(b) because the deployer adopts the model's recommendation in the ordinary course to set the decline threshold for an extension of credit — a 'consequential decision' under §1701(3)(b)(II). The system additionally implicates the CCPA ADMT regulations because v11 incorporates telematics-derived behavioral features from a consumer's prior connected vehicle, which constitutes a sensitive cross-system use requiring §7220(c) disclosure and a documented secondary-use opt-in. Confidence is high (0.94 for CA, 0.91 for CO).",
+    "confidence": 0.94,
+    "citations": ["C.R.S. §6-1-1701(3)(b)(II)", "C.R.S. §6-1-1706(5)(b)", "Cal. CCR §7220(c)"]
+  },
+  "uc-driver-monitor": {
+    "basis": "Pinetop's in-cabin driver-attention monitoring system is Covered in Illinois under the Biometric Information Privacy Act (740 ILCS 14/15) because it captures and processes facial landmarks and gaze vectors — biometric identifiers as defined in §10 — even where the OEM argues purely transient processing. Any retention beyond the immediate ADAS alert, including aggregated cohort writeback to the connected-vehicle platform, triggers BIPA's written-informed-consent and public-retention-schedule requirements. Confidence is very high (0.97).",
+    "confidence": 0.97,
+    "citations": ["740 ILCS 14/10", "740 ILCS 14/15(b)"]
+  },
+  "uc-conn-vehicle-seg": {
+    "basis": "Connected-vehicle behavioral segmentation is in scope of both California and Colorado profiling/ADMT regimes because the cohort assignment derives from sensitive personal information — precise geolocation and inferred driving behavior — and is used for targeted advertising. Under the CCPA ADMT regs, this triggers pre-use notice and a sensitive-data right to limit; under the Colorado Privacy Act, it triggers an opt-out for targeted-advertising profiling. Confidence is solid (0.88) absent contrary AG presumptions.",
+    "confidence": 0.88,
+    "citations": ["Cal. Civ. Code §1798.121", "Cal. CCR §7001(e)", "C.R.S. §6-1-1306(1)(a)"]
+  }
+}

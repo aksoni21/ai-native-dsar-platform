@@ -1,0 +1,101 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "by_jurisdiction": {
+      "CO": {
+        "jurisdiction": "CO",
+        "pre_decision": {
+          "headline": "How we use AI in this decision",
+          "body": "Pinetop Federal Credit Union uses an automated decisionmaking tool (ADMT) to help score your auto-loan application. The system considers your credit history, income, debt-to-income ratio, and recent credit inquiries. A human underwriter reviews any application the system flags as borderline. You can request human review of any decision under Colorado law.",
+          "elements": ["Tool is used", "Categories of data used", "Right to human review", "Right to data correction", "Plain-language summary"]
+        },
+        "adverse_outcome": {
+          "headline": "Adverse Action Notice — Auto Loan Application",
+          "body": "Your application for an auto loan was declined. The principal reasons for our decision are: (1) high debt-to-income ratio relative to product guidelines, and (2) recent credit inquiry activity. You have the right under the Equal Credit Opportunity Act (ECOA) to obtain a statement of specific reasons within 30 days. You also have the right to a free copy of any consumer report used in this decision.",
+          "appended_ai_line": "An automated decisionmaking tool was used in evaluating your application. Under Colorado law, you have the right to request human reconsideration of this decision and to access and correct the personal data used. To exercise these rights, visit pinetopfcu.org/admt-review or call 1-800-555-0144.",
+          "federal_bridge": "ECOA/Reg B"
+        }
+      },
+      "CA": {
+        "jurisdiction": "CA",
+        "pre_decision": {
+          "headline": "Automated decision-making notice",
+          "body": "California residents: this lender uses ADMT in evaluating credit applications. You have the right to receive pre-use notice, access information about the system's logic, and opt out where applicable.",
+          "elements": ["Tool is used", "Logic / categories of data", "Access right", "Opt-out where applicable"]
+        },
+        "adverse_outcome": {
+          "headline": "Adverse Action Notice — Auto Loan Application",
+          "body": "Your application was declined. ECOA reason codes attached.",
+          "appended_ai_line": "An ADMT was used. Under CCPA regulations you may request a summary of the logic, key inputs, and the personal-information categories considered, and may submit a request to access or correct that personal information.",
+          "federal_bridge": "ECOA/Reg B"
+        }
+      }
+    }
+  },
+  "hr": {
+    "vertical": "hr",
+    "by_jurisdiction": {
+      "NY": {
+        "jurisdiction": "NY",
+        "pre_decision": {
+          "headline": "Notice to New York City candidates",
+          "body": "We use an Automated Employment Decision Tool (AEDT) to assist in ranking candidates for this role. You may request an alternative selection process or a reasonable accommodation. The data we use is limited to the information you submit and the resume content you provide. The latest independent bias audit is available at pinetop-careers.com/aedt-audit.",
+          "elements": ["AEDT is used", "Data type & source", "Retention", "Alternative process", "Bias audit link"]
+        },
+        "adverse_outcome": {
+          "headline": "Update on your application",
+          "body": "Thank you for applying for the Senior Risk Analyst role at Pinetop Holdings. After reviewing your application materials, we will not be moving forward with your candidacy at this time.",
+          "appended_ai_line": "An Automated Employment Decision Tool was used in screening applications for this role. You may request a human review of this decision under our candidate-rights policy, and you may request the personal-data categories used to evaluate your application. To do so, visit pinetop-careers.com/candidate-review.",
+          "federal_bridge": null
+        }
+      },
+      "CO": {
+        "jurisdiction": "CO",
+        "pre_decision": {
+          "headline": "How we use AI in candidate screening",
+          "body": "We use an automated tool to help screen applicants for this role. You may request human review of any decision under Colorado law.",
+          "elements": ["Tool is used", "Categories of data", "Right to human review"]
+        },
+        "adverse_outcome": {
+          "headline": "Update on your application",
+          "body": "Thank you for applying. We will not be moving forward with your candidacy.",
+          "appended_ai_line": "An ADMT was used in evaluating your application. Under Colorado law you may request human reconsideration and access to the personal data used.",
+          "federal_bridge": null
+        }
+      }
+    }
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "by_jurisdiction": {
+      "CA": {
+        "jurisdiction": "CA",
+        "pre_decision": {
+          "headline": "How we use AI in your Pinetop purchase",
+          "body": "Pinetop Motor Acceptance Corp uses an automated decisionmaking tool to evaluate captive-financing applications. Categories of personal information used include your credit history, application data, and dealer-submitted information. If you have a prior Pinetop vehicle with connected services enabled, certain aggregated driving signals from that vehicle MAY be considered — only if you opt in below. You have the right to human reconsideration, to access the personal data used, and to opt out of any sensitive secondary use under California law.",
+          "elements": ["Tool is used", "Personal-information categories", "Telematics secondary-use opt-in", "Right to human review", "Right to access/correct", "Right to limit sensitive use"]
+        },
+        "adverse_outcome": {
+          "headline": "Adverse Action Notice — Captive Auto Financing",
+          "body": "Your application for Pinetop captive financing was not approved at this time. The principal reasons for our decision are: (1) debt-to-income ratio above the product's guidelines, and (2) other factors derived from the application. You have the right under the Equal Credit Opportunity Act (ECOA) to obtain a statement of specific reasons within 30 days, and to a free copy of any consumer report used.",
+          "appended_ai_line": "An ADMT was used in evaluating your application. Under California law you may request human reconsideration of this decision, access the categories of personal information used (including any telematics-derived signals from a prior connected vehicle, if any), and opt out of the use of such telematics signals in any future application. To exercise these rights, visit pinetopmotors.com/admt-review.",
+          "federal_bridge": "ECOA/Reg B"
+        }
+      },
+      "CO": {
+        "jurisdiction": "CO",
+        "pre_decision": {
+          "headline": "How we use AI in your financing decision",
+          "body": "Pinetop Motor Acceptance Corp uses an automated decisionmaking tool to evaluate your application. You may request human review of any decision under Colorado law.",
+          "elements": ["Tool is used", "Personal-information categories", "Right to human review"]
+        },
+        "adverse_outcome": {
+          "headline": "Adverse Action Notice — Captive Auto Financing",
+          "body": "Your application was declined. ECOA reason codes attached.",
+          "appended_ai_line": "An ADMT was used. Under Colorado SB 26-189 you may request human reconsideration and access and correct the personal data used.",
+          "federal_bridge": "ECOA/Reg B"
+        }
+      }
+    }
+  }
+}

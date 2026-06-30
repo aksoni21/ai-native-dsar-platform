@@ -1,0 +1,72 @@
+[
+  {
+    "id": "inventory",
+    "name": "AI Use-Case Inventory & Classification",
+    "short": "Inventory",
+    "shown_in": ["inventory", "classification"],
+    "phase": 1
+  },
+  {
+    "id": "vendor-vault",
+    "name": "Vendor Documentation Vault",
+    "short": "Vendor Vault",
+    "shown_in": ["vendor-vault"],
+    "phase": 1
+  },
+  {
+    "id": "control-mapping",
+    "name": "Multi-Jurisdictional Control Mapping",
+    "short": "Control Mapping",
+    "shown_in": ["classification", "heat-map"],
+    "phase": 1
+  },
+  {
+    "id": "disclosures",
+    "name": "Disclosure Generation Engine",
+    "short": "Disclosures",
+    "shown_in": ["pre-decision", "adverse-outcome"],
+    "phase": 1
+  },
+  {
+    "id": "consumer-rights",
+    "name": "Consumer-Rights Workflow",
+    "short": "Consumer Rights",
+    "shown_in": ["human-review"],
+    "phase": 1
+  },
+  {
+    "id": "audit-trail",
+    "name": "Decision Audit Trail & Evidence Locker",
+    "short": "Audit Trail",
+    "shown_in": ["dashboard", "audit-trail"],
+    "phase": 1
+  },
+  {
+    "id": "federal-bridges",
+    "name": "Sector-Specific Federal-Law Bridges",
+    "short": "Federal Bridges",
+    "shown_in": ["adverse-outcome"],
+    "phase": 1
+  },
+  {
+    "id": "regulatory-watchtower",
+    "name": "Regulatory Change Watchtower",
+    "short": "Watchtower",
+    "shown_in": ["inbox"],
+    "phase": 1
+  },
+  {
+    "id": "human-review",
+    "name": "Human-Reviewer Operations Layer",
+    "short": "Reviewer Ops",
+    "shown_in": ["human-review"],
+    "phase": 1
+  },
+  {
+    "id": "developer-module",
+    "name": "Developer Compliance Portal",
+    "short": "Developer Module",
+    "shown_in": [],
+    "phase": 2
+  }
+]

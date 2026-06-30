@@ -1,0 +1,102 @@
+version: 1
+platform: instrata-privacy-ops
+description: Governed agent roles for AI-native DSAR operations.
+
+defaults:
+  memory_boundary: request_scoped
+  tool_access: least_privilege
+  side_effects: denied_by_default
+  trace_required: true
+  human_review_required_for:
+    - external_message
+    - report_delivery
+    - data_mutation
+    - deletion
+    - vendor_notification
+
+agents:
+  - id: intake-triage
+    display_name: Intake Triage Agent
+    purpose: Classify new privacy requests, identify missing verification fields, and calculate urgency.
+    permissions: read_only
+    tools:
+      - dsar_intake.list_open_requests
+      - dsar_intake.get_request_details
+      - legal_rules.lookup_deadline
+    outputs:
+      - request_classification
+      - missing_information
+      - urgency_assessment
+
+  - id: identity-resolver
+    display_name: Identity Resolver
+    purpose: Resolve consumer identity across fragmented source systems and explain include/exclude decisions.
+    permissions: read_only
+    tools:
+      - source_systems.search_by_email
+      - source_systems.search_by_phone
+      - source_systems.search_by_name
+      - source_systems.search_by_vin
+      - source_systems.get_record
+    outputs:
+      - candidate_identities
+      - match_confidence
+      - exclusion_rationale
+      - identity_resolution_report
+
+  - id: disposition-planner
+    display_name: Disposition Planner
+    purpose: Plan per-record DSAR outcomes with statutory basis and exemption reasoning.
+    permissions: read_only
+    tools:
+      - source_systems.get_record
+      - legal_rules.lookup
+      - legal_rules.map_request_obligation
+    outputs:
+      - disposition_plan
+      - statutory_basis
+      - exemption_candidates
+      - reviewer_questions
+
+  - id: communications-coordinator
+    display_name: Communications Coordinator
+    purpose: Draft, parse, and route DSAR correspondence while preserving human approval gates.
+    permissions: queue_only
+    tools:
+      - communications.draft_outbound
+      - communications.parse_inbound
+      - communications.match_reply_to_case
+      - evidence_vault.append_event
+    outputs:
+      - draft_message
+      - extracted_facts
+      - reply_routing_decision
+    approval_required_for:
+      - send_email
+
+  - id: report-generator
+    display_name: Audit Defense Report Generator
+    purpose: Build regulator-ready artifacts from request details, tool traces, source records, and approvals.
+    permissions: read_only
+    tools:
+      - dsar_intake.get_request_details
+      - source_systems.get_record
+      - legal_rules.lookup
+      - evidence_vault.get_trace
+    outputs:
+      - compliance_report
+      - consumer_reply_summary
+      - evidence_index
+
+  - id: execution-coordinator
+    display_name: Human-Approved Execution Coordinator
+    purpose: Execute approved side effects after verifying authorization and recording the evidence trail.
+    permissions: human_approved_only
+    tools:
+      - communications.send_approved_message
+      - evidence_vault.append_event
+      - dsar_intake.update_request_status
+    approval_policy: approval-gates.v1
+    outputs:
+      - execution_receipt
+      - audit_event_ids

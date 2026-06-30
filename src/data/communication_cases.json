@@ -1,0 +1,25 @@
+[
+  {
+    "id": "CASE-VIN-001",
+    "application": "orphan_vin",
+    "application_context": {
+      "vin": "JT4567890ABCDEFGH",
+      "request_id": "REQ-VIN-001"
+    },
+    "state": "reply_received",
+    "created_at": "2026-04-22T09:15:00Z",
+    "updated_at": "2026-04-30T15:12:00Z"
+  },
+  {
+    "id": "CASE-MC-001",
+    "application": "consumer_dsar",
+    "application_context": {
+      "request_id": "REQ-MC-REPLY",
+      "consumer_name": "Maria Chen",
+      "consumer_email": "maria.chen@example.com"
+    },
+    "state": "reply_received",
+    "created_at": "2026-03-25T10:00:00Z",
+    "updated_at": "2026-05-05T16:36:00Z"
+  }
+]

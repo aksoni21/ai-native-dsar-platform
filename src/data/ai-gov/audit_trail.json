@@ -1,0 +1,55 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "applicant_id": "APP-CO-4471",
+    "entries": [
+      { "id": "ae-001", "ts": "2026-05-04T10:14:02-06:00", "actor": "system", "actor_name": "Application Intake", "action": "application_received", "detail": "Auto loan application APP-CO-4471 submitted via web channel.", "admt_influence": 0 },
+      { "id": "ae-002", "ts": "2026-05-04T10:14:08-06:00", "actor": "system", "actor_name": "Pre-Decision Notice", "action": "disclosure_sent", "detail": "§1704 pre-decision notice rendered on application page; consumer acknowledgment captured.", "disclosure_sent_id": "disc-pre-001" },
+      { "id": "ae-003", "ts": "2026-05-04T14:21:44-06:00", "actor": "system", "actor_name": "nCino Underwriting v4.2.1", "action": "model_scored", "detail": "Underwriting risk score = 0.83 (decline band: > 0.80).", "model_version": "underwriting-v4.2.1", "admt_influence": 0.92 },
+      { "id": "ae-004", "ts": "2026-05-04T14:21:58-06:00", "actor": "system", "actor_name": "Decision Engine", "action": "decision_recorded", "detail": "Application declined. Adverse-action reasons: DTI_HIGH, RECENT_INQUIRY.", "admt_influence": 0.92 },
+      { "id": "ae-005", "ts": "2026-05-04T14:22:15-06:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "adverse_action_sent", "detail": "ECOA adverse-action notice generated; §1704(3) AI augmentation appended (1 paragraph, not duplicate notice).", "disclosure_sent_id": "disc-aa-001" },
+      { "id": "ae-006", "ts": "2026-05-11T09:08:21-06:00", "actor": "consumer", "actor_name": "Marcus Reyes", "action": "reconsideration_requested", "detail": "Consumer submitted §1705 reconsideration request via portal; cited employment-tenure factor as outdated." },
+      { "id": "ae-007", "ts": "2026-05-11T09:08:24-06:00", "actor": "system", "actor_name": "Review Router", "action": "reviewer_assigned", "detail": "Routed to reviewer Olivia Mendez (Sr. Underwriter); SLA: 7 business days." },
+      { "id": "ae-008", "ts": "2026-05-12T11:42:09-06:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "case_opened", "detail": "Opened APP-CO-4471 in reviewer console; pulled model factors, source data, and prior decision rationale." },
+      { "id": "ae-009", "ts": "2026-05-12T12:14:32-06:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "data_correction", "detail": "Updated employment_tenure_months from 4 to 18 (consumer provided employer letter dated 2024-11; pay stub corroborated).", "human_override": true },
+      { "id": "ae-010", "ts": "2026-05-12T12:18:51-06:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "decision_overturned", "detail": "Decision overturned. New disposition: approved at original requested terms. Rationale: corrected tenure shifts model band to 'approve'.", "human_override": true },
+      { "id": "ae-011", "ts": "2026-05-12T12:19:02-06:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "reconsideration_outcome_sent", "detail": "Approval notice sent; §1705 reconsideration disposition record updated.", "disclosure_sent_id": "disc-aa-002" }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "applicant_id": "CND-NYC-1188",
+    "entries": [
+      { "id": "ae-h-001", "ts": "2026-05-04T10:14:02-04:00", "actor": "system", "actor_name": "Application Intake", "action": "application_received", "detail": "Application CND-NYC-1188 received for Senior Risk Analyst role." },
+      { "id": "ae-h-002", "ts": "2026-05-04T10:14:08-04:00", "actor": "system", "actor_name": "Pre-Use AEDT Notice", "action": "disclosure_sent", "detail": "LL144 pre-use notice acknowledged by candidate.", "disclosure_sent_id": "disc-pre-h-001" },
+      { "id": "ae-h-003", "ts": "2026-05-04T14:21:44-04:00", "actor": "system", "actor_name": "Workday Skills-Match v2.1.4", "action": "model_scored", "detail": "Candidate rank = 174 of 312 applicants; below role threshold of top 100.", "model_version": "skills-match-v2.1.4", "admt_influence": 0.78 },
+      { "id": "ae-h-004", "ts": "2026-05-04T14:21:58-04:00", "actor": "system", "actor_name": "Decision Engine", "action": "decision_recorded", "detail": "Candidate screened out at first-pass review.", "admt_influence": 0.78 },
+      { "id": "ae-h-005", "ts": "2026-05-04T14:22:15-04:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "post_decision_sent", "detail": "Candidate update email sent; AEDT-use line appended; review-request link included.", "disclosure_sent_id": "disc-post-h-001" },
+      { "id": "ae-h-006", "ts": "2026-05-11T09:08:21-04:00", "actor": "consumer", "actor_name": "Priya Shah", "action": "review_requested", "detail": "Candidate requested human review; cited the tenure-pattern signal." },
+      { "id": "ae-h-007", "ts": "2026-05-11T09:08:24-04:00", "actor": "system", "actor_name": "Review Router", "action": "reviewer_assigned", "detail": "Routed to recruiter Devon Hall." },
+      { "id": "ae-h-008", "ts": "2026-05-12T11:42:09-04:00", "actor": "reviewer", "actor_name": "Devon Hall", "action": "case_opened", "detail": "Opened candidate file; pulled model factors and resume." },
+      { "id": "ae-h-009", "ts": "2026-05-12T12:14:32-04:00", "actor": "reviewer", "actor_name": "Devon Hall", "action": "data_correction", "detail": "Re-parsed resume; 18-month contract tenure was mis-classified as job-hopping by Skills-Match.", "human_override": true },
+      { "id": "ae-h-010", "ts": "2026-05-12T12:18:51-04:00", "actor": "reviewer", "actor_name": "Devon Hall", "action": "decision_overturned", "detail": "Advanced candidate to recruiter screen.", "human_override": true },
+      { "id": "ae-h-011", "ts": "2026-05-12T12:19:02-04:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "review_outcome_sent", "detail": "Advancement notice sent; reconsideration disposition logged.", "disclosure_sent_id": "disc-post-h-002" }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "applicant_id": "BUY-CA-7733",
+    "entries": [
+      { "id": "ae-a-001", "ts": "2026-05-04T10:14:02-07:00", "actor": "system", "actor_name": "Online Pre-Qual Intake", "action": "application_received", "detail": "Captive-finance pre-qualification submitted for 2026 Pinetop Aria EV via pinetopmotors.com. Trade-in VIN linked: 1N4AL3AP5JC987654 (2021 Sentra-equiv, connected services enabled)." },
+      { "id": "ae-a-002", "ts": "2026-05-04T10:14:08-07:00", "actor": "system", "actor_name": "Pre-Decision Notice", "action": "disclosure_sent", "detail": "CCPA + ADMT pre-use notice rendered on application page; consumer acknowledgment captured. Telematics secondary-use opt-in checkbox: not_checked.", "disclosure_sent_id": "disc-pre-a-001" },
+      { "id": "ae-a-003", "ts": "2026-05-04T10:14:11-07:00", "actor": "system", "actor_name": "CV Data Bridge", "action": "telematics_features_fetched", "detail": "Connected-Vehicle Platform queried prior VIN 1N4AL3AP5JC987654; 12-month telematics summary returned and joined to underwriting feature vector.", "model_version": "cv-bridge-v3.1" },
+      { "id": "ae-a-004", "ts": "2026-05-04T14:21:44-07:00", "actor": "system", "actor_name": "Pinetop MAC Core v11.4.0", "action": "model_scored", "detail": "Captive-finance risk score = 0.81 (decline band: > 0.78). Top contributing features: debt_to_income_ratio, credit_bureau_score, telematics_risk_signal.", "model_version": "uc-captive-finance-v11.4.0", "admt_influence": 0.89 },
+      { "id": "ae-a-005", "ts": "2026-05-04T14:21:58-07:00", "actor": "system", "actor_name": "Decision Engine", "action": "decision_recorded", "detail": "Application declined. ECOA reasons: DTI_HIGH, OTHER_REASON_NON_TRADITIONAL.", "admt_influence": 0.89 },
+      { "id": "ae-a-006", "ts": "2026-05-04T14:22:15-07:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "adverse_action_sent", "detail": "ECOA adverse-action notice generated; CCPA/ADMT augmentation appended (one paragraph). Federal bridge attestation: ECOA/Reg B.", "disclosure_sent_id": "disc-aa-a-001" },
+      { "id": "ae-a-007", "ts": "2026-05-11T09:08:21-07:00", "actor": "consumer", "actor_name": "Karina Velasquez", "action": "reconsideration_requested", "detail": "Consumer submitted reconsideration request via portal; specifically objects to use of telematics data from prior vehicle, citing no secondary-use opt-in on original CV activation." },
+      { "id": "ae-a-008", "ts": "2026-05-11T09:08:24-07:00", "actor": "system", "actor_name": "Review Router", "action": "reviewer_assigned", "detail": "Routed to reviewer Olivia Mendez (Sr. Underwriter, Pinetop MAC); SLA: 7 business days." },
+      { "id": "ae-a-009", "ts": "2026-05-12T11:42:09-07:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "case_opened", "detail": "Opened BUY-CA-7733 in reviewer console; pulled model factors, source data lineage including CV data bridge entry ae-a-003." },
+      { "id": "ae-a-010", "ts": "2026-05-12T11:51:33-07:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "privacy_escalation", "detail": "Flagged to Privacy team: telematics features used in financing decision without secondary-use opt-in. Erin Park (CPO) attached; finding logged for §7220(c) compliance review." },
+      { "id": "ae-a-011", "ts": "2026-05-12T12:14:32-07:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "data_correction", "detail": "Removed telematics_risk_signal from feature vector for this decision; re-ran model with credit + application data only.", "human_override": true },
+      { "id": "ae-a-012", "ts": "2026-05-12T12:18:51-07:00", "actor": "reviewer", "actor_name": "Olivia Mendez", "action": "decision_overturned", "detail": "Decision overturned. New disposition: approved at original requested terms. Rationale: without the (improperly used) telematics signal, applicant scores below decline threshold.", "human_override": true },
+      { "id": "ae-a-013", "ts": "2026-05-12T12:19:02-07:00", "actor": "system", "actor_name": "Disclosure Engine", "action": "reconsideration_outcome_sent", "detail": "Approval notice sent; reconsideration disposition logged; consumer informed that telematics signal will not be used in any future Pinetop financing decision absent affirmative opt-in.", "disclosure_sent_id": "disc-aa-a-002" }
+    ]
+  }
+}

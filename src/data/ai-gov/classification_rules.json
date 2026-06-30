@@ -1,0 +1,125 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "rules": [
+      {
+        "use_case_id": "uc-underwriting",
+        "use_case_name": "Auto-Loan Underwriting Risk Scorer",
+        "vendor": "nCino Risk-AI",
+        "jurisdictions": [
+          { "state": "CO", "status": "covered", "basis_short": "Materially influences a 'consequential decision' (credit) under §1701(3); deployer obligations under §§1703–1705 apply.", "confidence": 0.92 },
+          { "state": "CA", "status": "in_scope", "basis_short": "ADMT under CPPA regs §7001(e); pre-use notice + access right required.", "confidence": 0.88 },
+          { "state": "NY", "status": "exempt", "basis_short": "NY ADMT regime (S 7543) not yet effective; LL144 covers employment only.", "confidence": 0.83 },
+          { "state": "IL", "status": "edge", "basis_short": "IL has no general ADMT law; BIPA applies only if biometric data is collected (no signal here).", "confidence": 0.55 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state ADMT regime; federal ECOA/Reg B governs.", "confidence": 0.95 }
+        ]
+      },
+      {
+        "use_case_id": "uc-fraud",
+        "use_case_name": "Application Fraud Detection",
+        "vendor": "Encompass FraudShield",
+        "jurisdictions": [
+          { "state": "CO", "status": "edge", "basis_short": "Could be 'materially influencing' if fraud flag drives an approve/deny outcome rather than queueing for review.", "confidence": 0.6 },
+          { "state": "CA", "status": "exempt", "basis_short": "Falls within 'fraud prevention' permitted purpose under CCPA regs.", "confidence": 0.86 },
+          { "state": "NY", "status": "exempt", "basis_short": "Out of LL144 scope (not an employment decision tool).", "confidence": 0.95 },
+          { "state": "IL", "status": "exempt", "basis_short": "No biometric data implicated.", "confidence": 0.9 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state ADMT regime.", "confidence": 0.95 }
+        ]
+      },
+      {
+        "use_case_id": "uc-prequal",
+        "use_case_name": "Pre-Qualification Offer Optimizer",
+        "vendor": "Blend Pre-Qual",
+        "jurisdictions": [
+          { "state": "CO", "status": "in_scope", "basis_short": "Personalized credit-term offers fall within 'price determination' under §1701(3)(b)(II).", "confidence": 0.78 },
+          { "state": "CA", "status": "in_scope", "basis_short": "Behavioral advertising / personalization in financial services triggers CCPA ADMT pre-use notice.", "confidence": 0.74 },
+          { "state": "NY", "status": "exempt", "basis_short": "Out of LL144 scope.", "confidence": 0.95 },
+          { "state": "IL", "status": "exempt", "basis_short": "No biometric data implicated.", "confidence": 0.92 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state ADMT regime.", "confidence": 0.95 }
+        ]
+      }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "rules": [
+      {
+        "use_case_id": "uc-ats-rank",
+        "use_case_name": "Resume Skills-Match & Ranker",
+        "vendor": "Workday Skills-Match",
+        "jurisdictions": [
+          { "state": "NY", "status": "covered", "basis_short": "AEDT under NYC LL144 §20-870; independent bias audit + pre-use candidate notice required.", "confidence": 0.95 },
+          { "state": "CA", "status": "in_scope", "basis_short": "ADMT under CPPA regs; pre-use notice + access right required for employment use.", "confidence": 0.87 },
+          { "state": "CO", "status": "covered", "basis_short": "Materially influences a 'consequential decision' (employment) under §1701(3)(b)(IV).", "confidence": 0.9 },
+          { "state": "IL", "status": "in_scope", "basis_short": "IL AI in Hiring Act requires candidate notice; BIPA does not apply (no biometrics).", "confidence": 0.82 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state employment ADMT regime.", "confidence": 0.93 }
+        ]
+      },
+      {
+        "use_case_id": "uc-video-screen",
+        "use_case_name": "Video Interview Sentiment Scorer",
+        "vendor": "iCIMS Video-Interview Sentiment",
+        "jurisdictions": [
+          { "state": "NY", "status": "covered", "basis_short": "AEDT + significant LL144 bias-audit scope. Notice and bias-audit publication required.", "confidence": 0.96 },
+          { "state": "IL", "status": "covered", "basis_short": "IL AI Video Interview Act + BIPA: candidate consent required before recording; biometric storage triggers full BIPA stack.", "confidence": 0.97 },
+          { "state": "CO", "status": "covered", "basis_short": "Materially influences employment decision; CO SB 26-189 deployer obligations apply.", "confidence": 0.92 },
+          { "state": "CA", "status": "in_scope", "basis_short": "ADMT under CPPA regs; additional CCPA biometric-information rules apply.", "confidence": 0.91 },
+          { "state": "TX", "status": "exempt", "basis_short": "TX CUBI applies to biometric retention but no ADMT regime.", "confidence": 0.7 }
+        ]
+      },
+      {
+        "use_case_id": "uc-assessment",
+        "use_case_name": "Cognitive & Job-Fit Assessment",
+        "vendor": "HireVue Assessments",
+        "jurisdictions": [
+          { "state": "NY", "status": "in_scope", "basis_short": "AEDT if output substantially assists or replaces discretionary decisions; pre-use notice required.", "confidence": 0.78 },
+          { "state": "IL", "status": "in_scope", "basis_short": "IL AI in Hiring Act notice if video component used; otherwise general fairness requirements apply.", "confidence": 0.72 },
+          { "state": "CO", "status": "in_scope", "basis_short": "May 'materially influence' if results gate next-stage selection.", "confidence": 0.68 },
+          { "state": "CA", "status": "in_scope", "basis_short": "ADMT under CPPA regs for employment use.", "confidence": 0.79 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state regime.", "confidence": 0.92 }
+        ]
+      }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "rules": [
+      {
+        "use_case_id": "uc-captive-finance",
+        "use_case_name": "Captive Auto-Loan Underwriting",
+        "vendor": "Pinetop MAC Core",
+        "jurisdictions": [
+          { "state": "CA", "status": "covered", "basis_short": "ADMT under CPPA regs §7001(e); covered consumer decision (credit). Pre-use notice + access right required. Cross-system telematics use triggers additional disclosure under §7220(c).", "confidence": 0.94 },
+          { "state": "CO", "status": "covered", "basis_short": "Materially influences 'consequential decision' (credit) under §1701(3)(b)(II); §§1703–1705 deployer obligations apply.", "confidence": 0.91 },
+          { "state": "IL", "status": "exempt", "basis_short": "No state ADMT regime for credit; BIPA inapplicable (no biometrics in finance flow).", "confidence": 0.9 },
+          { "state": "NY", "status": "exempt", "basis_short": "NY ADMT regime (S 7543) not yet effective; LL144 is employment-only.", "confidence": 0.85 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state ADMT regime; federal ECOA/Reg B governs.", "confidence": 0.95 }
+        ]
+      },
+      {
+        "use_case_id": "uc-driver-monitor",
+        "use_case_name": "In-Cabin Driver Attention Monitoring",
+        "vendor": "Smart Eye Driver Monitoring",
+        "jurisdictions": [
+          { "state": "IL", "status": "covered", "basis_short": "BIPA: real-time facial biometric processing and any retention beyond the immediate alert require written informed consent and a public retention schedule. 740 ILCS 14/15.", "confidence": 0.97 },
+          { "state": "CA", "status": "in_scope", "basis_short": "ADMT under CPPA regs; CCPA biometric-information disclosure required. Triggers risk-assessment obligation if used for any decision beyond real-time alerting.", "confidence": 0.9 },
+          { "state": "CO", "status": "covered", "basis_short": "Covered if any output materially influences a consequential decision (e.g., insurance pricing). Pure safety-alert use is edge-case.", "confidence": 0.7 },
+          { "state": "TX", "status": "edge", "basis_short": "TX CUBI applies to biometric capture/retention but does not regulate ADMT directly.", "confidence": 0.65 },
+          { "state": "NY", "status": "exempt", "basis_short": "Out of LL144 scope (not an employment decision tool).", "confidence": 0.92 }
+        ]
+      },
+      {
+        "use_case_id": "uc-conn-vehicle-seg",
+        "use_case_name": "Connected-Vehicle Behavioral Segmentation",
+        "vendor": "Internal — Marketing",
+        "jurisdictions": [
+          { "state": "CA", "status": "in_scope", "basis_short": "CCPA + CPPA ADMT regs: behavioral cohort assignment using sensitive personal information (precise geolocation) triggers pre-use notice and sensitive-data right to limit.", "confidence": 0.88 },
+          { "state": "CO", "status": "in_scope", "basis_short": "CPA + ADMT: profiling using personal data for targeted advertising requires opt-out.", "confidence": 0.82 },
+          { "state": "IL", "status": "exempt", "basis_short": "No state profiling regime; BIPA inapplicable.", "confidence": 0.9 },
+          { "state": "NY", "status": "exempt", "basis_short": "Out of LL144 scope.", "confidence": 0.95 },
+          { "state": "TX", "status": "exempt", "basis_short": "No state ADMT or profiling regime.", "confidence": 0.95 }
+        ]
+      }
+    ]
+  }
+}

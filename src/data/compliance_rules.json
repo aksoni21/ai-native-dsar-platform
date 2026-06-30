@@ -1,0 +1,3215 @@
+{
+  "CA": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Categories of personal information collected",
+        "Specific pieces of personal information collected",
+        "Sources from which personal information was collected",
+        "Business or commercial purpose for collecting or selling",
+        "Categories of third parties with whom PI is shared",
+        "Categories of PI sold or disclosed for business purpose"
+      ],
+      "required_actions": [
+        "Search all data sources for matching records",
+        "Decode all coded fields to human-readable values",
+        "Generate comprehensive disclosure report",
+        "Deliver report via verifiable consumer request method"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary business information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles are fully disclosable under right-to-know requests"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records including purchase history and interactions are disclosable"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records are commercial information subject to disclosure"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "Categories of personal information deleted",
+        "Service providers and contractors notified"
+      ],
+      "required_actions": [
+        "Delete personal information from all systems",
+        "Notify service providers and contractors to delete",
+        "Maintain record of the request itself for compliance",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction for which PI was collected",
+        "Detect security incidents or protect against fraud",
+        "Exercise free speech or another legal right",
+        "Comply with a legal obligation",
+        "Internal uses reasonably aligned with consumer expectations",
+        "Active litigation hold"
+      ],
+      "vendor_notifications": [
+        "All service providers processing consumer data",
+        "All contractors with access to consumer data",
+        "Third parties to whom data was sold"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles have no retention exemption and should be fully deleted"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "Transaction summaries needed for financial reporting; PII masked while retaining anonymized aggregate data"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Vehicle purchase records needed for warranty and recall obligations; consumer PII masked"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for active warranty claims and NHTSA safety recall compliance"
+        },
+        {
+          "record_type": "dealer_interaction",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Dealer interaction records (test drives, inquiries) have no retention basis"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale, sharing, targeted ads)"
+      ],
+      "required_actions": [
+        "Cease sale of personal information",
+        "Cease sharing for cross-context behavioral advertising",
+        "Apply marketing suppression flags",
+        "Honor Global Privacy Control signals",
+        "Wait 12 months before requesting opt-back-in"
+      ],
+      "exceptions": [
+        "Transactions initiated by the consumer",
+        "Non-personalized advertising"
+      ],
+      "vendor_notifications": [
+        "All data brokers receiving consumer data",
+        "Advertising partners",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes while retaining core identity for service purposes"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove marketing segments and targeting data; retain CRM record for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial",
+        "Instructions to provide documentation supporting correction"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal information",
+        "Notify service providers to make corrections",
+        "Direct third parties to correct if feasible"
+      ],
+      "exceptions": [
+        "Unable to verify the correction is more accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Service providers with copies of corrected data",
+        "Third parties to whom inaccurate data was disclosed"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Update specified fields with corrected values across all records"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records"
+        }
+      ]
+    }
+  },
+  "CO": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purposes of processing",
+        "Categories of personal data shared with third parties",
+        "Categories of third parties with whom data is shared"
+      ],
+      "required_actions": [
+        "Verify consumer identity using reasonable methods",
+        "Search all data repositories for matching records",
+        "Provide personal data in portable, readily usable format",
+        "Respond within 45 days of authenticated request"
+      ],
+      "exceptions": [
+        "Trade secrets or confidential commercial information",
+        "Information that would compromise system security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under CPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data including interactions and purchase history disclosed under CPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records subject to disclosure under CPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "List of processors notified to delete"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain request record for compliance audit",
+        "Confirm deletion to consumer within deadline"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested product/service",
+        "Comply with a federal, state, or local legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against fraudulent or illegal activity",
+        "Data necessary for internal analytics aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer personal data",
+        "Third parties that received consumer data",
+        "Service providers with data access"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles fully deleted under CPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized transaction data retained for financial reporting under CPA exemption"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Purchase records anonymized; retained for warranty and recall compliance"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for product safety and recall obligations under CPA"
+        },
+        {
+          "record_type": "dealer_interaction",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "No retention basis for dealer interaction records under CPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale, targeted advertising, profiling)",
+        "Acknowledgment of Global Privacy Control signal"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data",
+        "Cease profiling in furtherance of decisions with legal or significant effects",
+        "Honor Global Privacy Control (GPC) signals as valid opt-out",
+        "Apply marketing suppression flags across all systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Contextual advertising based on current interaction"
+      ],
+      "vendor_notifications": [
+        "Advertising and analytics partners",
+        "Data brokers receiving consumer data",
+        "Marketing automation service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids", "behavioral_tracking"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress all marketing and tracking attributes per CPA opt-out; retain identity for service"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove targeting and segmentation data; retain CRM for service delivery under CPA"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial",
+        "Instructions for providing supporting documentation"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data across all systems",
+        "Direct processors to update corrected information",
+        "Notify third parties of correction where feasible"
+      ],
+      "exceptions": [
+        "Unable to verify correction is more accurate than existing data",
+        "Correction would compromise data integrity or security"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to specified fields in consumer profile under CPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under CPA"
+        }
+      ]
+    }
+  },
+  "CT": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of recipients",
+        "Portable copy of personal data"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources",
+        "Provide data in portable format",
+        "Decode all coded fields for transparency"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Security-compromising information"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure including decoded demographic fields"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase data disclosed with decoded segment codes"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion",
+        "Reason if denied"
+      ],
+      "required_actions": [
+        "Delete personal data",
+        "Notify processors to delete"
+      ],
+      "exceptions": [
+        "Complete a transaction",
+        "Legal obligation",
+        "Security incident detection"
+      ],
+      "vendor_notifications": [
+        "All processors"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full deletion of profile data"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full deletion of CRM data"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "GPC signal acknowledgment"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Honor Global Privacy Control signals",
+        "Apply marketing suppression"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing data while retaining identity for service"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code"],
+          "retain_fields": ["customer_id", "name"],
+          "reasoning": "Remove marketing segments; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction"
+      ],
+      "required_actions": [
+        "Correct inaccurate data",
+        "Consider context and nature of processing"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Processors with corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to specified fields"
+        }
+      ]
+    }
+  },
+  "DE": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing activities",
+        "Categories of third parties receiving personal data",
+        "Portable copy of consumer's personal data"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity through reasonable means",
+        "Search all data systems for matching consumer records",
+        "Compile data in a portable, machine-readable format",
+        "Deliver disclosure within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary methodologies",
+        "Information that would compromise security safeguards"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile data under DPDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed in full under DPDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase history subject to disclosure under DPDPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of applicable exemption",
+        "Description of data categories deleted",
+        "List of processors and third parties notified"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems and databases",
+        "Direct processors to delete consumer personal data",
+        "Maintain audit record of deletion request for compliance",
+        "Provide written confirmation of deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or fulfill a requested product/service",
+        "Comply with a legal obligation under federal or state law",
+        "Detect or prevent security incidents or fraud",
+        "Protect against malicious or illegal activity",
+        "Internal operations reasonably aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors with access to consumer data",
+        "Third parties that received consumer data via sale or sharing",
+        "Service providers processing data on behalf of controller"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted in full under DPDPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized financial records retained for reporting under DPDPA exemption"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase records retained for warranty obligations under DPDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety recall and warranty compliance under DPDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions (sale, targeted ads, profiling)",
+        "Acknowledgment of GPC signal processing"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data",
+        "Cease profiling that produces legal or similarly significant effects",
+        "Honor Global Privacy Control (GPC) signals as valid opt-out requests",
+        "Apply suppression flags to all marketing systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Non-personalized contextual advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising and adtech partners",
+        "Data brokers and aggregators",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids", "behavioral_tracking"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and behavioral tracking per DPDPA opt-out; retain identity for service"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove segmentation and targeting data per DPDPA; retain CRM for operational use"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial",
+        "Instructions for providing supporting documentation"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data in all systems",
+        "Direct processors to update corrected data",
+        "Notify third parties of corrections where practicable"
+      ],
+      "exceptions": [
+        "Unable to verify the correction is accurate",
+        "Correction would undermine data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors holding copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to specified fields in consumer profile under DPDPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under DPDPA"
+        }
+      ]
+    }
+  },
+  "FL": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 15,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties with whom data is shared",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data systems for consumer records",
+        "Provide data in readily usable portable format",
+        "Respond within 45 days with one 15-day extension permitted"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary information",
+        "Information that would compromise security measures"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under FDBR access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under FDBR access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 15,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Explanation of partial denial if applicable"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Notify processors to delete consumer data",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal operations aligned with consumer expectations",
+        "Active litigation or regulatory investigation"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under FDBR deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction records retained for contract performance under FDBR"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase data retained for warranty under FDBR"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety and warranty compliance under FDBR"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling that produces legal or significant effects",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes per FDBR opt-out; retain core identity"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name"],
+          "reasoning": "Remove targeting data per FDBR; retain CRM for service purposes"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 15,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data in all systems",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction is more accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile fields under FDBR"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under FDBR"
+        }
+      ]
+    }
+  },
+  "IA": {
+    "right_to_know": {
+      "deadline_days": 90,
+      "extension_days": null,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing activities"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable format",
+        "Respond within 90 days with no extension available"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under ICDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under ICDPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 90,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption"
+      ],
+      "required_actions": [
+        "Delete personal data provided by the consumer",
+        "Notify processors to delete consumer data",
+        "Confirm deletion within 90-day window (no extension)"
+      ],
+      "exceptions": [
+        "Complete a transaction",
+        "Perform under a contract",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal purposes aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles fully deleted under ICDPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction summaries retained for contract performance under ICDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty obligations under ICDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale and targeted advertising only)"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Non-personalized advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers receiving consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress sale and targeted advertising data per ICDPA; profiling opt-out not available"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 90,
+      "extension_days": null,
+      "required_disclosures": [],
+      "required_actions": [],
+      "exceptions": [
+        "Correction right not provided under ICDPA"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": []
+    }
+  },
+  "IN": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties with whom data is shared"
+      ],
+      "required_actions": [
+        "Verify consumer identity using reasonable methods",
+        "Search all data repositories for matching records",
+        "Provide personal data in portable format",
+        "Respond within 45 days of authenticated request"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under INCDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data including interactions disclosed under INCDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records subject to disclosure under INCDPA"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Explanation of denied portion if partial"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain request record for compliance purposes",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or prevent security incidents",
+        "Internal operations aligned with consumer expectations",
+        "Active warranty or recall obligations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles fully deleted under INCDPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII masked; transaction data retained for financial reporting under INCDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase records retained for warranty compliance under INCDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for product safety obligations under INCDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling that produces legal or significant effects",
+        "Apply marketing suppression across all platforms"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and targeting per INCDPA opt-out"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove marketing segments per INCDPA; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction accuracy"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile fields under INCDPA"
+        }
+      ]
+    }
+  },
+  "KY": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing activities",
+        "Categories of recipients of personal data"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data systems for consumer records",
+        "Provide data in portable, machine-readable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or confidential business information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under KCDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed under KCDPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Reason for denial if request is not fulfilled"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Confirm deletion to consumer within deadline"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal operations reasonably expected by consumer"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under KCDPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction data retained for financial reporting under KCDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty compliance under KCDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with legal or significant effects",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes per KCDPA opt-out"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data across all systems",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction accuracy"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under KCDPA"
+        }
+      ]
+    }
+  },
+  "MD": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of data processing",
+        "Categories of third parties receiving personal data",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Verify consumer identity using reasonable authentication",
+        "Search all data systems for matching records",
+        "Compile and deliver data in machine-readable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary business methods",
+        "Information that would compromise security safeguards"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under MODPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed in full under MODPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase history subject to disclosure under MODPA"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "Categories of data deleted",
+        "Processors notified of deletion"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems and repositories",
+        "Direct processors to delete consumer data",
+        "Maintain compliance audit record of the deletion request",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a federal or state legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against malicious or fraudulent activity",
+        "Internal operations reasonably aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors with access to consumer data",
+        "Third parties that received consumer data",
+        "Service providers processing on behalf of controller"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted in full under MODPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized transaction data retained for financial reporting under MODPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase records retained for warranty obligations under MODPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety recall compliance under MODPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions (sale, targeted ads, profiling)"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data",
+        "Cease profiling with legal or significant effects",
+        "Apply marketing suppression across all systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Contextual advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers and aggregators",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and advertising data per MODPA opt-out"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove targeting data per MODPA; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial",
+        "Instructions for submitting supporting documentation"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data in all systems",
+        "Direct processors to update corrected records",
+        "Notify third parties where practicable"
+      ],
+      "exceptions": [
+        "Unable to verify correction is accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors holding copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile fields under MODPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under MODPA"
+        }
+      ]
+    }
+  },
+  "MN": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties with whom data is shared",
+        "Portable copy of personal data"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable, machine-readable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under MCDPA (MN) access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under MCDPA (MN) access request"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records disclosed under MCDPA (MN)"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "Categories of data deleted"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain compliance audit record",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal analytical operations aligned with consumer expectations",
+        "Active litigation hold"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data",
+        "Service providers with data access"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under MCDPA (MN) deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized transaction data retained for financial reporting under MCDPA (MN)"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase data retained for warranty under MCDPA (MN)"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety and recall compliance under MCDPA (MN)"
+        },
+        {
+          "record_type": "dealer_interaction",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "No retention basis for dealer interaction records under MCDPA (MN)"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale, targeted ads, profiling)",
+        "Acknowledgment of GPC signal processing"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data",
+        "Cease profiling that produces legal or significant effects",
+        "Honor Global Privacy Control (GPC) signals as valid opt-out",
+        "Apply marketing suppression flags across all systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Contextual advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising and analytics partners",
+        "Data brokers receiving consumer data",
+        "Marketing automation providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids", "behavioral_tracking"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress all marketing and tracking attributes per MCDPA (MN) opt-out with GPC"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove targeting and segmentation data per MCDPA (MN); retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial",
+        "Instructions for providing supporting documentation"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data across all systems",
+        "Direct processors to update corrected information",
+        "Notify third parties of corrections where feasible"
+      ],
+      "exceptions": [
+        "Unable to verify correction is more accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under MCDPA (MN)"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under MCDPA (MN)"
+        }
+      ]
+    }
+  },
+  "MT": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of recipients of personal data",
+        "Portable copy of personal data"
+      ],
+      "required_actions": [
+        "Verify consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable format",
+        "Respond within 45 days of authenticated request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary information",
+        "Information that would compromise security safeguards"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under MCDPA (MT) access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under MCDPA (MT) access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Explanation if deletion request denied"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain request record for compliance",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against fraudulent activity",
+        "Internal operations aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under MCDPA (MT)"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction records retained for contract performance under MCDPA (MT)"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty obligations under MCDPA (MT)"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale, targeted ads, profiling)",
+        "GPC signal acknowledgment"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with legal or significant effects",
+        "Honor Global Privacy Control (GPC) signals as valid opt-out",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids", "behavioral_tracking"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and tracking data per MCDPA (MT) opt-out with GPC"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name"],
+          "reasoning": "Remove segmentation and targeting per MCDPA (MT); retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data",
+        "Direct processors to apply corrections",
+        "Notify third parties where feasible"
+      ],
+      "exceptions": [
+        "Unable to verify correction accuracy"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under MCDPA (MT)"
+        }
+      ]
+    }
+  },
+  "NE": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties receiving data"
+      ],
+      "required_actions": [
+        "Verify consumer identity through reasonable methods",
+        "Search all data systems for consumer records",
+        "Provide personal data in portable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under NDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed under NDPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Reason for denial if request not fulfilled"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Confirm deletion to consumer within deadline"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or prevent security incidents",
+        "Internal operations aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles fully deleted under NDPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII masked; transaction data retained for financial reporting under NDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty compliance under NDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with significant effects",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes per NDPA opt-out"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction accuracy"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under NDPA"
+        }
+      ]
+    }
+  },
+  "NH": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of recipients",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable, readily usable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or confidential commercial information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under NHDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed under NHDPA access request"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records subject to disclosure under NHDPA"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "Reason for denial if not fulfilled"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain request record for compliance audit",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against fraudulent or illegal activity",
+        "Internal purposes aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data",
+        "Service providers with data access"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under NHDPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; transaction data retained for financial reporting under NHDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase data retained for warranty under NHDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety and warranty compliance under NHDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with legal or significant effects",
+        "Apply marketing suppression flags across all systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes per NHDPA opt-out"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove marketing segments per NHDPA; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data across all systems",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction is accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile fields under NHDPA"
+        }
+      ]
+    }
+  },
+  "NJ": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing activities",
+        "Categories of third parties with whom data is shared",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity through reasonable means",
+        "Search all data systems for matching records",
+        "Provide data in portable, machine-readable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or confidential business information",
+        "Information that would compromise security measures"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under NJDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM records disclosed in full under NJDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase history subject to disclosure under NJDPA"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or explanation of exemption",
+        "List of processors notified to delete",
+        "Categories of data deleted"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain audit record of deletion request",
+        "Confirm deletion to consumer within deadline"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a federal or state legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against malicious or fraudulent activity",
+        "Internal operations aligned with consumer expectations",
+        "Active litigation or regulatory matter"
+      ],
+      "vendor_notifications": [
+        "All processors with access to consumer data",
+        "Third parties that received consumer data via sale or sharing",
+        "Service providers processing data on behalf of controller"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under NJDPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized transaction data retained for financial reporting under NJDPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase records retained for warranty obligations under NJDPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety recall compliance under NJDPA"
+        },
+        {
+          "record_type": "dealer_interaction",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "No retention basis for dealer interaction records under NJDPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 15,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale, targeted ads, profiling)",
+        "Acknowledgment of Global Privacy Control signal"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data",
+        "Cease profiling that produces legal or significant effects",
+        "Honor Global Privacy Control (GPC) signals as valid opt-out",
+        "Apply marketing suppression flags across all systems"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Non-personalized contextual advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising and adtech partners",
+        "Data brokers receiving consumer data",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids", "behavioral_tracking"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress all marketing and tracking attributes per NJDPA opt-out with GPC"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove targeting and segmentation data per NJDPA; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial",
+        "Instructions for submitting supporting documentation"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data in all systems",
+        "Direct processors to update corrected information",
+        "Notify third parties of correction where practicable"
+      ],
+      "exceptions": [
+        "Unable to verify correction is more accurate",
+        "Correction would undermine data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors holding copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile fields under NJDPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under NJDPA"
+        }
+      ]
+    }
+  },
+  "OR": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties receiving data",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable, machine-readable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets or proprietary business information",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under OCPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under OCPA access request"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase records subject to disclosure under OCPA"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Explanation if request is denied in part or full"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Maintain compliance audit record of request",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or fulfill requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Protect against malicious or fraudulent activity",
+        "Internal analytical purposes aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data",
+        "Service providers with data access"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under OCPA deletion rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases", "loyalty_tier"],
+          "reasoning": "PII masked; anonymized transaction records retained for financial reporting under OCPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase data retained for warranty under OCPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "product_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for safety and recall compliance under OCPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with legal or significant effects",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Contextual advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing attributes per OCPA opt-out"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code", "targeting_data"],
+          "retain_fields": ["customer_id", "name", "email"],
+          "reasoning": "Remove targeting data per OCPA; retain CRM for operational use"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or explanation of denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data in all systems",
+        "Direct processors to apply corrections",
+        "Notify third parties where practicable"
+      ],
+      "exceptions": [
+        "Unable to verify correction is accurate",
+        "Correction would compromise data integrity"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data",
+        "Third parties that received inaccurate data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under OCPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Propagate corrections to CRM records under OCPA"
+        }
+      ]
+    }
+  },
+  "TN": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of recipients of personal data"
+      ],
+      "required_actions": [
+        "Verify consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable format",
+        "Respond within 45 days of authenticated request"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information that would compromise security safeguards"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under TIPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under TIPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption",
+        "Explanation if request denied"
+      ],
+      "required_actions": [
+        "Delete personal data from all systems",
+        "Direct processors to delete consumer data",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction or provide requested service",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal operations aligned with consumer expectations",
+        "Protect against fraudulent activity"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data",
+        "Third parties that received consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under TIPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction records retained for contract performance under TIPA"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "mask_anonymize",
+          "exemption": "warranty_obligation",
+          "mask_fields": ["first_name", "last_name", "email", "phone"],
+          "retain_fields": ["purchase_id", "vehicle", "purchase_date", "dealer_id"],
+          "reasoning": "Consumer PII masked; purchase records retained for warranty under TIPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_safety",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty and safety compliance under TIPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with legal or significant effects",
+        "Apply marketing suppression flags"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers",
+        "Marketing service providers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and targeting data per TIPA opt-out"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_segment_code"],
+          "retain_fields": ["customer_id", "name"],
+          "reasoning": "Remove marketing segments per TIPA; retain CRM for service"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction or reason for denial"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data",
+        "Direct processors to apply corrections"
+      ],
+      "exceptions": [
+        "Unable to verify correction accuracy"
+      ],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to consumer profile under TIPA"
+        }
+      ]
+    }
+  },
+  "TX": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of recipients"
+      ],
+      "required_actions": [
+        "Authenticate consumer identity",
+        "Search all data sources",
+        "Provide portable copy of data"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information compromising security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure under TDPSA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed"
+        },
+        {
+          "record_type": "purchase_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Purchase data disclosed"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion",
+        "Explanation if denied"
+      ],
+      "required_actions": [
+        "Delete personal data",
+        "Notify processors to delete",
+        "Confirm to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction",
+        "Legal obligation",
+        "Security incident detection",
+        "Internal purposes aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under TDPSA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "financial_reporting",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "Anonymize PII; retain transaction summary for reporting"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Advertising partners"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags"],
+          "retain_fields": ["nna_id", "name"],
+          "reasoning": "Suppress marketing and targeting"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction"
+      ],
+      "required_actions": [
+        "Correct inaccurate data"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Processors with corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Apply corrections to specified fields"
+        }
+      ]
+    }
+  },
+  "UT": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties with whom data is shared"
+      ],
+      "required_actions": [
+        "Verify consumer identity",
+        "Search all data sources for matching records",
+        "Provide data in portable format",
+        "Respond within 45 days of authenticated request"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile under UCPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed under UCPA access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion or applicable exemption"
+      ],
+      "required_actions": [
+        "Delete personal data provided by the consumer",
+        "Notify processors to delete consumer data",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction",
+        "Perform under a contract",
+        "Comply with a legal obligation",
+        "Detect or respond to security incidents",
+        "Internal purposes aligned with consumer expectations"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted under UCPA"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "PII anonymized; transaction data retained for contract performance under UCPA"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Service records retained for warranty obligations under UCPA"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out processing",
+        "Scope of opt-out (sale and targeted advertising only)"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising using consumer data"
+      ],
+      "exceptions": [
+        "Consumer-initiated transactions",
+        "Non-personalized advertising"
+      ],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers receiving consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags", "advertising_ids"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress sale and targeted advertising data per UCPA; no profiling opt-out available"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [],
+      "required_actions": [],
+      "exceptions": [
+        "Correction right not provided under UCPA"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": []
+    }
+  },
+  "VA": {
+    "right_to_know": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Whether personal data is being processed",
+        "Categories of personal data processed",
+        "Purpose of processing",
+        "Categories of third parties with whom data is shared",
+        "Copy of personal data in portable format"
+      ],
+      "required_actions": [
+        "Search all data sources for matching records",
+        "Provide data in portable, readily usable format",
+        "Respond within 45 days of verified request"
+      ],
+      "exceptions": [
+        "Trade secrets",
+        "Information that would compromise security"
+      ],
+      "vendor_notifications": [],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Full disclosure of consumer profile data under VCDPA access rights"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "CRM data disclosed as part of access request"
+        }
+      ]
+    },
+    "deletion": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of deletion",
+        "Explanation if deletion request is denied"
+      ],
+      "required_actions": [
+        "Delete personal data provided by or obtained about the consumer",
+        "Notify processors to delete",
+        "Confirm deletion to consumer"
+      ],
+      "exceptions": [
+        "Complete a transaction",
+        "Perform a contract",
+        "Comply with a legal obligation",
+        "Detect or respond to a security incident",
+        "Data processed for internal operations aligned with purpose of collection"
+      ],
+      "vendor_notifications": [
+        "All processors handling consumer data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "full_delete",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Consumer profiles deleted unless retention exemption applies"
+        },
+        {
+          "record_type": "crm_record",
+          "disposition": "mask_anonymize",
+          "exemption": "contract_performance",
+          "mask_fields": ["first_name", "last_name", "email", "phone", "address"],
+          "retain_fields": ["customer_id", "total_purchases"],
+          "reasoning": "Anonymize PII while retaining transaction records for contract performance"
+        },
+        {
+          "record_type": "service_record",
+          "disposition": "retain_exempt",
+          "exemption": "warranty_obligation",
+          "mask_fields": [],
+          "retain_fields": ["service_id", "vin", "vehicle", "service_count"],
+          "reasoning": "Retained for warranty and recall obligations"
+        }
+      ]
+    },
+    "opt_out": {
+      "deadline_days": 45,
+      "extension_days": null,
+      "required_disclosures": [
+        "Confirmation of opt-out",
+        "Scope of opt-out actions taken"
+      ],
+      "required_actions": [
+        "Cease sale of personal data",
+        "Cease targeted advertising",
+        "Cease profiling with significant effects"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Advertising partners",
+        "Data brokers"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": ["marketing_flags"],
+          "retain_fields": ["nna_id", "name", "address"],
+          "reasoning": "Suppress marketing and targeting attributes"
+        }
+      ]
+    },
+    "correction": {
+      "deadline_days": 45,
+      "extension_days": 45,
+      "required_disclosures": [
+        "Confirmation of correction"
+      ],
+      "required_actions": [
+        "Correct inaccurate personal data",
+        "Consider the nature and purposes of processing"
+      ],
+      "exceptions": [],
+      "vendor_notifications": [
+        "Processors with copies of corrected data"
+      ],
+      "disposition_rules": [
+        {
+          "record_type": "consumer_profile",
+          "disposition": "mask_anonymize",
+          "exemption": null,
+          "mask_fields": [],
+          "retain_fields": [],
+          "reasoning": "Update fields with corrected values"
+        }
+      ]
+    }
+  }
+}

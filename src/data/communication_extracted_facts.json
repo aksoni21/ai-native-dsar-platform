@@ -1,0 +1,50 @@
+[
+  {
+    "id": "FACTS-VIN-IN-001",
+    "message_id": "MSG-VIN-IN-001",
+    "classification": "provides_redirect",
+    "classification_confidence": 0.95,
+    "classification_reasoning": "Shivi explicitly states the VIN is not in her archive (archive_legacy_crm_2018) and names a specific alternate owner — Eric Park, Dealer Network Archives — with a corroborating routing flag in the migration log. This is a textbook redirect: not an answer, but a precise pointer to who can answer.",
+    "extracted_facts": {
+      "redirect_target_name": "Eric Park",
+      "redirect_target_email": "shivi.sharma@example.com",
+      "redirect_target_team": "Dealer Network Archives",
+      "redirect_target_system": "dealer_network_archive_2018",
+      "reason": "Pre-2019 dealer-sourced records bypassed the central archive and were routed to dealer-network archive group per migration log mig-2019-q1-crm.",
+      "responder": "Shivi Sharma"
+    },
+    "candidate_results": [],
+    "recommended_next_action": "draft_redirect_outreach",
+    "recommended_action_label": "Draft fresh outreach to Eric Park (Dealer Network Archives)"
+  },
+  {
+    "id": "FACTS-VIN-IN-002",
+    "message_id": "MSG-VIN-IN-002",
+    "classification": "provides_attribution_candidate",
+    "classification_confidence": 0.94,
+    "classification_reasoning": "Reply directly attributes the queried VIN to a named individual with corroborating contact information and a specific archive record id (DNA-44712). Source is the named system (Dealer Network archive, dealer_network_archive_2018). Migration-failure root cause is named (phone-format mismatch broke matching key during 2019-Q1 transform).",
+    "extracted_facts": {
+      "candidate_name": "Kenji Fukushima",
+      "candidate_email": "k.fukushima@example.com",
+      "candidate_phone": "469-555-2210",
+      "candidate_state": "TX",
+      "original_purchase_date": "2018-09-15",
+      "last_dealer_network_activity": "2019-03-15",
+      "dealer_network_record_id": "DNA-44712",
+      "source_system": "Dealer Network archive (dealer_network_archive_2018)",
+      "migration_failure_cause": "phone-format mismatch broke matching key during 2019-Q1 migration transform",
+      "responder": "Eric Park"
+    },
+    "candidate_results": [
+      {
+        "candidate_label": "Kenji Fukushima — Dealer Network archive (DNA-44712), Dallas TX, original purchase 2018-09-15",
+        "source": "records.json",
+        "source_id": "REC-VIN-CAND-001",
+        "match_score": 92,
+        "reasoning": "Deterministic search of records.json with email='k.fukushima@example.com' returned one row (REC-VIN-CAND-001). Name, email, and phone all match the archive record verbatim. State matches the telematics geo-cluster for the orphan VIN."
+      }
+    ],
+    "recommended_next_action": "apply_attribution",
+    "recommended_action_label": "Apply attribution: link VIN JT4567890ABCDEFGH to Kenji Fukushima"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "MSG-VIN-OUT-001",
+    "case_id": "CASE-VIN-001",
+    "direction": "outbound",
+    "channel": "email",
+    "recipient": "shivi.sharma@example.com",
+    "recipient_name": "Shivi Sharma, Legacy CRM Archive team",
+    "sender": "izzy@example.com",
+    "subject": "Legacy CRM archive lookup — VIN JT4567890ABCDEFGH",
+    "body": "Hi Shivi,\n\nWe have a VIN whose customer attribution didn't survive the 2019 CRM migration. The VIN persists in downstream systems (telematics, independent-shop service) but the original customer record doesn't link in current Customer Master / CRM.\n\nCould you check the pre-migration archive (archive_legacy_crm_2018) and share the original customer record on file?\n\nVIN: JT4567890ABCDEFGH\nLast Legacy CRM activity: 2019-Q1 (coincides with migration cutover)\nDownstream activity: Telematics, Independent Shop Service\nRecord count: 1,247\nGeographic cluster: Dallas, TX.\n\nThanks,\nPrivacy Operations team",
+    "sent_at": null,
+    "received_at": null,
+    "agent_drafted": true,
+    "approved_by": null,
+    "approved_at": null
+  },
+  {
+    "id": "MSG-VIN-OUT-002",
+    "case_id": "CASE-VIN-001",
+    "direction": "outbound",
+    "channel": "email",
+    "recipient": "shivi.sharma@example.com",
+    "recipient_name": "Eric Park, Dealer Network Archives",
+    "sender": "izzy@example.com",
+    "subject": "Dealer-network archive lookup — VIN JT4567890ABCDEFGH (referred by Shivi Sharma)",
+    "body": "Hi Eric,\n\nShivi Sharma on the Legacy CRM Migration Archive team referred me to you. We have a VIN whose customer attribution didn't survive the 2019 CRM migration; Shivi checked archive_legacy_crm_2018 and confirmed it's not in her archive — her migration log routed pre-2019 dealer-sourced records to dealer_network_archive_2018, which your team owns.\n\nCould you check that archive and share the original customer record on file?\n\nVIN: JT4567890ABCDEFGH\nLast known activity: 2019-Q1 (coincides with migration cutover)\nDownstream activity: Telematics, Independent Shop Service\nRecord count downstream: 1,247\nGeographic cluster: Dallas, TX\nReferral context: Shivi Sharma's reply — dealer-network routing flag in migration log mig-2019-q1-crm.\n\nThanks,\nPrivacy Operations team\nInstrata · Communication Coordinator",
+    "sent_at": null,
+    "received_at": null,
+    "agent_drafted": true,
+    "approved_by": null,
+    "approved_at": null
+  },
+  {
+    "id": "MSG-MC-OUT-001",
+    "case_id": "CASE-MC-001",
+    "direction": "outbound",
+    "channel": "email",
+    "recipient": "maria.chen@example.com",
+    "recipient_name": "Maria Chen",
+    "sender": "izzy@example.com",
+    "subject": "Your privacy request — confirmation (REQ-MC-REPLY)",
+    "body": "Dear Maria,\n\nThank you for submitting your privacy request. We received it on 2026-03-25 and have begun the review process.\n\nWhat you asked for: deletion of personal information held by Example Motors and its connected services (CCPA right-to-delete).\n\nWhat happens next: our team will identify all records associated with the identifiers you provided, apply California's deletion rules, and send you a final report within the 45-day statutory window. If we need clarifying information from you we will reach out.\n\nIf you have additional information you would like us to consider — different name, email, phone — please reply to this email and we will incorporate it.\n\nKind regards,\nPrivacy Operations team\nInstrata · Communication Coordinator",
+    "sent_at": null,
+    "received_at": null,
+    "agent_drafted": true,
+    "approved_by": null,
+    "approved_at": null
+  }
+]

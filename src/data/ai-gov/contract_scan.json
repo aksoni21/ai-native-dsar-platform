@@ -1,0 +1,187 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "total_contracts": 142,
+    "flagged_count": 7,
+    "last_run_at": "2026-05-18T06:08:00-04:00",
+    "findings": [
+      {
+        "id": "cs-l-001",
+        "contract_name": "nCino Risk-AI Master Services Agreement",
+        "vendor": "nCino, Inc.",
+        "effective_date": "2024-09-01",
+        "matched_use_case_id": "uc-underwriting",
+        "matched_use_case_name": "Auto-Loan Underwriting Risk Scorer",
+        "severity": "critical",
+        "excerpt": "§12.4 Indemnification. Customer shall defend, indemnify, and hold harmless nCino and its affiliates from any and all third-party claims arising out of or relating to Customer's use of the Risk-AI Scoring Engine, including without limitation any claims of unlawful discrimination, disparate impact, or violation of consumer-protection statutes, regardless of whether such claims allege defects in the underlying Tool.",
+        "highlights": [
+          { "term": "Risk-AI Scoring Engine", "kind": "trigger" },
+          { "term": "indemnify, and hold harmless nCino", "kind": "void" },
+          { "term": "claims of unlawful discrimination", "kind": "void" },
+          { "term": "regardless of whether such claims allege defects in the underlying Tool", "kind": "void" }
+        ],
+        "matched_terms": ["Risk-AI Scoring Engine", "indemnification", "discrimination"],
+        "void_clause": {
+          "citation": "C.R.S. §6-1-1707(7)",
+          "clause_title": "§12.4 Indemnification",
+          "explanation": "Purports to indemnify the developer (nCino) from its own anti-discrimination liability arising from defects in the Tool. SB 26-189 §1707(7) renders such provisions void as against public policy. Renegotiate before the AG cure window closes."
+        }
+      },
+      {
+        "id": "cs-l-002",
+        "contract_name": "Blend Pre-Qual Order Form (2025 renewal)",
+        "vendor": "Blend Labs, Inc.",
+        "effective_date": "2025-03-15",
+        "matched_use_case_id": "uc-prequal",
+        "matched_use_case_name": "Pre-Qualification Offer Optimizer",
+        "severity": "standard",
+        "excerpt": "Exhibit B, §2. The Pre-Qualification Optimizer will evaluate, score, and personalize offer terms for each applicant based on predicted conversion probability and lifetime value, drawing on credit-bureau soft pulls and demographic aggregates provided by Customer.",
+        "highlights": [
+          { "term": "evaluate, score, and personalize", "kind": "trigger" },
+          { "term": "predicted conversion probability", "kind": "trigger" }
+        ],
+        "matched_terms": ["evaluate", "score", "personalize", "predicted"],
+        "void_clause": null
+      },
+      {
+        "id": "cs-l-003",
+        "contract_name": "Encompass FraudShield Subscription Agreement",
+        "vendor": "ICE Mortgage Technology",
+        "effective_date": "2024-11-01",
+        "matched_use_case_id": "uc-fraud",
+        "matched_use_case_name": "Application Fraud Detection",
+        "severity": "standard",
+        "excerpt": "Schedule 1, §4(a). The FraudShield service automatically flags applications for manual fraud review using machine-learning models trained on device-fingerprint, identity-signal, and behavioral inputs. The Customer remains responsible for any approve/deny decisions made on the basis of such flags.",
+        "highlights": [
+          { "term": "automatically flags applications", "kind": "trigger" },
+          { "term": "machine-learning models", "kind": "trigger" }
+        ],
+        "matched_terms": ["automatically", "machine-learning"],
+        "void_clause": null
+      }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "total_contracts": 87,
+    "flagged_count": 5,
+    "last_run_at": "2026-05-18T06:08:00-04:00",
+    "findings": [
+      {
+        "id": "cs-h-001",
+        "contract_name": "iCIMS Video-Interview Sentiment Addendum",
+        "vendor": "iCIMS, Inc.",
+        "effective_date": "2025-02-01",
+        "matched_use_case_id": "uc-video-screen",
+        "matched_use_case_name": "Video Interview Sentiment Scorer",
+        "severity": "critical",
+        "excerpt": "§9.3 Indemnity. Customer shall indemnify and hold iCIMS harmless from any and all claims, demands, or losses relating to the Video-Interview Sentiment Tool, including but not limited to claims under federal, state, or local anti-discrimination law and any biometric-information privacy law, regardless of the cause of such claim.",
+        "highlights": [
+          { "term": "Video-Interview Sentiment Tool", "kind": "trigger" },
+          { "term": "indemnify and hold iCIMS harmless", "kind": "void" },
+          { "term": "claims under federal, state, or local anti-discrimination law", "kind": "void" },
+          { "term": "regardless of the cause of such claim", "kind": "void" }
+        ],
+        "matched_terms": ["Video-Interview Sentiment Tool", "indemnity", "anti-discrimination"],
+        "void_clause": {
+          "citation": "C.R.S. §6-1-1707(7)",
+          "clause_title": "§9.3 Indemnity",
+          "explanation": "Purports to indemnify the developer (iCIMS) from its own anti-discrimination liability. SB 26-189 §1707(7) renders such provisions void; BIPA indemnity language is separately unenforceable under 740 ILCS 14/. Renegotiate at next renewal — and earlier if AG inquiry hits."
+        }
+      },
+      {
+        "id": "cs-h-002",
+        "contract_name": "HireVue Assessments MSA",
+        "vendor": "HireVue, Inc.",
+        "effective_date": "2024-08-15",
+        "matched_use_case_id": "uc-assessment",
+        "matched_use_case_name": "Cognitive & Job-Fit Assessment",
+        "severity": "standard",
+        "excerpt": "Exhibit A, §1.2. The HireVue Assessment output may substantially assist or replace discretionary candidate decisions made by Customer's recruiters. Customer acknowledges that the Tool produces a recommendation, not a final decision, and that human review of borderline candidates is the Customer's responsibility.",
+        "highlights": [
+          { "term": "substantially assist or replace discretionary candidate decisions", "kind": "trigger" }
+        ],
+        "matched_terms": ["substantially assist or replace", "discretionary"],
+        "void_clause": null
+      },
+      {
+        "id": "cs-h-003",
+        "contract_name": "Workday Skills-Match Order Form",
+        "vendor": "Workday, Inc.",
+        "effective_date": "2025-01-01",
+        "matched_use_case_id": "uc-ats-rank",
+        "matched_use_case_name": "Resume Skills-Match & Ranker",
+        "severity": "standard",
+        "excerpt": "§3.1 Tool Function. Skills-Match shall rank, score, and prioritize candidates against a job requisition using resume content, extracted skills, and tenure history. Output controls the order in which candidates are surfaced to recruiters for first-pass review.",
+        "highlights": [
+          { "term": "rank, score, and prioritize candidates", "kind": "trigger" },
+          { "term": "controls the order", "kind": "trigger" }
+        ],
+        "matched_terms": ["rank", "score", "prioritize"],
+        "void_clause": null
+      }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "total_contracts": 218,
+    "flagged_count": 11,
+    "last_run_at": "2026-05-18T06:08:00-07:00",
+    "findings": [
+      {
+        "id": "cs-a-001",
+        "contract_name": "Smart Eye Driver Monitoring License Agreement",
+        "vendor": "Smart Eye AB",
+        "effective_date": "2024-06-01",
+        "matched_use_case_id": "uc-driver-monitor",
+        "matched_use_case_name": "In-Cabin Driver Attention Monitoring",
+        "severity": "critical",
+        "excerpt": "§14.2 Liability and Indemnity. Licensee shall indemnify, defend, and hold Smart Eye harmless from any and all claims arising from Licensee's deployment of the driver-monitoring system, including without limitation claims of bias, discrimination, or violation of biometric-information privacy law, even where such claims allege defects in the Tool's underlying facial-recognition models.",
+        "highlights": [
+          { "term": "driver-monitoring system", "kind": "trigger" },
+          { "term": "indemnify, defend, and hold Smart Eye harmless", "kind": "void" },
+          { "term": "claims of bias, discrimination, or violation of biometric-information privacy law", "kind": "void" },
+          { "term": "even where such claims allege defects in the Tool's underlying facial-recognition models", "kind": "void" }
+        ],
+        "matched_terms": ["driver-monitoring", "indemnify", "discrimination", "biometric"],
+        "void_clause": {
+          "citation": "C.R.S. §6-1-1707(7)",
+          "clause_title": "§14.2 Liability and Indemnity",
+          "explanation": "Purports to indemnify the developer (Smart Eye) from its own anti-discrimination and BIPA liability arising from defects in the facial-recognition models. SB 26-189 §1707(7) voids the SB 26-189 portion; IL BIPA §15 separately bars BIPA-claim indemnity. Two regimes, one void clause — renegotiate before Aria EV launch."
+        }
+      },
+      {
+        "id": "cs-a-002",
+        "contract_name": "KBB AI Valuation Reseller Addendum",
+        "vendor": "Kelley Blue Book / Cox Automotive",
+        "effective_date": "2025-04-01",
+        "matched_use_case_id": "uc-trade-in",
+        "matched_use_case_name": "AI Trade-In Valuation",
+        "severity": "standard",
+        "excerpt": "Exhibit C, §2. The AI Valuation Engine personalizes trade-in offer values for each consumer based on KBB book value, regional demand signals, and (where Customer has authorized telematics data sharing) behavioral-wear signals derived from connected-vehicle telemetry.",
+        "highlights": [
+          { "term": "AI Valuation Engine personalizes", "kind": "trigger" },
+          { "term": "behavioral-wear signals derived from connected-vehicle telemetry", "kind": "trigger" }
+        ],
+        "matched_terms": ["AI Valuation Engine", "personalizes", "behavioral"],
+        "void_clause": null
+      },
+      {
+        "id": "cs-a-003",
+        "contract_name": "Pinetop MAC Core — Captive Finance Model Agreement (internal)",
+        "vendor": "Pinetop Motor Acceptance Corp",
+        "effective_date": "2023-12-01",
+        "matched_use_case_id": "uc-captive-finance",
+        "matched_use_case_name": "Captive Auto-Loan Underwriting",
+        "severity": "standard",
+        "excerpt": "Schedule II, §3. The MAC Core model shall evaluate, score, and recommend approve/deny decisions for captive auto-loan applications, using credit-bureau data, application data, dealer-submitted information, and connected-vehicle telematics from prior Pinetop vehicles owned by the applicant.",
+        "highlights": [
+          { "term": "evaluate, score, and recommend approve/deny decisions", "kind": "trigger" },
+          { "term": "connected-vehicle telematics from prior Pinetop vehicles", "kind": "trigger" }
+        ],
+        "matched_terms": ["evaluate", "score", "approve/deny", "telematics"],
+        "void_clause": null
+      }
+    ]
+  }
+}

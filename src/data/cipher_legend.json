@@ -1,0 +1,174 @@
+{
+  "income_code": {
+    "label": "Estimated Household Income",
+    "codes": {
+      "A": "Under $15,000",
+      "B": "$15,000-$24,999",
+      "C": "$25,000-$49,999",
+      "D": "$50,000-$74,999",
+      "E": "$75,000-$99,999",
+      "F": "$100,000-$149,999",
+      "G": "$150,000-$199,999",
+      "H": "$200,000-$249,999",
+      "I": "$250,000+"
+    }
+  },
+  "education_code": {
+    "label": "Education Level",
+    "codes": {
+      "1": "Less than High School",
+      "2": "High School Diploma",
+      "3": "Some College / Associate's",
+      "4": "Bachelor's Degree",
+      "5": "Master's Degree",
+      "6": "Doctoral / Professional Degree"
+    }
+  },
+  "occupation_code": {
+    "label": "Occupation Category",
+    "codes": {
+      "ADM": "Administrative / Clerical",
+      "ENG": "Engineering / Technical",
+      "FIN": "Finance / Accounting",
+      "HCR": "Healthcare / Medical",
+      "LEG": "Legal",
+      "MGR": "Management / Executive",
+      "MKT": "Marketing / Sales",
+      "EDU": "Education / Academic",
+      "RET": "Retired",
+      "SLF": "Self-Employed",
+      "TRD": "Trades / Skilled Labor",
+      "OTH": "Other"
+    }
+  },
+  "household_size_code": {
+    "label": "Household Size",
+    "codes": {
+      "1": "1 Person",
+      "2": "2 People",
+      "3": "3-4 People",
+      "4": "5-6 People",
+      "5": "7+ People"
+    }
+  },
+  "age_range_code": {
+    "label": "Age Range",
+    "codes": {
+      "1": "18-24",
+      "2": "25-34",
+      "3": "35-44",
+      "4": "45-54",
+      "5": "55-64",
+      "6": "65-74",
+      "7": "75+"
+    }
+  },
+  "vehicle_segment_code": {
+    "label": "Vehicle Segment",
+    "codes": {
+      "SED-C": "Compact Sedan",
+      "SED-M": "Midsize Sedan",
+      "SED-F": "Full-size Sedan",
+      "SUV-C": "Compact SUV / Crossover",
+      "SUV-M": "Midsize SUV",
+      "SUV-L": "Full-size SUV",
+      "TRK-C": "Compact Truck",
+      "TRK-F": "Full-size Truck",
+      "VAN-M": "Minivan",
+      "SPT-C": "Sports Car / Coupe",
+      "EV-C": "Electric Vehicle (Crossover)",
+      "EV-S": "Electric Vehicle (Sedan)",
+      "COM-V": "Commercial Vehicle"
+    }
+  },
+  "marketing_segment_code": {
+    "label": "Marketing Segment",
+    "codes": {
+      "URB-P": "Urban Professional",
+      "URB-Y": "Urban Young Adult",
+      "FAM-S": "Family Suburban",
+      "FAM-U": "Family Urban",
+      "RET-S": "Retiree Suburban",
+      "RET-R": "Retiree Rural",
+      "TEC-P": "Tech-Savvy Professional",
+      "LUX-U": "Luxury Urban",
+      "ECO-C": "Economy Conscious",
+      "OUT-A": "Outdoor / Adventure",
+      "BUS-F": "Business Fleet"
+    }
+  },
+  "credit_range_code": {
+    "label": "Credit Score Range",
+    "codes": {
+      "1": "300-579 (Poor)",
+      "2": "580-669 (Fair)",
+      "3": "670-739 (Good)",
+      "4": "740-799 (Very Good)",
+      "5": "800-850 (Excellent)"
+    }
+  },
+  "net_worth_code": {
+    "label": "Estimated Net Worth",
+    "codes": {
+      "A": "Under $50,000",
+      "B": "$50,000-$149,999",
+      "C": "$150,000-$499,999",
+      "D": "$500,000-$999,999",
+      "E": "$1,000,000-$4,999,999",
+      "F": "$5,000,000+"
+    }
+  },
+  "dwelling_type_code": {
+    "label": "Dwelling Type",
+    "codes": {
+      "SFH": "Single Family Home",
+      "TH": "Townhouse",
+      "CON": "Condominium",
+      "APT": "Apartment",
+      "MH": "Mobile Home",
+      "RUR": "Rural / Farm",
+      "OTH": "Other"
+    }
+  },
+  "marital_status_code": {
+    "label": "Marital Status",
+    "codes": {
+      "S": "Single",
+      "M": "Married",
+      "D": "Divorced",
+      "W": "Widowed",
+      "U": "Unknown"
+    }
+  },
+  "homeowner_code": {
+    "label": "Homeowner Status",
+    "codes": {
+      "O": "Homeowner",
+      "R": "Renter",
+      "U": "Unknown"
+    }
+  },
+  "children_present_code": {
+    "label": "Children Present in Household",
+    "codes": {
+      "Y": "Yes - Children Present",
+      "N": "No Children",
+      "U": "Unknown"
+    }
+  },
+  "ethnicity_code": {
+    "label": "Ethnicity (Modeled)",
+    "codes": {
+      "NOTE": "This field contains modeled ethnicity data derived from surname analysis. It is an inference and may be inaccurate. Under CCPA/CPRA, this constitutes sensitive personal information requiring explicit consent for collection and use."
+    }
+  },
+  "mail_responsiveness_code": {
+    "label": "Direct Mail Responsiveness",
+    "codes": {
+      "H": "High Responsiveness",
+      "M": "Medium Responsiveness",
+      "L": "Low Responsiveness",
+      "N": "Non-Responsive / Suppressed"
+    }
+  }
+}

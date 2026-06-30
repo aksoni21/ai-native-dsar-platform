@@ -1,0 +1,140 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "profiles": [
+      {
+        "id": "APP-CO-4471",
+        "name": "Marcus Reyes",
+        "state": "CO",
+        "product_or_role": "Auto loan — 72 months",
+        "decision": "denied",
+        "decision_at": "2026-05-04T14:22:00-06:00",
+        "model_id": "uc-underwriting",
+        "vendor": "nCino Risk-AI",
+        "confidence": 0.83,
+        "amount": 28400,
+        "fico_band": "660–679",
+        "factors": ["debt_to_income_ratio", "recent_credit_inquiry_count", "employment_tenure_months"],
+        "ecoa_codes": ["DTI_HIGH", "RECENT_INQUIRY"]
+      },
+      {
+        "id": "APP-CO-4488",
+        "name": "Janelle Whitford",
+        "state": "CO",
+        "product_or_role": "Refi — 60 months",
+        "decision": "denied",
+        "decision_at": "2026-05-09T11:08:00-06:00",
+        "model_id": "uc-underwriting",
+        "vendor": "nCino Risk-AI",
+        "confidence": 0.78,
+        "amount": 19800,
+        "fico_band": "640–659",
+        "factors": ["debt_to_income_ratio", "ltv_ratio"],
+        "ecoa_codes": ["DTI_HIGH", "LTV_HIGH"]
+      },
+      {
+        "id": "APP-CO-4502",
+        "name": "Thomas Begay",
+        "state": "CO",
+        "product_or_role": "Auto loan — 60 months",
+        "decision": "denied",
+        "decision_at": "2026-05-12T09:41:00-06:00",
+        "model_id": "uc-underwriting",
+        "vendor": "nCino Risk-AI",
+        "confidence": 0.71,
+        "amount": 22100,
+        "fico_band": "680–699",
+        "factors": ["employment_tenure_months", "recent_credit_inquiry_count"],
+        "ecoa_codes": ["EMP_TENURE_SHORT"]
+      }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "profiles": [
+      {
+        "id": "CND-NYC-1188",
+        "name": "Priya Shah",
+        "state": "NY",
+        "product_or_role": "Senior Risk Analyst — NYC",
+        "decision": "screened_out",
+        "decision_at": "2026-05-04T14:22:00-04:00",
+        "model_id": "uc-ats-rank",
+        "vendor": "Workday Skills-Match",
+        "confidence": 0.71,
+        "factors": ["resume_keyword_score", "tenure_pattern", "skills_overlap"]
+      },
+      {
+        "id": "CND-NYC-1204",
+        "name": "Andre Williams",
+        "state": "NY",
+        "product_or_role": "Customer Ops Lead — NYC",
+        "decision": "screened_out",
+        "decision_at": "2026-05-09T11:08:00-04:00",
+        "model_id": "uc-ats-rank",
+        "vendor": "Workday Skills-Match",
+        "confidence": 0.68,
+        "factors": ["skills_overlap", "education_signal"]
+      },
+      {
+        "id": "CND-NYC-1217",
+        "name": "Maya Schwartz",
+        "state": "NY",
+        "product_or_role": "Risk Engineer — NYC",
+        "decision": "screened_out",
+        "decision_at": "2026-05-12T09:41:00-04:00",
+        "model_id": "uc-video-screen",
+        "vendor": "iCIMS Video-Interview Sentiment",
+        "confidence": 0.62,
+        "factors": ["sentiment_score", "speech_cadence", "keyword_match"]
+      }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "profiles": [
+      {
+        "id": "BUY-CA-7733",
+        "name": "Karina Velasquez",
+        "state": "CA",
+        "product_or_role": "2026 Pinetop Aria EV — captive financing (60 mo)",
+        "decision": "denied",
+        "decision_at": "2026-05-04T14:22:00-07:00",
+        "model_id": "uc-captive-finance",
+        "vendor": "Pinetop MAC Core",
+        "confidence": 0.81,
+        "amount": 48900,
+        "fico_band": "680–699",
+        "factors": ["debt_to_income_ratio", "credit_bureau_score", "telematics_risk_signal"],
+        "ecoa_codes": ["DTI_HIGH", "OTHER_REASON_NON_TRADITIONAL"]
+      },
+      {
+        "id": "BUY-CA-7741",
+        "name": "Robert Tanaka",
+        "state": "CA",
+        "product_or_role": "2024 Pinetop Sentra (CPO) — captive financing (72 mo)",
+        "decision": "denied",
+        "decision_at": "2026-05-09T11:08:00-07:00",
+        "model_id": "uc-captive-finance",
+        "vendor": "Pinetop MAC Core",
+        "confidence": 0.74,
+        "amount": 23400,
+        "fico_band": "640–659",
+        "factors": ["debt_to_income_ratio", "loan_to_value_ratio"],
+        "ecoa_codes": ["DTI_HIGH", "LTV_HIGH"]
+      },
+      {
+        "id": "BUY-CA-7758",
+        "name": "Sasha Patel",
+        "state": "CA",
+        "product_or_role": "Trade-in appraisal — 2021 Pinetop Altima-equiv",
+        "decision": "denied",
+        "decision_at": "2026-05-12T09:41:00-07:00",
+        "model_id": "uc-trade-in",
+        "vendor": "KBB AI Valuation",
+        "confidence": 0.68,
+        "factors": ["telematics_wear_signal", "kbb_book_value", "regional_demand_curve"]
+      }
+    ]
+  }
+}

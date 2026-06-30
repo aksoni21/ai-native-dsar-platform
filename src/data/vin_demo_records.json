@@ -1,0 +1,353 @@
+{
+  "consumer": {
+    "id": "CONS-7782",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "request_id": "REQ-VIN-001",
+    "request_type": "right_to_know",
+    "request_date": "2026-04-22"
+  },
+  "ownership_window": {
+    "vin": "WAUZZZ123XY456789",
+    "vehicle": "2019 Example Motors Altima SR",
+    "start_date": "2019-03-15",
+    "end_date": "2022-08-01",
+    "duration_months": 40,
+    "source": "DealerRecords (sale + trade-in)"
+  },
+  "previous_owner": {
+    "name": "Jane Smith",
+    "start_date": "2017-06-22",
+    "end_date": "2019-03-15"
+  },
+  "next_owner": {
+    "name": "Bob Wilson",
+    "start_date": "2022-08-01",
+    "end_date": null
+  },
+  "step1_systems": {
+    "NNA": {
+      "label": "NNA — Customer Master",
+      "description": "Core customer database. Keyed by name, email, phone.",
+      "keying": "PII (name + email + phone)",
+      "records": [
+        {
+          "id": "NNA-44213",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "email": "mike.jackson.com",
+          "phone": "214-555-0188",
+          "state": "TX",
+          "address": "1284 Oak Lane, Dallas, TX 75201",
+          "household_id": "HH-9921",
+          "created_at": "2019-03-15",
+          "last_activity": "2022-08-01"
+        }
+      ]
+    },
+    "Customer360": {
+      "label": "Customer 360 — CRM / Marketing",
+      "description": "Marketing segments, demographics, coded fields. Keyed by name + email.",
+      "keying": "PII (name + email)",
+      "records": [
+        {
+          "id": "C360-78812",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "email": "mike.jackson.com",
+          "marketing_segment_code": "URB-P",
+          "income_code": "5",
+          "loyalty_tier": "Silver",
+          "email_opt_in": true,
+          "sms_opt_in": false,
+          "first_interaction": "2019-03-15",
+          "last_email_open": "2025-11-08"
+        }
+      ]
+    },
+    "DealerRecords": {
+      "label": "Dealer Records — Sales & Title",
+      "description": "Vehicle sale, trade-in, and ownership transfer history. Keyed by name AND vin.",
+      "keying": "PII + vin (the bridge)",
+      "records": [
+        {
+          "id": "DLR-20190315-A",
+          "event": "purchase",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "email": "mike.jackson.com",
+          "vin": "WAUZZZ123XY456789",
+          "vehicle": "2019 Example Motors Altima SR",
+          "transaction_date": "2019-03-15",
+          "dealer_id": "DLR-DALLAS-04",
+          "msrp": 27840,
+          "financed": true
+        },
+        {
+          "id": "DLR-20220801-T",
+          "event": "trade_in",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "email": "mike.jackson.com",
+          "vin": "WAUZZZ123XY456789",
+          "transaction_date": "2022-08-01",
+          "trade_in_value": 18200,
+          "dealer_id": "DLR-DALLAS-04",
+          "next_owner_attached": false
+        }
+      ]
+    },
+    "PBS": {
+      "label": "PBS — Parts & Service",
+      "description": "Dealer service history. Most records have both name and vin.",
+      "keying": "PII + vin",
+      "records": [
+        {
+          "id": "PBS-20190820",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "vin": "WAUZZZ123XY456789",
+          "service_date": "2019-08-20",
+          "service_type": "first_oil_change",
+          "mileage": 4218,
+          "dealer_id": "DLR-DALLAS-04"
+        },
+        {
+          "id": "PBS-20200612",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "vin": "WAUZZZ123XY456789",
+          "service_date": "2020-06-12",
+          "service_type": "30k_service",
+          "mileage": 31044,
+          "dealer_id": "DLR-DALLAS-04"
+        },
+        {
+          "id": "PBS-20211119",
+          "first_name": "Mike",
+          "last_name": "Jackson",
+          "vin": "WAUZZZ123XY456789",
+          "service_date": "2021-11-19",
+          "service_type": "brake_pads_replace",
+          "mileage": 47330,
+          "dealer_id": "DLR-DALLAS-04"
+        }
+      ]
+    }
+  },
+  "step2_systems": {
+    "Telematics": {
+      "label": "Vehicle Services — Telematics",
+      "description": "Connected-car data. Keyed ONLY by vin and timestamp. NO PII.",
+      "keying": "vin only",
+      "records": [
+        {
+          "id": "TLM-2018-11-03-001",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2018-11-03T14:11:00Z",
+          "type": "diagnostic",
+          "fault_code": "P0420",
+          "in_window": false,
+          "exclusion_reason": "pre-ownership (Jane Smith)"
+        },
+        {
+          "id": "TLM-2019-04-08-001",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2019-04-08T08:34:00Z",
+          "type": "location_ping",
+          "speed_mph": 32,
+          "lat_redacted": true,
+          "in_window": true
+        },
+        {
+          "id": "TLM-2020-02-14-014",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2020-02-14T19:02:00Z",
+          "type": "driving_event",
+          "event": "hard_brake",
+          "g_force": 0.84,
+          "in_window": true
+        },
+        {
+          "id": "TLM-2021-07-22-203",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2021-07-22T11:18:00Z",
+          "type": "diagnostic",
+          "fault_code": "P0171",
+          "in_window": true
+        },
+        {
+          "id": "TLM-2022-05-09-077",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2022-05-09T07:55:00Z",
+          "type": "location_ping",
+          "speed_mph": 28,
+          "lat_redacted": true,
+          "in_window": true
+        },
+        {
+          "id": "TLM-2023-02-19-091",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2023-02-19T09:00:00Z",
+          "type": "location_ping",
+          "speed_mph": 41,
+          "lat_redacted": true,
+          "in_window": false,
+          "exclusion_reason": "post-ownership (Bob Wilson)"
+        },
+        {
+          "id": "TLM-2024-06-12-133",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2024-06-12T16:45:00Z",
+          "type": "driving_event",
+          "event": "rapid_acceleration",
+          "g_force": 0.91,
+          "in_window": false,
+          "exclusion_reason": "post-ownership (Bob Wilson)"
+        }
+      ],
+      "summary": {
+        "total_records_for_vin": 1247,
+        "in_window_count": 1083,
+        "pre_ownership_count": 102,
+        "post_ownership_count": 62,
+        "displayed_sample": 7
+      }
+    },
+    "ManufacturingQA": {
+      "label": "Manufacturing & QA",
+      "description": "Factory build records, sensor calibration, quality checks. Keyed by vin.",
+      "keying": "vin only",
+      "records": [
+        {
+          "id": "MFG-WAUZ-BUILD",
+          "vin": "WAUZZZ123XY456789",
+          "build_date": "2018-09-22",
+          "plant": "Smyrna, TN",
+          "trim": "SR",
+          "powertrain": "2.5L I4",
+          "in_window": false,
+          "exclusion_reason": "pre-ownership (factory build)"
+        },
+        {
+          "id": "MFG-QA-SENSOR-014",
+          "vin": "WAUZZZ123XY456789",
+          "timestamp": "2018-09-23T03:22:00Z",
+          "test": "lane_keep_assist_calibration",
+          "result": "pass",
+          "in_window": false,
+          "exclusion_reason": "pre-ownership (factory)"
+        }
+      ],
+      "summary": {
+        "total_records_for_vin": 23,
+        "in_window_count": 0,
+        "pre_ownership_count": 23,
+        "post_ownership_count": 0,
+        "note": "All manufacturing records are pre-ownership. Excluded from John's DSAR."
+      }
+    },
+    "RecallCampaigns": {
+      "label": "Recall Campaigns",
+      "description": "Recall notifications and completion tracking. Keyed by vin.",
+      "keying": "vin only",
+      "records": [
+        {
+          "id": "RECALL-21V-117",
+          "vin": "WAUZZZ123XY456789",
+          "campaign": "21V-117 (fuel pump assembly)",
+          "notice_date": "2021-04-08",
+          "completion_date": "2021-05-19",
+          "status": "completed",
+          "in_window": true
+        },
+        {
+          "id": "RECALL-23V-088",
+          "vin": "WAUZZZ123XY456789",
+          "campaign": "23V-088 (rearview camera firmware)",
+          "notice_date": "2023-03-12",
+          "completion_date": "2023-04-02",
+          "status": "completed",
+          "in_window": false,
+          "exclusion_reason": "post-ownership (Bob Wilson received notice)"
+        }
+      ],
+      "summary": {
+        "total_records_for_vin": 4,
+        "in_window_count": 2,
+        "pre_ownership_count": 0,
+        "post_ownership_count": 2
+      }
+    },
+    "IndependentShopService": {
+      "label": "Independent Shop Service Records",
+      "description": "Service done at non-dealer shops. No customer ID submitted — just vin.",
+      "keying": "vin only",
+      "records": [
+        {
+          "id": "ISS-20200815",
+          "vin": "WAUZZZ123XY456789",
+          "service_date": "2020-08-15",
+          "shop": "Joe's Auto Repair, Plano TX",
+          "service_type": "tire_rotation",
+          "mileage": 32890,
+          "in_window": true
+        },
+        {
+          "id": "ISS-20211004",
+          "vin": "WAUZZZ123XY456789",
+          "service_date": "2021-10-04",
+          "shop": "Quick Lube Express, Dallas TX",
+          "service_type": "oil_change",
+          "mileage": 44102,
+          "in_window": true
+        }
+      ],
+      "summary": {
+        "total_records_for_vin": 6,
+        "in_window_count": 6,
+        "pre_ownership_count": 0,
+        "post_ownership_count": 0,
+        "note": "All independent-shop records during John's ownership had NO customer ID — only vin. Name-only DSAR search would have missed all six."
+      }
+    }
+  },
+  "orphan_vins_sample": [
+    {
+      "vin": "JT4567890ABCDEFGH",
+      "first_seen": "2021-06-12",
+      "last_attribution_date": null,
+      "record_count": 1247,
+      "source_systems": ["Telematics", "Independent Shop Service"],
+      "likely_cause": "Used vehicle bought private, never registered with Example Motors"
+    },
+    {
+      "vin": "5N1AA12345ABCDEFG",
+      "first_seen": "2020-03-04",
+      "last_attribution_date": "2020-09-12",
+      "record_count": 482,
+      "source_systems": ["Telematics"],
+      "likely_cause": "Customer account closed but telematics device kept transmitting"
+    },
+    {
+      "vin": "1HGCM82633A123456",
+      "first_seen": "2019-11-21",
+      "last_attribution_date": null,
+      "record_count": 3104,
+      "source_systems": ["Telematics", "Recall Campaigns", "Manufacturing QA"],
+      "likely_cause": "Fleet vehicle (Hertz title); driver data flowed without account creation"
+    },
+    {
+      "vin": "WAUZZZ987XY999999",
+      "first_seen": "2022-01-08",
+      "last_attribution_date": "2022-04-15",
+      "record_count": 217,
+      "source_systems": ["Telematics", "Independent Shop Service"],
+      "likely_cause": "Telematics activated before account creation; account never finalized"
+    }
+  ]
+}

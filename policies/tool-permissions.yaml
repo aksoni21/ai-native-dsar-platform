@@ -1,0 +1,69 @@
+version: 1
+policy_id: tool-permissions.v1
+description: Least-privilege tool policy for governed privacy agents.
+
+defaults:
+  read_only: true
+  network_egress: deny
+  writes: deny
+  external_messages: deny
+  pii_logging: redact
+
+tool_classes:
+  source_system_read:
+    allowed_operations:
+      - search
+      - get
+      - explain
+    denied_operations:
+      - update
+      - delete
+      - export_bulk
+
+  legal_reference:
+    allowed_operations:
+      - lookup
+      - map_obligation
+      - explain
+    denied_operations:
+      - render_legal_advice_as_final
+
+  communications_queue:
+    allowed_operations:
+      - draft
+      - parse
+      - match
+      - queue_for_review
+    denied_operations:
+      - send_without_approval
+
+  evidence_vault:
+    allowed_operations:
+      - append_event
+      - get_trace
+      - export_trace
+    constraints:
+      append_only: true
+      event_ids_required: true
+
+agent_bindings:
+  intake-triage:
+    - dsar_intake.read
+    - legal_rules.read
+  identity-resolver:
+    - source_systems.read
+  disposition-planner:
+    - source_systems.read
+    - legal_rules.read
+  communications-coordinator:
+    - communications.queue
+    - evidence_vault.append
+  report-generator:
+    - dsar_intake.read
+    - source_systems.read
+    - legal_rules.read
+    - evidence_vault.read
+  execution-coordinator:
+    - communications.send_after_approval
+    - dsar_intake.update_after_approval
+    - evidence_vault.append

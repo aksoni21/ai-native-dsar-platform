@@ -1,0 +1,39 @@
+version: 1
+policy_id: approval-gates.v1
+description: Human approval requirements for agent-initiated side effects.
+
+approval_phrases:
+  singular: I approve this action
+  plural: I approve these actions
+
+requires_approval:
+  - send_external_email
+  - attach_report_to_email
+  - update_request_status
+  - mark_request_complete
+  - delete_or_mask_record
+  - notify_vendor
+  - export_consumer_package
+
+approval_record_required_fields:
+  - request_id
+  - actor_id
+  - actor_email
+  - approval_quote
+  - approved_action_ids
+  - timestamp
+  - pre_execution_summary
+  - tool_trace_id
+
+pre_execution_checks:
+  - approval_quote_exact_match
+  - actor_is_authorized_operator
+  - action_ids_match_presented_bundle
+  - destination_is_allowlisted_or_overridden
+  - evidence_event_written
+
+denial_behavior:
+  on_missing_approval: queue_for_review
+  on_mismatched_quote: reject_without_side_effect
+  on_unallowlisted_destination: reject_and_log
+  on_trace_write_failure: reject_without_side_effect

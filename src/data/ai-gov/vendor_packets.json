@@ -1,0 +1,164 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "packets": [
+      {
+        "vendor_id": "vnd-ncino",
+        "vendor_name": "nCino Risk-AI",
+        "use_case_id": "uc-underwriting",
+        "packet_version": "4.2.1",
+        "last_updated": "2026-03-14T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "318 KB", "excerpt": "Underwriting risk score is intended for use as a decision-support signal in unsecured and secured consumer credit underwriting. Output is a normalized probability-of-default score in [0,1]; deployers are responsible for setting decision thresholds and human-review gates." },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "412 KB", "excerpt": "Trained on 41M anonymized consumer loan applications from 2018–2024 across 142 deployer customers. Geographic coverage: all 50 states + DC. Demographic distribution provided as Appendix B." },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "211 KB", "excerpt": "Calibration drift observed on applications from borrowers with thin-file credit histories (<24 months bureau data). Quarterly recalibration recommended. Performance not validated on non-English application narratives." },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "189 KB", "excerpt": "Pre-deployment fairness testing across protected-class proxies; quarterly drift monitoring; reviewer escalation path for borderline-band decisions." },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted", "excerpt": "Feature-weight matrix and training-data composition by bureau source withheld as trade secret per §1702(1); deployer notified per §1702(1)(d)." }
+        ],
+        "pending_diff": {
+          "triggered_at_offset_ms": 4200,
+          "summary": "nCino has published Underwriting-v4.3 — material update to the employment-tenure feature weight. New §1702 packet attached.",
+          "fields_changed": ["employment_tenure_months (weight 0.08 → 0.14)", "Known Limitations §3.2 (revised thin-file guidance)"]
+        }
+      },
+      {
+        "vendor_id": "vnd-blend",
+        "vendor_name": "Blend Pre-Qual",
+        "use_case_id": "uc-prequal",
+        "packet_version": "2.6.0",
+        "last_updated": "2026-01-22T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "204 KB", "excerpt": "Pre-qualification optimizer is intended to personalize offer terms (APR band, term length) for consumers who have completed a soft-pull pre-qualification." },
+          { "key": "training_data", "label": "Training Data Summary", "status": "pending", "excerpt": "Vendor packet incomplete — Training Data Summary not yet received. Requested 2026-04-30; follow-up sent." },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "98 KB", "excerpt": "Limited training data on borrowers with no prior credit history; conservative default recommendations applied." },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "112 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted", "excerpt": "Algorithmic decision boundary parameters withheld; deployer notified per §1702(1)(d)." }
+        ],
+        "pending_diff": null
+      },
+      {
+        "vendor_id": "vnd-encompass",
+        "vendor_name": "Encompass FraudShield",
+        "use_case_id": "uc-fraud",
+        "packet_version": "7.1.3",
+        "last_updated": "2026-04-02T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "176 KB" },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "289 KB" },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "143 KB" },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "156 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted" }
+        ],
+        "pending_diff": null
+      }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "packets": [
+      {
+        "vendor_id": "vnd-workday",
+        "vendor_name": "Workday Skills-Match",
+        "use_case_id": "uc-ats-rank",
+        "packet_version": "2.1.4",
+        "last_updated": "2026-03-14T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "298 KB", "excerpt": "Skills-Match ranks candidates against a job requisition. Output is a relative rank within the applicant pool; deployers are responsible for the threshold above which recruiters review candidates manually." },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "388 KB", "excerpt": "Trained on 18M resume/req pairs from 312 deployer customers across professional services, financial services, healthcare. NYC LL144 bias audit conducted Q1 2026 by independent auditor (BABL AI); audit summary attached." },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "194 KB" },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "176 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted", "excerpt": "Skill-graph weighting and synonym ontology withheld; deployer notified per §1702(1)(d)." }
+        ],
+        "pending_diff": {
+          "triggered_at_offset_ms": 4200,
+          "summary": "Workday has shipped Skills-Match v2.2 — changes to the tenure-pattern signal. New §1702 packet + updated independent bias audit attached.",
+          "fields_changed": ["tenure_pattern (sliding window 24m → 36m)", "Bias Audit §C (new disparate-impact ratios)"]
+        }
+      },
+      {
+        "vendor_id": "vnd-icims",
+        "vendor_name": "iCIMS Video-Interview Sentiment",
+        "use_case_id": "uc-video-screen",
+        "packet_version": "3.0.1",
+        "last_updated": "2026-02-18T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "201 KB" },
+          { "key": "training_data", "label": "Training Data Summary", "status": "pending", "excerpt": "Vendor packet incomplete — IL BIPA-specific consent flow documentation not yet received. Requested 2026-05-01; follow-up sent 2026-05-10." },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "167 KB" },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "143 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted" }
+        ],
+        "pending_diff": null
+      },
+      {
+        "vendor_id": "vnd-hirevue",
+        "vendor_name": "HireVue Assessments",
+        "use_case_id": "uc-assessment",
+        "packet_version": "5.4.0",
+        "last_updated": "2026-04-02T09:00:00-04:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "176 KB" },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "289 KB" },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "143 KB" },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "156 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted" }
+        ],
+        "pending_diff": null
+      }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "packets": [
+      {
+        "vendor_id": "vnd-mac-core",
+        "vendor_name": "Pinetop MAC Core (Captive Finance)",
+        "use_case_id": "uc-captive-finance",
+        "packet_version": "11.4.0",
+        "last_updated": "2026-04-30T09:00:00-07:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "412 KB", "excerpt": "Captive auto-loan underwriting scorer is intended for use in evaluating applications for credit to purchase or lease Pinetop vehicles. Output is a probability-of-default score in [0,1] combined with a model-recommended decision band; deployers (Pinetop MAC) set the auto-decline threshold and human-review gate." },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "528 KB", "excerpt": "Trained on 12.4M Pinetop captive-finance applications (2018–2024). v11 introduced — for opt-in connected-vehicle owners — telematics-derived 'behavioral risk' features (harsh-braking rate, late-night driving share, geofence variance) drawn from the consumer's prior Pinetop vehicle." },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "224 KB", "excerpt": "Telematics features available only for prior connected-vehicle owners; backfilled with median for new-to-Pinetop applicants. Performance not validated on subleased or fleet-derived telematics signals." },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "pending", "excerpt": "Vendor packet incomplete — secondary-use opt-in attestation for telematics features not yet provided. Requested 2026-05-01; follow-up sent 2026-05-15. This is the gap surfaced in the active CPPA inquiry." },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted", "excerpt": "Feature-weight matrix and telematics signal definitions withheld as trade secret per §1702(1); deployer notified per §1702(1)(d). Note: telematics feature presence is itself disclosed; only the weighting is withheld." }
+        ],
+        "pending_diff": {
+          "triggered_at_offset_ms": 4200,
+          "summary": "Pinetop MAC has published v11.4.1 — telematics 'behavioral risk' features REMOVED pending privacy review. New §1702 packet attached.",
+          "fields_changed": ["telematics_risk_signal (weight 0.11 → 0.00, gated)", "Known Limitations §3.4 (telematics-use posture)"]
+        }
+      },
+      {
+        "vendor_id": "vnd-driver-monitor",
+        "vendor_name": "Smart Eye Driver Monitoring",
+        "use_case_id": "uc-driver-monitor",
+        "packet_version": "8.2.1",
+        "last_updated": "2026-03-14T09:00:00-07:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "289 KB", "excerpt": "Real-time driver-attention scoring for ADAS safety. Output drives in-cabin alerts and, optionally, aggregated cohort labels written back to the OEM's connected-vehicle platform." },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "344 KB" },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "201 KB", "excerpt": "Cadence and gaze-vector signals exhibit measurable variance across demographic groups; in-vehicle calibration mitigates but does not eliminate. Performance degraded under prescription glasses with anti-reflective coatings (see Appendix C)." },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "176 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted" }
+        ],
+        "pending_diff": null
+      },
+      {
+        "vendor_id": "vnd-kbb",
+        "vendor_name": "KBB AI Valuation",
+        "use_case_id": "uc-trade-in",
+        "packet_version": "4.1.2",
+        "last_updated": "2026-02-18T09:00:00-07:00",
+        "sections": [
+          { "key": "intended_use", "label": "Intended Use Statement", "status": "received", "file_size": "187 KB" },
+          { "key": "training_data", "label": "Training Data Summary", "status": "received", "file_size": "266 KB" },
+          { "key": "known_limitations", "label": "Known Limitations", "status": "received", "file_size": "143 KB" },
+          { "key": "risk_mitigation", "label": "Risk Mitigation Practices", "status": "received", "file_size": "128 KB" },
+          { "key": "trade_secret_withheld", "label": "Trade-Secret Withholding Notice", "status": "redacted" }
+        ],
+        "pending_diff": null
+      }
+    ]
+  }
+}

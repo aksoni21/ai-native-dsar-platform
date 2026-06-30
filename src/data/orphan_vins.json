@@ -1,0 +1,49 @@
+[
+  {
+    "vin": "JT4567890ABCDEFGH",
+    "category": "pipeline_gap",
+    "category_signals": [
+      "VIN present in Legacy CRM archive (pre-2019 records)",
+      "Last activity in Legacy CRM: 2019-03 — coincides with CRM migration cutover",
+      "VIN absent from current Customer Master, DataWarehouse, and CRM",
+      "Telematics geo-cluster: Dallas, TX (3 records)",
+      "Independent shop service in Dallas, TX (2 records)"
+    ],
+    "record_count": 1247,
+    "source_systems": ["Telematics", "IndependentShopService"],
+    "first_seen": "2021-06-12",
+    "last_attribution_date": null,
+    "status": "investigating",
+    "likely_cause": "Customer-VIN link dropped during the 2019 CRM migration; the archive retains the original record. [2019 CRM migration drop]"
+  },
+  {
+    "vin": "5N1AA12345ABCDEFG",
+    "category": "pipeline_gap",
+    "category_signals": [
+      "Telematics records concentrated 2020-03 through 2020-09",
+      "Customer ID present in pre-2020 records but cleared after 2020-09",
+      "Account-closure event in CRM matches abandonment date"
+    ],
+    "record_count": 482,
+    "source_systems": ["Telematics"],
+    "first_seen": "2020-03-04",
+    "last_attribution_date": "2020-09-12",
+    "status": "open",
+    "likely_cause": "Customer account closed but the telematics device kept transmitting. [customer cancelled account, VIN remained]"
+  },
+  {
+    "vin": "WAUZZZ987XY999999",
+    "category": "pipeline_gap",
+    "category_signals": [
+      "Telematics activity pre-dates customer master record by 89 days",
+      "Account creation event flagged abandoned",
+      "Independent shop service with VIN-only key"
+    ],
+    "record_count": 217,
+    "source_systems": ["Telematics", "IndependentShopService"],
+    "first_seen": "2022-01-08",
+    "last_attribution_date": "2022-04-15",
+    "status": "open",
+    "likely_cause": "Telematics activated before the customer account was finalized. [dealer test drive]"
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "vertical_label": "Pinetop Federal Credit Union",
+    "inbox_owner": "Erin Park",
+    "inbox_owner_role": "General Counsel, Pinetop FCU",
+    "items": [
+      {
+        "id": "ag-co-2026-0418",
+        "from": "Colorado AG Office (Consumer Protection)",
+        "from_role": "Senior Assistant Attorney General",
+        "subject": "Inquiry re: 12-month ADMT loan-denial activity (Ref. CO-AG-2026-0418)",
+        "preview": "Under Colorado SB 26-189 §1706, this office is requesting documentation of all Covered Automated Decisionmaking Tools used in consumer credit underwriting for Colorado residents from April 2025 through April 2026...",
+        "received_at": "2026-05-18T08:14:00-04:00",
+        "priority": "high",
+        "is_ag_notice": true,
+        "opens_route": "/dashboard",
+        "body": "Pursuant to C.R.S. §6-1-1706, the Office of the Attorney General is investigating potential violations of the Colorado Artificial Intelligence Act in consumer lending. Within thirty (30) days, please produce:\n\n(1) A complete inventory of every Covered Automated Decisionmaking Tool used in the underwriting, pricing, or adverse-action determination for Colorado consumer credit applications between April 1, 2025 and April 1, 2026;\n\n(2) The §1702 developer documentation packets for each Tool, including any redactions and the basis therefor;\n\n(3) Aggregate adverse-outcome statistics by protected class for the period above;\n\n(4) Records of all consumer reconsideration requests received under §1705 and their disposition; and\n\n(5) The §1704(3) post-adverse-outcome disclosures sent to Colorado consumers, or evidence of ECOA/Reg B equivalence relied upon in lieu thereof.\n\nResponses may be produced via secure portal. This office's cure-period analysis under §1706(3) will commence upon receipt."
+      },
+      {
+        "id": "vendor-ncino-update",
+        "from": "nCino Risk Platform",
+        "from_role": "vendor-updates.com",
+        "subject": "Underwriting-v4.2 → v4.3 release notes (action required)",
+        "preview": "Heads up: we're shipping a material update to the risk scorer on May 22 that changes how short-tenure employment is weighted. Per §1702(2) we've attached the updated documentation packet...",
+        "received_at": "2026-05-18T07:42:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "internal-procurement-fyi",
+        "from": "Procurement (Marisol Chen)",
+        "from_role": "VP Procurement",
+        "subject": "FYI — Blend renewal moves to legal review next week",
+        "preview": "Erin — heads-up that the Blend pre-qualification contract renewal lands on your desk Tuesday. Standard MSA plus the new ADMT addendum we've been negotiating...",
+        "received_at": "2026-05-18T07:11:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "lscu-newsletter",
+        "from": "League of Southeastern Credit Unions",
+        "from_role": "LSCU Compliance Weekly",
+        "subject": "This week in compliance: CFPB statement, CO rulemaking timeline, two new state bills",
+        "preview": "Colorado AG issues draft 'materially influence' presumptions for public comment; CFPB clarifies adverse-action overlap with new state ADMT regimes...",
+        "received_at": "2026-05-18T06:30:00-04:00",
+        "priority": "low",
+        "is_ag_notice": false
+      },
+      {
+        "id": "cal-board-prep",
+        "from": "Calendar — Board Prep",
+        "from_role": "Outlook Reminder",
+        "subject": "Tomorrow 9:00 AM — Board Risk Committee prep",
+        "preview": "Materials due to BRC by EOD today. Outstanding items: model risk sub-section (you), cyber update (Henry), AG inquiry update (TBD)...",
+        "received_at": "2026-05-17T18:00:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "vertical_label": "Pinetop Holdings (HR & Talent)",
+    "inbox_owner": "Erin Park",
+    "inbox_owner_role": "Chief Privacy Officer",
+    "items": [
+      {
+        "id": "ag-nyc-2026-0271",
+        "from": "NYC Department of Consumer & Worker Protection",
+        "from_role": "Bureau of Labor Policy & Standards",
+        "subject": "LL 144 Compliance Audit Notice (Ref. NYC-DCWP-2026-0271)",
+        "preview": "Pursuant to NYC Local Law 144 and §20-870 et seq., this office is auditing your use of Automated Employment Decision Tools (AEDTs) for New York City candidates during the prior 12 months...",
+        "received_at": "2026-05-18T08:14:00-04:00",
+        "priority": "high",
+        "is_ag_notice": true,
+        "opens_route": "/dashboard",
+        "body": "Pursuant to NYC Administrative Code §20-870 et seq. and the rules promulgated thereunder, the Department of Consumer and Worker Protection is conducting a compliance audit of your use of Automated Employment Decision Tools (AEDTs) for candidates seeking employment in the City of New York. Within thirty (30) days, please produce:\n\n(1) A complete inventory of every AEDT used in candidate sourcing, screening, ranking, or selection for New York City positions between May 1, 2025 and May 1, 2026;\n\n(2) The most recent independent bias audit for each AEDT, including the auditor's independence attestation;\n\n(3) Evidence of the pre-use candidate notice required under §20-871(b), including the data type, source, and retention policy notice elements;\n\n(4) Records of all candidate requests for accommodation or alternative selection processes; and\n\n(5) Any vendor-supplied compliance packets relied upon, with redactions noted.\n\nNon-compliance is subject to civil penalties of up to $1,500 per violation per day."
+      },
+      {
+        "id": "vendor-workday-update",
+        "from": "Workday Skills Cloud",
+        "from_role": "compliance-updates.com",
+        "subject": "Skills-Match v2.1 → v2.2: changes to tenure-pattern signal",
+        "preview": "We're rolling out an updated tenure-pattern feature in Skills-Match on May 24. Updated model card and limitations document attached for your records...",
+        "received_at": "2026-05-18T07:42:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "internal-talent-fyi",
+        "from": "Talent Acquisition (Devon Hall)",
+        "from_role": "VP Talent",
+        "subject": "Q2 hiring report — three role groups using new screening tool",
+        "preview": "Erin — sharing Q2 hiring metrics. Three new role groups (Senior Analyst, Risk Engineer, Customer Ops Lead) moved to the iCIMS video assessment last month...",
+        "received_at": "2026-05-18T07:11:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "shrm-weekly",
+        "from": "SHRM Legal & Compliance",
+        "from_role": "SHRM This Week",
+        "subject": "IL AI Hiring Act: amendments, AG enforcement signals, and what changed",
+        "preview": "The Illinois AG's office has opened its first ADMT-related investigation into a retailer using AI video assessments; here's what HR teams need to know...",
+        "received_at": "2026-05-18T06:30:00-04:00",
+        "priority": "low",
+        "is_ag_notice": false
+      },
+      {
+        "id": "cal-board-prep-hr",
+        "from": "Calendar — People Committee",
+        "from_role": "Outlook Reminder",
+        "subject": "Tomorrow 9:00 AM — People Committee prep",
+        "preview": "Outstanding items for tomorrow: hiring KPI dashboard, ATS migration status, AEDT audit response (TBD)...",
+        "received_at": "2026-05-17T18:00:00-04:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "vertical_label": "Pinetop Motors USA",
+    "inbox_owner": "Erin Park",
+    "inbox_owner_role": "Chief Privacy Officer, Pinetop Motors USA",
+    "items": [
+      {
+        "id": "ag-cppa-2026-1107",
+        "from": "California Privacy Protection Agency",
+        "from_role": "Enforcement Division",
+        "subject": "Inquiry re: Connected-Vehicle ADMT and Captive-Finance Decisions (Ref. CPPA-AUTO-2026-1107)",
+        "preview": "Under the CCPA and the ADMT regulations adopted by this Agency, we are investigating Pinetop Motors USA's use of automated decisionmaking across the vehicle customer lifecycle — including pre-qualification, captive financing, trade-in valuation, and connected-vehicle services...",
+        "received_at": "2026-05-18T08:14:00-07:00",
+        "priority": "high",
+        "is_ag_notice": true,
+        "opens_route": "/dashboard",
+        "body": "Pursuant to Cal. Civ. Code §1798.155 and the ADMT regulations promulgated by this Agency, the California Privacy Protection Agency is investigating Pinetop Motors USA's use of automated decisionmaking technology in the vehicle customer lifecycle. Within thirty (30) days, please produce:\n\n(1) A complete inventory of every ADMT used in California consumer decisions over the prior twelve months — including but not limited to pre-qualification, captive financing (Pinetop MAC), trade-in valuation, predictive service offers, connected-vehicle behavioral segmentation, and any in-cabin driver-monitoring tools;\n\n(2) The pre-use notices presented to California consumers under the ADMT regs §7220, including any embedded in the connected-vehicle activation flow;\n\n(3) For every captive-finance adverse-action determination, the §1704-equivalent statement of personal-information categories used — and a statement of whether any vehicle-telematics data was treated as a financing signal;\n\n(4) Records of consumer access and correction requests under CCPA §1798.110, including any requests directed at the ADMT-specific access right;\n\n(5) The independent or self-administered risk assessment(s) for each high-risk ADMT under the CPPA risk-assessment regulation;\n\n(6) For any in-cabin biometric data collected by driver-monitoring systems, the CCPA biometric-information disclosure and the basis for retention.\n\nThis Agency is coordinating with the Colorado Attorney General's Office on parallel ADMT inquiries; responsive material may be cross-produced. Non-compliance may result in administrative fines up to $7,500 per intentional violation."
+      },
+      {
+        "id": "nhtsa-recall-update",
+        "from": "NHTSA — Office of Defects Investigation",
+        "from_role": "ODI Field Engineering",
+        "subject": "Pinetop Aria EV — preliminary inquiry on automatic emergency braking",
+        "preview": "ODI has opened a preliminary evaluation of automatic emergency braking on the 2025-2026 Pinetop Aria EV based on consumer complaints; please respond with system logs by EOD Friday...",
+        "received_at": "2026-05-18T07:42:00-07:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "nada-legal-alert",
+        "from": "NADA Legal & Regulatory",
+        "from_role": "NADA Legal This Week",
+        "subject": "California AG enforcement signal: AI in trade-in valuation",
+        "preview": "Three California dealers received CCPA notice-and-cure letters this week tied to AI-assisted trade-in valuation tools that allegedly under-valued based on telematics signals — what franchise dealers and OEMs need to know...",
+        "received_at": "2026-05-18T07:11:00-07:00",
+        "priority": "low",
+        "is_ag_notice": false
+      },
+      {
+        "id": "internal-conn-vehicle-fyi",
+        "from": "Connected Vehicle Product (Sam Cho)",
+        "from_role": "VP Connected Vehicle",
+        "subject": "FYI — behavioral-segmentation v3 launching next sprint",
+        "preview": "Erin — the marketing team's behavioral-segmentation model v3 (driving-style cohorts driven by telematics) is launching in next sprint's release. Privacy review tickets are open but flagged 'low priority' — wanted you to see...",
+        "received_at": "2026-05-18T06:30:00-07:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      },
+      {
+        "id": "cal-product-review-auto",
+        "from": "Calendar — Product Privacy Review",
+        "from_role": "Outlook Reminder",
+        "subject": "Tomorrow 9:00 AM — Aria EV launch privacy gate review",
+        "preview": "Final privacy-gate review for Aria EV launch. Outstanding items: driver-monitoring BIPA posture, captive-finance ECOA attestation, telematics secondary-use opt-in flow...",
+        "received_at": "2026-05-17T18:00:00-07:00",
+        "priority": "normal",
+        "is_ag_notice": false
+      }
+    ]
+  }
+}

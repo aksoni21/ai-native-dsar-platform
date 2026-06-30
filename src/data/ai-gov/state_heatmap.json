@@ -1,0 +1,35 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "active_jurisdictions": ["CO", "CA", "NY", "IL", "TX"],
+    "states": [
+      { "code": "CO", "status": "green", "label": "Compliant", "gaps": [] },
+      { "code": "CA", "status": "yellow", "label": "Gaps Identified", "gaps": ["Pre-decision notice missing personal-data category detail required by CCPA ADMT regs"] },
+      { "code": "NY", "status": "na", "label": "Out of Scope", "gaps": [] },
+      { "code": "IL", "status": "red", "label": "Non-Compliant", "gaps": ["No documented consent flow for biometric data referenced in early-stage collections selector"] },
+      { "code": "TX", "status": "green", "label": "Compliant", "gaps": [] }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "active_jurisdictions": ["NY", "CA", "CO", "IL", "TX"],
+    "states": [
+      { "code": "NY", "status": "red", "label": "Non-Compliant", "gaps": ["LL144 bias-audit independence attestation expired", "Video-screen tool lacks current bias-audit"] },
+      { "code": "CA", "status": "yellow", "label": "Gaps Identified", "gaps": ["Pre-use ADMT notice element missing on Workday-driven postings"] },
+      { "code": "CO", "status": "yellow", "label": "Gaps Identified", "gaps": ["Post-decision disclosure missing right-to-correction language"] },
+      { "code": "IL", "status": "red", "label": "Non-Compliant", "gaps": ["No BIPA consent capture for iCIMS Video-Interview Sentiment recordings"] },
+      { "code": "TX", "status": "green", "label": "Compliant", "gaps": [] }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "active_jurisdictions": ["CA", "CO", "NY", "IL", "TX"],
+    "states": [
+      { "code": "CA", "status": "yellow", "label": "Gaps Identified", "gaps": ["Connected-vehicle activation flow missing CCPA-CDA sensitive-data 'right to limit' element", "Telematics secondary-use opt-in not enforced upstream of captive-finance feature pipeline"] },
+      { "code": "CO", "status": "yellow", "label": "Gaps Identified", "gaps": ["Captive-finance §1704(3) post-adverse-outcome notice missing right-to-correction line"] },
+      { "code": "NY", "status": "na", "label": "Out of Scope", "gaps": [] },
+      { "code": "IL", "status": "red", "label": "Non-Compliant", "gaps": ["No BIPA written informed consent captured for driver-monitoring biometric data on Aria EV", "Public BIPA retention schedule not posted for in-cabin facial-landmark data"] },
+      { "code": "TX", "status": "green", "label": "Compliant", "gaps": [] }
+    ]
+  }
+}

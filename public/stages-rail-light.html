@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><title>Rail Light</title>
+<style>
+  body { margin:0; padding:40px; background:#ffffff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif; }
+  .rail { display:inline-flex; flex-direction:column; gap:6px; padding:18px 16px; border-radius:14px; background:#f8fafc; box-shadow:0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.05); border:1px solid #e2e8f0; min-width:240px; }
+  .title { font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:#64748b; font-weight:600; padding:0 4px 8px; border-bottom:1px solid #e2e8f0; margin-bottom:6px; }
+  .row { display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:8px; font-size:13px; color:#475569; }
+  .row.active { background:#2563eb; color:#fff; font-weight:500; }
+  .dot { width:8px; height:8px; border-radius:999px; background:#22c55e; flex-shrink:0; }
+  .dot.active { background:rgba(255,255,255,0.85); }
+  .icon { width:16px; height:16px; flex-shrink:0; }
+  .icon svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+</style></head>
+<body><div class="rail" id="rail"></div>
+<script>
+const ICONS={Search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',BarChart3:'<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',Brain:'<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>',Key:'<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/>',Scale:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',ClipboardList:'<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/>',FileCheck:'<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/>',UserCheck:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',Clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',MessageSquare:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'};
+const S=[['Search','Search'],['Match Scores','BarChart3'],['AI Resolution','Brain'],['Decoded Data','Key'],['Compliance Rules','Scale'],['Disposition','ClipboardList',1],['Report','FileCheck'],['Review','UserCheck'],['Audit Trail','Clock'],['Consumer Replies','MessageSquare']];
+document.getElementById('rail').innerHTML='<div class="title">Stages</div>'+S.map(([l,i,a])=>`<div class="row${a?' active':''}"><span class="dot${a?' active':''}"></span><span class="icon"><svg viewBox="0 0 24 24">${ICONS[i]}</svg></span><span>${l}</span></div>`).join('');
+</script></body></html>

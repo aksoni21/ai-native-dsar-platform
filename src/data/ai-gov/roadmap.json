@@ -1,0 +1,29 @@
+{
+  "lending": {
+    "vertical": "lending",
+    "items": [
+      { "id": "rm-l-1", "state": "CA", "severity": "yellow", "title": "Add personal-data categories to CCPA pre-decision notice", "description": "Expand the on-form ADMT notice to enumerate the categories of personal information used (credit bureau, income self-report, employment, internal account history). Wire the §1704(3) bridge so the same notice satisfies both regimes.", "effort": "low", "module_id": "disclosures" },
+      { "id": "rm-l-2", "state": "IL", "severity": "red", "title": "Document IL biometric/no-biometric posture for collections selector", "description": "The early-stage collections selector references 'voice channel preference' — confirm with vendor whether any biometric voice data is retained. If yes, implement BIPA consent flow; if no, document the negative finding in the Vendor Vault.", "effort": "med", "module_id": "vendor-vault" }
+    ]
+  },
+  "hr": {
+    "vertical": "hr",
+    "items": [
+      { "id": "rm-h-1", "state": "NY", "severity": "red", "title": "Renew independent bias-audit attestation (Workday Skills-Match)", "description": "Engage BABL AI (or equivalent independent auditor) to re-attest. Publish summary on candidate-facing audit page within 10 business days.", "effort": "med", "module_id": "vendor-vault" },
+      { "id": "rm-h-2", "state": "NY", "severity": "red", "title": "Commission first independent bias audit for iCIMS Video-Interview Sentiment", "description": "AEDT was deployed in Q1 without a published bias audit. LL144 violation accruing per-candidate. Pause use for NYC roles until audit is posted.", "effort": "high", "module_id": "vendor-vault" },
+      { "id": "rm-h-3", "state": "IL", "severity": "red", "title": "Implement IL BIPA consent flow for video-screen tool", "description": "Capture written informed consent for biometric data collection before video begins. Update retention schedule to 3 years or until purpose is fulfilled, whichever is shorter.", "effort": "med", "module_id": "consumer-rights" },
+      { "id": "rm-h-4", "state": "CA", "severity": "yellow", "title": "Add ADMT pre-use notice to Workday-driven CA postings", "description": "Job postings published via the Workday integration are missing the CCPA ADMT pre-use element. Update the post template; back-fill notice to current applicant pool.", "effort": "low", "module_id": "disclosures" },
+      { "id": "rm-h-5", "state": "CO", "severity": "yellow", "title": "Augment post-decision disclosure with right-to-correction language", "description": "CO §1705 right-to-correction language missing from the candidate update template. One-line addition; no workflow changes needed.", "effort": "low", "module_id": "disclosures" }
+    ]
+  },
+  "automotive": {
+    "vertical": "automotive",
+    "items": [
+      { "id": "rm-a-1", "state": "IL", "severity": "red", "title": "Implement BIPA written-consent flow for in-cabin driver monitoring", "description": "Capture written informed consent at first vehicle pairing for Aria EV head-unit driver-monitoring camera. Post public BIPA retention schedule. Pause any non-real-time retention of facial-landmark data for IL-registered vehicles until consent is captured.", "effort": "high", "module_id": "consumer-rights" },
+      { "id": "rm-a-2", "state": "CA", "severity": "red", "title": "Block telematics features in captive-finance pipeline absent secondary-use opt-in", "description": "Surfaced in BUY-CA-7733 reconsideration: Pinetop MAC v11.4 used telematics signals from prior connected vehicles as financing inputs, but the CV activation flow never captured a secondary-use opt-in for financing. Patch the feature pipeline to require opt-in attestation before joining telematics signals to the financing feature vector. v11.4.1 vendor patch is in flight.", "effort": "med", "module_id": "vendor-vault" },
+      { "id": "rm-a-3", "state": "CA", "severity": "yellow", "title": "Add CCPA-CDA 'right to limit' element to connected-vehicle activation flow", "description": "Connected-vehicle activation flow discloses ADMT use but does not surface the right to limit use of sensitive personal information (precise geolocation). Add the element to the activation flow; back-fill notice to current connected-vehicle customer base.", "effort": "low", "module_id": "disclosures" },
+      { "id": "rm-a-4", "state": "CO", "severity": "yellow", "title": "Augment captive-finance post-adverse-outcome notice with right-to-correction line", "description": "Captive-finance §1704(3) notice template missing the right-to-correction line. One-line addition.", "effort": "low", "module_id": "disclosures" },
+      { "id": "rm-a-5", "state": "CA", "severity": "yellow", "title": "Publish CPPA risk assessments for high-risk ADMT", "description": "CPPA risk-assessment regulation requires documented risk assessments for high-risk ADMT (captive finance, driver monitoring, behavioral segmentation). Three assessments outstanding; templates pre-populated from Instrata classification basis cards.", "effort": "med", "module_id": "control-mapping" }
+    ]
+  }
+}

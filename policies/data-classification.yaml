@@ -1,0 +1,46 @@
+version: 1
+policy_id: data-classification.v1
+description: Data handling classes used by agents, tools, traces, and generated artifacts.
+
+classes:
+  public_demo:
+    examples:
+      - synthetic personas
+      - placeholder emails
+      - sample request IDs
+    allowed_in_repo: true
+    trace_behavior: allow
+
+  internal_operational:
+    examples:
+      - non-secret architecture notes
+      - local deployment topology
+      - runbook content
+    allowed_in_repo: review_required
+    trace_behavior: allow_with_review
+
+  personal_data:
+    examples:
+      - consumer name
+      - email
+      - phone
+      - address
+      - vehicle identifier
+    allowed_in_repo: false
+    trace_behavior: minimize_and_redact
+
+  credential:
+    examples:
+      - API key
+      - database URL with password
+      - OAuth refresh token
+      - SMTP or IMAP password
+    allowed_in_repo: false
+    trace_behavior: never_log
+
+redaction_rules:
+  email: preserve_domain_for_demo_only
+  phone: mask_except_last_four
+  access_token: redact_full_value
+  database_url: redact_credentials_and_host
+  report_attachment: store_pointer_not_content

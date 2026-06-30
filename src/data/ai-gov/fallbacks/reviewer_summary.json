@@ -1,0 +1,114 @@
+{
+  "APP-CO-4471": {
+    "summary": "The underwriting model declined this 72-month auto-loan application (requested amount $28,400) with a risk score of 0.83 — above the 0.80 decline threshold. The three most influential inputs were debt-to-income ratio (weight 0.34, value 0.46), recent credit inquiries (weight 0.21, six inquiries in the last 90 days), and employment tenure (weight 0.18, value 4 months). The employment-tenure value is worth a second look: the applicant has provided an employer letter showing 18 months of continuous employment — the model may be using a stale source.",
+    "top_factors": [
+      { "name": "Debt-to-Income Ratio", "weight": 0.34, "value": "0.46 (limit 0.40)" },
+      { "name": "Recent Credit Inquiries (90d)", "weight": 0.21, "value": "6 inquiries" },
+      { "name": "Employment Tenure", "weight": 0.18, "value": "4 months (per source)" }
+    ],
+    "reviewer_prompts": [
+      "Pull the applicant's employer letter and pay stubs from the supporting-docs vault.",
+      "Re-run the underwriting model with corrected employment_tenure_months and capture the delta.",
+      "If overturning, confirm the corrected tenure is reflected in the consumer disclosure response."
+    ]
+  },
+  "APP-CO-4488": {
+    "summary": "Refinance application declined at risk score 0.78 — within the 'review' band, not auto-declined. Top drivers were debt-to-income ratio (0.43, slightly above policy) and loan-to-value (0.91). The applicant qualifies on credit profile alone but the LTV calculation appears to use an outdated vehicle valuation; re-check the trade-in value before final decision.",
+    "top_factors": [
+      { "name": "Debt-to-Income Ratio", "weight": 0.31, "value": "0.43 (limit 0.40)" },
+      { "name": "Loan-to-Value", "weight": 0.28, "value": "0.91" },
+      { "name": "Credit Bureau Score", "weight": 0.22, "value": "654" }
+    ],
+    "reviewer_prompts": [
+      "Verify the vehicle valuation source date — recent KBB pull or trade-in valuation may shift LTV.",
+      "If LTV adjusts to <0.85, model score moves below decline threshold."
+    ]
+  },
+  "APP-CO-4502": {
+    "summary": "Auto-loan application declined at score 0.71. The dominant signal was short employment tenure flagged together with a recent inquiry pattern. Applicant is a 12-year credit-union member with no prior delinquency — the model appears to underweight that membership history.",
+    "top_factors": [
+      { "name": "Employment Tenure", "weight": 0.29, "value": "8 months" },
+      { "name": "Recent Inquiries (90d)", "weight": 0.20, "value": "4 inquiries" },
+      { "name": "Membership History", "weight": 0.05, "value": "144 months" }
+    ],
+    "reviewer_prompts": [
+      "Member-loyalty override is available — confirm whether it's been applied to this decision.",
+      "Document the basis for any override in the audit trail."
+    ]
+  },
+  "CND-NYC-1188": {
+    "summary": "Candidate was screened out at rank 174 of 312 applicants for Senior Risk Analyst. The two most influential signals were tenure pattern (weight 0.32; flagged as 'job-hopping' based on 3 roles in 5 years) and skills overlap (weight 0.27; 62% match to req). The tenure pattern signal is worth a second look: two of the three roles were inside a single 18-month contract engagement that should have been parsed as one continuous tenure.",
+    "top_factors": [
+      { "name": "Tenure Pattern", "weight": 0.32, "value": "Flagged: 3 roles / 5 years" },
+      { "name": "Skills Overlap", "weight": 0.27, "value": "62% match" },
+      { "name": "Education Signal", "weight": 0.18, "value": "Bachelor's, target field" }
+    ],
+    "reviewer_prompts": [
+      "Open the candidate's resume and confirm whether the 2022–2023 roles were a single contract engagement.",
+      "Re-rank with corrected tenure parse and review delta.",
+      "If advancing, document the correction and update the candidate-facing review outcome notice."
+    ]
+  },
+  "CND-NYC-1204": {
+    "summary": "Candidate ranked 198 of 287 for Customer Ops Lead. Skills overlap was the dominant driver at 58% match, with an education signal contributing. The candidate's recent customer-ops experience at a comparable company was missed because the role title was non-standard.",
+    "top_factors": [
+      { "name": "Skills Overlap", "weight": 0.31, "value": "58% match" },
+      { "name": "Education Signal", "weight": 0.19, "value": "Associate, related field" },
+      { "name": "Years of Experience", "weight": 0.14, "value": "7 years" }
+    ],
+    "reviewer_prompts": [
+      "Check whether the non-standard role title at prior employer was normalized by Skills-Match.",
+      "Consider manual re-skill-tagging."
+    ]
+  },
+  "CND-NYC-1217": {
+    "summary": "Candidate scored 0.62 by the video sentiment model — below the 0.65 advance threshold. Top signals were speech cadence and keyword match. Cadence-based signals are known to disadvantage non-native English speakers and candidates with speech differences; manual review recommended before relying on this score.",
+    "top_factors": [
+      { "name": "Sentiment Score", "weight": 0.28, "value": "0.58" },
+      { "name": "Speech Cadence", "weight": 0.24, "value": "Below median" },
+      { "name": "Keyword Match", "weight": 0.21, "value": "11 / 18 expected" }
+    ],
+    "reviewer_prompts": [
+      "Review the video manually; do not rely on the cadence signal in isolation.",
+      "Check whether IL BIPA consent was captured before the video was recorded — this affects whether the recording can be retained at all."
+    ]
+  },
+  "BUY-CA-7733": {
+    "summary": "Pinetop MAC declined this 60-month captive-finance application for a 2026 Aria EV ($48,900) at a risk score of 0.81 — narrowly above the 0.78 decline threshold. The three most influential inputs were debt-to-income ratio (weight 0.31, value 0.44), credit bureau score (weight 0.24, mid-680s band), and — critically — a telematics-derived 'behavioral risk' signal (weight 0.18) drawn from the applicant's prior connected vehicle. That telematics signal is the data point worth examining first: the applicant's connected-vehicle activation flow does not appear to have captured a secondary-use opt-in for use of driving data in financing decisions. If the signal was used without a valid opt-in, the model should be re-scored without it.",
+    "top_factors": [
+      { "name": "Debt-to-Income Ratio", "weight": 0.31, "value": "0.44 (limit 0.40)" },
+      { "name": "Credit Bureau Score", "weight": 0.24, "value": "684" },
+      { "name": "Telematics Risk Signal", "weight": 0.18, "value": "Elevated (prior VIN, 12-mo)" }
+    ],
+    "reviewer_prompts": [
+      "Open audit entry ae-a-003 to confirm the data lineage — did telematics features get joined to the financing feature vector?",
+      "Pull the consumer's connected-vehicle activation record and check whether a secondary-use opt-in for financing was captured. If not, telematics_risk_signal must be removed from this decision.",
+      "Re-score without telematics_risk_signal; if the new score falls below 0.78, document the override and escalate the upstream policy gap to the Privacy team."
+    ]
+  },
+  "BUY-CA-7741": {
+    "summary": "Captive-finance application for a 2024 CPO Sentra was declined at risk score 0.74. Dominant inputs were debt-to-income ratio (0.46) and loan-to-value (0.93). The applicant qualifies on credit profile alone but the LTV uses a stale CPO valuation; reconfirming the valuation could shift the LTV below 0.85 and the score below threshold.",
+    "top_factors": [
+      { "name": "Debt-to-Income Ratio", "weight": 0.29, "value": "0.46 (limit 0.40)" },
+      { "name": "Loan-to-Value", "weight": 0.26, "value": "0.93" },
+      { "name": "Credit Bureau Score", "weight": 0.21, "value": "651" }
+    ],
+    "reviewer_prompts": [
+      "Verify the CPO vehicle valuation source date; a current KBB pull may shift LTV.",
+      "Confirm no telematics-derived features were used (this is a new-to-Pinetop applicant; backfill defaults expected)."
+    ]
+  },
+  "BUY-CA-7758": {
+    "summary": "Trade-in appraisal came in 18% below KBB book value on a 2021 Pinetop Altima-equivalent. The dominant downward signal was a 'behavioral wear' adjustment derived from telematics — harsh-braking rate and high-acceleration cohort assignment over the 12 months prior to trade-in. The KBB book itself was within market norms. Review the telematics adjustment first: the magnitude (-18%) is well outside the model's documented confidence band for this signal.",
+    "top_factors": [
+      { "name": "KBB Book Value", "weight": 0.34, "value": "$11,400" },
+      { "name": "Telematics Wear Signal", "weight": 0.27, "value": "Aggressive cohort (-18%)" },
+      { "name": "Regional Demand Curve", "weight": 0.14, "value": "Median" }
+    ],
+    "reviewer_prompts": [
+      "Pull KBB AI Valuation packet §3.2 documented confidence band for the telematics-wear signal; -18% appears out of band.",
+      "Check whether the consumer opted into telematics-derived trade-in adjustments at activation.",
+      "If override warranted, re-run valuation without the wear signal and document the basis."
+    ]
+  }
+}

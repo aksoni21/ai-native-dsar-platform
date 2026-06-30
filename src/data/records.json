@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "REC-001",
+    "data_source": "CustomerMaster",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-8827341",
+      "household_id": "HH-4421",
+      "mail_deliverable": true,
+      "last_updated": "2025-11-15"
+    }
+  },
+  {
+    "id": "REC-002",
+    "data_source": "DataWarehouse",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "URB-P"
+    },
+    "raw_data": {
+      "customer_id": "DW-91234",
+      "loyalty_tier": "Gold",
+      "total_purchases": 3,
+      "first_interaction": "2022-06-10",
+      "last_interaction": "2025-09-22"
+    }
+  },
+  {
+    "id": "REC-003",
+    "data_source": "SalesCRM",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": null,
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "SED-C",
+      "income_code": "E"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-5567",
+      "vehicle": "2024 ACME Sedan",
+      "purchase_date": "2024-03-15",
+      "dealer_id": "DLR-0042",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-004",
+    "data_source": "CustomerMaster",
+    "first_name": "Sofia",
+    "last_name": "Chen",
+    "email": "sofia.chen.com",
+    "phone": "571-555-0202",
+    "state": "VA",
+    "address": "1800 Maple Drive, Arlington, VA 22201",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-6633210",
+      "household_id": "HH-7718",
+      "mail_deliverable": true,
+      "last_updated": "2025-08-20",
+      "previous_last_name": "Rodriguez"
+    }
+  },
+  {
+    "id": "REC-005",
+    "data_source": "DataWarehouse",
+    "first_name": "Sofia",
+    "last_name": "Rodriguez",
+    "email": "sofia.rodriguez.com",
+    "phone": "571-555-0202",
+    "state": "VA",
+    "address": "1800 Maple Drive, Arlington, VA 22201",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "FAM-U"
+    },
+    "raw_data": {
+      "customer_id": "DW-44521",
+      "loyalty_tier": "Silver",
+      "total_purchases": 1,
+      "first_interaction": "2021-03-22",
+      "last_interaction": "2023-11-10",
+      "note": "Name updated from Rodriguez to Chen per customer request 2022-08"
+    }
+  },
+  {
+    "id": "REC-006",
+    "data_source": "VehicleServices",
+    "first_name": "Sofia",
+    "last_name": "Rodriguez",
+    "email": "sofia.rodriguez.com",
+    "phone": "571-555-0202",
+    "state": "VA",
+    "address": "455 Oak Lane, Arlington, VA 22201",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-89012",
+      "vin": "1N4BL4BV8LC123456",
+      "vehicle": "2021 ACME SUV",
+      "last_service": "2023-07-14",
+      "service_count": 5
+    }
+  },
+  {
+    "id": "REC-007",
+    "data_source": "CustomerMaster",
+    "first_name": "James",
+    "last_name": "Williams",
+    "email": "jwilliams.com",
+    "phone": "860-555-0303",
+    "state": "CT",
+    "address": "99 Charter Oak Ave, Hartford, CT 06106",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-2214587",
+      "household_id": "HH-3309",
+      "mail_deliverable": true,
+      "last_updated": "2025-12-01"
+    }
+  },
+  {
+    "id": "REC-008",
+    "data_source": "DataWarehouse",
+    "first_name": "James",
+    "last_name": "Williams",
+    "email": "jwilliams.com",
+    "phone": "860-555-0303",
+    "state": "CT",
+    "address": "99 Charter Oak Ave, Hartford, CT 06106",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "RET-S"
+    },
+    "raw_data": {
+      "customer_id": "DW-67892",
+      "loyalty_tier": "Bronze",
+      "total_purchases": 2,
+      "first_interaction": "2023-01-15",
+      "last_interaction": "2025-10-30"
+    }
+  },
+  {
+    "id": "REC-009",
+    "data_source": "CustomerMaster",
+    "first_name": "John",
+    "last_name": "Smith",
+    "email": "john.smith.com",
+    "phone": "512-555-0404",
+    "state": "TX",
+    "address": "2100 Congress Ave, Austin, TX 78701",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-1198234",
+      "household_id": "HH-5502",
+      "mail_deliverable": true,
+      "last_updated": "2025-06-10"
+    }
+  },
+  {
+    "id": "REC-010",
+    "data_source": "DataWarehouse",
+    "first_name": "John",
+    "last_name": "Smith",
+    "email": "jsmith.com",
+    "phone": "512-555-0404",
+    "state": "TX",
+    "address": "2100 Congress Ave, Austin, TX 78701",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "TEC-P"
+    },
+    "raw_data": {
+      "customer_id": "DW-33218",
+      "loyalty_tier": "Gold",
+      "total_purchases": 4,
+      "first_interaction": "2020-09-01",
+      "last_interaction": "2025-04-18"
+    }
+  },
+  {
+    "id": "REC-011",
+    "data_source": "SalesCRM",
+    "first_name": "John",
+    "last_name": "Smith",
+    "email": "jsmith_personal.com",
+    "phone": "512-555-0404",
+    "state": "TX",
+    "address": "2100 Congress Ave, Austin, TX 78701",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "TRK-F",
+      "income_code": "F"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-7721",
+      "vehicle": "2023 ACME Pickup",
+      "purchase_date": "2023-08-20",
+      "dealer_id": "DLR-0117",
+      "financing": false
+    }
+  },
+  {
+    "id": "REC-012",
+    "data_source": "CustomerMaster",
+    "first_name": "Robert",
+    "last_name": "Johnson",
+    "email": "rjohnson.com",
+    "phone": "310-555-0606",
+    "state": "CA",
+    "address": "450 Wilshire Blvd, Los Angeles, CA 90010",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-9974512",
+      "household_id": "HH-8812",
+      "mail_deliverable": true,
+      "last_updated": "2025-10-05"
+    }
+  },
+  {
+    "id": "REC-013",
+    "data_source": "DataWarehouse",
+    "first_name": "Robert",
+    "last_name": "Johnson",
+    "email": "rjohnson.com",
+    "phone": "310-555-0606",
+    "state": "CA",
+    "address": "450 Wilshire Blvd, Los Angeles, CA 90010",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "LUX-U"
+    },
+    "raw_data": {
+      "customer_id": "DW-88431",
+      "loyalty_tier": "Platinum",
+      "total_purchases": 6,
+      "first_interaction": "2019-04-12",
+      "last_interaction": "2025-12-01"
+    }
+  },
+  {
+    "id": "REC-014",
+    "data_source": "CustomerMaster",
+    "first_name": "Patricia",
+    "last_name": "Davis",
+    "email": "pat.davis.com",
+    "phone": "804-555-0707",
+    "state": "VA",
+    "address": "320 Monument Ave, Richmond, VA 23220",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-4451098",
+      "household_id": "HH-2210",
+      "mail_deliverable": true,
+      "last_updated": "2025-07-22"
+    }
+  },
+  {
+    "id": "REC-015",
+    "data_source": "DataWarehouse",
+    "first_name": "Patricia",
+    "last_name": "Davis",
+    "email": "pat.davis.com",
+    "phone": "804-555-0707",
+    "state": "VA",
+    "address": "320 Monument Ave, Richmond, VA 23220",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "RET-R"
+    },
+    "raw_data": {
+      "customer_id": "DW-55672",
+      "loyalty_tier": "Gold",
+      "total_purchases": 5,
+      "first_interaction": "2018-11-30",
+      "last_interaction": "2025-11-15"
+    }
+  },
+  {
+    "id": "REC-016",
+    "data_source": "SalesCRM",
+    "first_name": "Patricia",
+    "last_name": "Davis",
+    "email": "pat.davis.com",
+    "phone": null,
+    "state": "VA",
+    "address": "320 Monument Ave, Richmond, VA 23220",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "SUV-L",
+      "income_code": "G"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-3345",
+      "vehicle": "2025 ACME SUV",
+      "purchase_date": "2025-01-10",
+      "dealer_id": "DLR-0089",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-017",
+    "data_source": "VehicleServices",
+    "first_name": "Patricia",
+    "last_name": "Davis",
+    "email": "pat.davis.com",
+    "phone": "804-555-0707",
+    "state": "VA",
+    "address": "320 Monument Ave, Richmond, VA 23220",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-44123",
+      "vin": "5N1DR3CC1LC654321",
+      "vehicle": "2025 ACME SUV",
+      "last_service": "2025-11-01",
+      "service_count": 3
+    }
+  },
+  {
+    "id": "REC-018",
+    "data_source": "DealerRecords",
+    "first_name": "Patricia",
+    "last_name": "Davis",
+    "email": "pat.davis.com",
+    "phone": "804-555-0707",
+    "state": "VA",
+    "address": "320 Monument Ave, Richmond, VA 23220",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-11234",
+      "dealer_id": "DLR-0089",
+      "interaction_type": "test_drive",
+      "date": "2024-12-15",
+      "vehicle_interest": "2025 Pathfinder",
+      "salesperson": "Agent #412"
+    }
+  },
+  {
+    "id": "REC-019",
+    "data_source": "CustomerMaster",
+    "first_name": "Michael",
+    "last_name": "Torres",
+    "email": "mtorres.com",
+    "phone": "213-555-0808",
+    "state": "CA",
+    "address": "1600 Vine St, Los Angeles, CA 90028",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-7761234",
+      "household_id": "HH-6643",
+      "mail_deliverable": true,
+      "last_updated": "2025-09-18",
+      "legal_hold": true,
+      "legal_hold_ref": "LIT-2025-0442"
+    }
+  },
+  {
+    "id": "REC-020",
+    "data_source": "DataWarehouse",
+    "first_name": "Michael",
+    "last_name": "Torres",
+    "email": "mtorres.com",
+    "phone": "213-555-0808",
+    "state": "CA",
+    "address": "1600 Vine St, Los Angeles, CA 90028",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "URB-Y"
+    },
+    "raw_data": {
+      "customer_id": "DW-22187",
+      "loyalty_tier": "Silver",
+      "total_purchases": 2,
+      "first_interaction": "2022-01-05",
+      "last_interaction": "2025-08-30",
+      "legal_hold": true,
+      "legal_hold_ref": "LIT-2025-0442"
+    }
+  },
+  {
+    "id": "REC-021",
+    "data_source": "CustomerMaster",
+    "first_name": "Karen",
+    "last_name": "Lee",
+    "email": "karen.lee.com",
+    "phone": "203-555-0909",
+    "state": "CT",
+    "address": "55 Elm Street, New Haven, CT 06510",
+    "record_type": "consumer_profile",
+    "coded_fields": {
+      "income_code": "D",
+      "education_code": "4",
+      "occupation_code": "MGR",
+      "age_range_code": "4",
+      "household_size_code": "3",
+      "dwelling_type_code": "SFH",
+      "marital_status_code": "M",
+      "homeowner_code": "O"
+    },
+    "raw_data": {
+      "customer_master_id": "CM-3387621",
+      "household_id": "HH-9901",
+      "mail_deliverable": true,
+      "last_updated": "2025-10-10"
+    }
+  },
+  {
+    "id": "REC-022",
+    "data_source": "SalesCRM",
+    "first_name": "Karen",
+    "last_name": "Lee",
+    "email": "karen.lee.com",
+    "phone": null,
+    "state": "CT",
+    "address": "55 Elm Street, New Haven, CT 06510",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "SUV-M",
+      "income_code": "D",
+      "marketing_segment_code": "FAM-S",
+      "credit_range_code": "3",
+      "net_worth_code": "C"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-9934",
+      "vehicle": "2024 ACME Crossover",
+      "purchase_date": "2024-06-22",
+      "dealer_id": "DLR-0055",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-023",
+    "data_source": "CustomerMaster",
+    "first_name": "David",
+    "last_name": "Brown",
+    "email": "david.brown.com",
+    "phone": "972-555-1010",
+    "state": "TX",
+    "address": "8800 Preston Rd, Dallas, TX 75225",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-5543210",
+      "household_id": "HH-1123",
+      "mail_deliverable": true,
+      "last_updated": "2025-05-30"
+    }
+  },
+  {
+    "id": "REC-024",
+    "data_source": "DataWarehouse",
+    "first_name": "David",
+    "last_name": "Brown",
+    "email": "david.brown.com",
+    "phone": "972-555-1010",
+    "state": "TX",
+    "address": "8800 Preston Rd, Dallas, TX 75225",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "FAM-S"
+    },
+    "raw_data": {
+      "customer_id": "DW-77890",
+      "loyalty_tier": "Silver",
+      "total_purchases": 1,
+      "first_interaction": "2024-02-10",
+      "last_interaction": "2025-06-15"
+    }
+  },
+  {
+    "id": "REC-025",
+    "data_source": "CustomerMaster",
+    "first_name": "Angela",
+    "last_name": "Martinez",
+    "email": "amartinez.com",
+    "phone": "818-555-1414",
+    "state": "CA",
+    "address": "900 Brand Blvd, Glendale, CA 91203",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-8812456",
+      "household_id": "HH-5578",
+      "mail_deliverable": true,
+      "last_updated": "2025-11-20"
+    }
+  },
+  {
+    "id": "REC-026",
+    "data_source": "DataWarehouse",
+    "first_name": "Angela",
+    "last_name": "Martinez",
+    "email": "amartinez.com",
+    "phone": "818-555-1414",
+    "state": "CA",
+    "address": "900 Brand Blvd, Glendale, CA 91203",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "URB-P"
+    },
+    "raw_data": {
+      "customer_id": "DW-99001",
+      "loyalty_tier": "Gold",
+      "total_purchases": 3,
+      "first_interaction": "2021-07-18",
+      "last_interaction": "2025-10-05"
+    }
+  },
+  {
+    "id": "REC-027",
+    "data_source": "SalesCRM",
+    "first_name": "Angela",
+    "last_name": "Martinez",
+    "email": "amartinez.com",
+    "phone": null,
+    "state": "CA",
+    "address": "900 Brand Blvd, Glendale, CA 91203",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "EV-C",
+      "income_code": "E"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-1123",
+      "vehicle": "2025 ACME EV",
+      "purchase_date": "2025-03-10",
+      "dealer_id": "DLR-0063",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-028",
+    "data_source": "VehicleServices",
+    "first_name": "Angela",
+    "last_name": "Martinez",
+    "email": "amartinez.com",
+    "phone": "818-555-1414",
+    "state": "CA",
+    "address": "900 Brand Blvd, Glendale, CA 91203",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-56789",
+      "vin": "5N1CJ3DD2PC789012",
+      "vehicle": "2025 ACME EV",
+      "last_service": "2025-09-15",
+      "service_count": 2,
+      "active_warranty": true
+    }
+  },
+  {
+    "id": "REC-029",
+    "data_source": "CustomerMaster",
+    "first_name": "Thomas",
+    "last_name": "Wilson",
+    "email": "twils.com",
+    "phone": "415-555-1515",
+    "state": "CA",
+    "address": "1247 Sansome St, San Francisco, CA 94111",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-6621890",
+      "household_id": "HH-3344",
+      "mail_deliverable": true,
+      "last_updated": "2025-08-14",
+      "household_members": [
+        {
+          "name": "Thomas Wilson",
+          "state": "CA",
+          "primary": true
+        },
+        {
+          "name": "Linda Wilson",
+          "state": "VA",
+          "primary": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "REC-030",
+    "data_source": "DataWarehouse",
+    "first_name": "Thomas",
+    "last_name": "Wilson",
+    "email": "twils.com",
+    "phone": "415-555-1515",
+    "state": "CA",
+    "address": "1247 Sansome St, San Francisco, CA 94111",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "RET-S"
+    },
+    "raw_data": {
+      "customer_id": "DW-41256",
+      "loyalty_tier": "Gold",
+      "total_purchases": 4,
+      "first_interaction": "2019-06-20",
+      "last_interaction": "2025-12-10",
+      "shared_account": true,
+      "co_owner": "Linda Wilson",
+      "co_owner_state": "VA",
+      "co_owner_email": "linda.wilson.com"
+    }
+  },
+  {
+    "id": "REC-031",
+    "data_source": "DealerRecords",
+    "first_name": "Thomas",
+    "last_name": "Wilson",
+    "email": "twils.com",
+    "phone": "415-555-1515",
+    "state": "CA",
+    "address": "1247 Sansome St, San Francisco, CA 94111",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-22456",
+      "dealer_id": "DLR-0089",
+      "interaction_type": "purchase",
+      "date": "2025-07-01",
+      "vehicle": "2025 ACME Crossover",
+      "co_buyer": "Linda Wilson",
+      "co_buyer_state": "VA",
+      "warranty_active": true
+    }
+  },
+  {
+    "id": "REC-032",
+    "data_source": "DataWarehouse",
+    "first_name": "David",
+    "last_name": "Brown",
+    "email": "david.brown.com",
+    "phone": "972-555-1010",
+    "state": "TX",
+    "address": "8800 Preston Rd, Dallas, TX 75225",
+    "record_type": "marketing_suppression",
+    "coded_fields": {},
+    "raw_data": {
+      "suppression_id": "SUP-77232",
+      "suppression_reason": "consumer_unsubscribed",
+      "complaint_type": "spam_complaint",
+      "unsubscribed_at": "2024-11-10",
+      "retention_basis": "CAN-SPAM 16 CFR 316.5",
+      "retention_required_until": "2029-11-10",
+      "evidence_of_honor": true
+    }
+  },
+  {
+    "id": "REC-033",
+    "data_source": "CustomerMaster",
+    "first_name": "John",
+    "last_name": "Brown",
+    "email": "jbrown1.com",
+    "phone": "512-555-1717",
+    "state": "TX",
+    "address": "4400 Burnet Rd, Austin, TX 78756",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-1212778",
+      "household_id": "HH-9912",
+      "mail_deliverable": true,
+      "last_updated": "2025-09-04"
+    }
+  },
+  {
+    "id": "REC-034",
+    "data_source": "DataWarehouse",
+    "first_name": "John",
+    "last_name": "Brown",
+    "email": "jbrown1.com",
+    "phone": "512-555-1717",
+    "state": "TX",
+    "address": "4400 Burnet Rd, Austin, TX 78756",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "FAM-S"
+    },
+    "raw_data": {
+      "customer_id": "DW-66112",
+      "loyalty_tier": "Silver",
+      "total_purchases": 2,
+      "first_interaction": "2022-09-15",
+      "last_interaction": "2025-11-20"
+    }
+  },
+  {
+    "id": "REC-035",
+    "data_source": "DealerRecords",
+    "first_name": "John",
+    "last_name": "Brown",
+    "email": "jbrown1.com",
+    "phone": null,
+    "state": "TX",
+    "address": "4400 Burnet Rd, Austin, TX 78756",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-44781",
+      "dealer_id": "DLR-0177",
+      "interaction_type": "service",
+      "date": "2025-06-12",
+      "vehicle": "2022 ACME Crossover"
+    }
+  },
+  {
+    "id": "REC-036",
+    "data_source": "CustomerMaster",
+    "first_name": "John",
+    "last_name": "Brown",
+    "email": "jbrown.fl.com",
+    "phone": "305-555-1818",
+    "state": "FL",
+    "address": "1500 Ocean Dr, Miami Beach, FL 33139",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-9988234",
+      "household_id": "HH-4499",
+      "mail_deliverable": true,
+      "last_updated": "2025-10-22",
+      "note": "Different individual — same legal name only."
+    }
+  },
+  {
+    "id": "REC-037",
+    "data_source": "VehicleServices",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-10001",
+      "vin": "1HGBH41JXMN100001",
+      "vehicle": "2024 ACME Sedan",
+      "last_service": "2025-09-22",
+      "service_count": 2,
+      "active_warranty": true,
+      "consent_telematics": true
+    }
+  },
+  {
+    "id": "REC-038",
+    "data_source": "DealerRecords",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-10001",
+      "dealer_id": "DLR-0042",
+      "interaction_type": "purchase",
+      "date": "2024-03-15",
+      "vehicle": "2024 ACME Sedan",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-039",
+    "data_source": "VehicleServices",
+    "first_name": "Karen",
+    "last_name": "Lee",
+    "email": "karen.lee.com",
+    "phone": "203-555-0909",
+    "state": "CT",
+    "address": "55 Elm Street, New Haven, CT 06510",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-20021",
+      "vin": "1HGBH41JXMN100021",
+      "vehicle": "2024 ACME Crossover",
+      "last_service": "2025-10-08",
+      "service_count": 1,
+      "active_warranty": true
+    }
+  },
+  {
+    "id": "REC-040",
+    "data_source": "DealerRecords",
+    "first_name": "Karen",
+    "last_name": "Lee",
+    "email": "karen.lee.com",
+    "phone": "203-555-0909",
+    "state": "CT",
+    "address": "55 Elm Street, New Haven, CT 06510",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-20021",
+      "dealer_id": "DLR-0055",
+      "interaction_type": "purchase",
+      "date": "2024-06-22",
+      "vehicle": "2024 ACME Crossover"
+    }
+  },
+  {
+    "id": "REC-041",
+    "data_source": "VehicleServices",
+    "first_name": "James",
+    "last_name": "Williams",
+    "email": "jwilliams.com",
+    "phone": "860-555-0303",
+    "state": "CT",
+    "address": "99 Charter Oak Ave, Hartford, CT 06106",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "VS-30007",
+      "vin": "1HGBH41JXMN100002",
+      "vehicle": "2022 ACME SUV",
+      "last_service": "2025-08-14",
+      "service_count": 4,
+      "active_warranty": false
+    }
+  },
+  {
+    "id": "REC-042",
+    "data_source": "DealerRecords",
+    "first_name": "James",
+    "last_name": "Williams",
+    "email": "jwilliams.com",
+    "phone": "860-555-0303",
+    "state": "CT",
+    "address": "99 Charter Oak Ave, Hartford, CT 06106",
+    "record_type": "dealer_interaction",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DR-30007",
+      "dealer_id": "DLR-0073",
+      "interaction_type": "service",
+      "date": "2025-08-14",
+      "vehicle": "2022 ACME SUV"
+    }
+  },
+  {
+    "id": "REC-MC-001",
+    "data_source": "CustomerMaster",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-8827341",
+      "household_id": "HH-4421",
+      "mail_deliverable": true,
+      "last_updated": "2025-11-15"
+    }
+  },
+  {
+    "id": "REC-MC-002",
+    "data_source": "DataWarehouse",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": "415-555-0101",
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "URB-P"
+    },
+    "raw_data": {
+      "customer_id": "DW-91234",
+      "loyalty_tier": "Gold",
+      "total_purchases": 3,
+      "first_interaction": "2022-06-10",
+      "last_interaction": "2025-09-22"
+    }
+  },
+  {
+    "id": "REC-MC-003",
+    "data_source": "SalesCRM",
+    "first_name": "Maria",
+    "last_name": "Chen",
+    "email": "maria.chen@example.com",
+    "phone": null,
+    "state": "CA",
+    "address": "742 Evergreen Terrace, San Francisco, CA 94102",
+    "record_type": "purchase_record",
+    "coded_fields": {
+      "vehicle_segment_code": "SED-C",
+      "income_code": "E"
+    },
+    "raw_data": {
+      "purchase_id": "CRM-5567",
+      "vehicle": "2024 ACME Sedan",
+      "purchase_date": "2024-03-15",
+      "dealer_id": "DLR-0042",
+      "financing": true
+    }
+  },
+  {
+    "id": "REC-VIN-CAND-001",
+    "data_source": "LegacyCRMArchive",
+    "first_name": "Kenji",
+    "last_name": "Fukushima",
+    "email": "k.fukushima@example.com",
+    "phone": "469-555-2210",
+    "state": "TX",
+    "address": "2287 Caruth Hills, Dallas, TX 75225",
+    "record_type": "legacy_crm_attribution_candidate",
+    "coded_fields": {},
+    "raw_data": {
+      "source_system": "Legacy CRM archive (archive_legacy_crm_2018)",
+      "legacy_record_id": "CRM-LEGACY-44712",
+      "original_purchase_date": "2018-09-15",
+      "last_legacy_crm_activity": "2019-03-15",
+      "vin": "JT4567890ABCDEFGH",
+      "migration_failure_cause": "phone-format mismatch broke matching key during 2019-Q1 transform",
+      "responder": "Marcus Chen",
+      "responder_email": "marcus.chen@examplemotors.com"
+    }
+  },
+  {
+    "id": "REC-VIN-001",
+    "data_source": "CustomerMaster",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "record_type": "consumer_profile",
+    "coded_fields": {},
+    "raw_data": {
+      "customer_master_id": "CM-NNA-44213",
+      "household_id": "HH-9921",
+      "mail_deliverable": true,
+      "first_seen": "2019-03-15",
+      "last_activity": "2022-08-01"
+    }
+  },
+  {
+    "id": "REC-VIN-002",
+    "data_source": "DataWarehouse",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "record_type": "crm_record",
+    "coded_fields": {
+      "marketing_segment_code": "URB-P",
+      "income_code": "5"
+    },
+    "raw_data": {
+      "customer_id": "C360-78812",
+      "loyalty_tier": "Silver",
+      "first_interaction": "2019-03-15",
+      "last_email_open": "2025-11-08"
+    }
+  },
+  {
+    "id": "REC-VIN-003",
+    "data_source": "DealerRecords",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "record_type": "purchase_record",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DLR-20190315-A",
+      "event": "purchase",
+      "vin": "WAUZZZ123XY456789",
+      "vehicle": "2019 Example Motors Altima SR",
+      "transaction_date": "2019-03-15",
+      "dealer_id": "DLR-DALLAS-04",
+      "msrp": 27840,
+      "financed": true
+    }
+  },
+  {
+    "id": "REC-VIN-004",
+    "data_source": "DealerRecords",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "record_type": "trade_in_record",
+    "coded_fields": {},
+    "raw_data": {
+      "dealer_record_id": "DLR-20220801-T",
+      "event": "trade_in",
+      "vin": "WAUZZZ123XY456789",
+      "transaction_date": "2022-08-01",
+      "trade_in_value": 18200,
+      "dealer_id": "DLR-DALLAS-04",
+      "next_owner_attached": false
+    }
+  },
+  {
+    "id": "REC-VIN-005",
+    "data_source": "VehicleServices",
+    "first_name": "Mike",
+    "last_name": "Jackson",
+    "email": "mike.jackson.com",
+    "phone": "214-555-0188",
+    "state": "TX",
+    "address": "1284 Oak Lane, Dallas, TX 75201",
+    "record_type": "service_record",
+    "coded_fields": {},
+    "raw_data": {
+      "service_id": "PBS-20210815",
+      "service_date": "2021-08-15",
+      "service_type": "60k_service",
+      "dealer_id": "DLR-DALLAS-04",
+      "vehicle": "2019 Example Motors Altima SR",
+      "mileage": 60144,
+      "vin": "WAUZZZ123XY456789"
+    }
+  }
+]

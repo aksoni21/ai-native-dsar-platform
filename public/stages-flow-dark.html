@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><title>Flow Dark</title>
+<style>
+  body { margin:0; padding:40px; background:#060912; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif; }
+  .flow { display:inline-flex; align-items:stretch; padding:32px 36px; border-radius:16px; background:#0f1626; border:1px solid #1e293b; }
+  .step { display:flex; flex-direction:column; align-items:center; gap:10px; min-width:96px; }
+  .badge { width:48px; height:48px; border-radius:999px; background:#1e293b; color:#94a3b8; display:inline-flex; align-items:center; justify-content:center; border:1.5px solid #334155; }
+  .badge svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .label { font-size:11px; font-weight:500; color:#94a3b8; text-align:center; max-width:96px; line-height:1.3; }
+  .step.hi .badge { background:#2563eb; color:#fff; border-color:#2563eb; box-shadow:0 4px 14px rgba(37,99,235,0.55); }
+  .step.hi .label { color:#60a5fa; font-weight:600; }
+  .arrow { align-self:center; flex-shrink:0; height:1.5px; width:20px; background:#475569; margin:0 4px; position:relative; }
+  .arrow::after { content:''; position:absolute; right:-3px; top:-2.75px; width:0; height:0; border-left:5px solid #475569; border-top:3px solid transparent; border-bottom:3px solid transparent; }
+</style></head>
+<body><div class="flow" id="flow"></div>
+<script>
+const ICONS={Search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',BarChart3:'<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',Brain:'<path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>',Key:'<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/>',Scale:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',ClipboardList:'<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/>',FileCheck:'<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/>',UserCheck:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',Clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',MessageSquare:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'};
+const S=[['Search','Search'],['Match Scores','BarChart3'],['AI Resolution','Brain'],['Decoded Data','Key'],['Compliance Rules','Scale'],['Disposition','ClipboardList',1],['Report','FileCheck'],['Review','UserCheck'],['Audit Trail','Clock'],['Consumer Replies','MessageSquare']];
+const parts=[];S.forEach((s,i)=>{const [l,ic,a]=s;parts.push(`<div class="step${a?' hi':''}"><span class="badge"><svg viewBox="0 0 24 24">${ICONS[ic]}</svg></span><span class="label">${l}</span></div>`);if(i<S.length-1)parts.push('<div class="arrow"></div>');});
+document.getElementById('flow').innerHTML=parts.join('');
+</script></body></html>

@@ -1,0 +1,746 @@
+[
+  {
+    "id": "AUDIT-001",
+    "request_id": "REQ-001",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-01-10T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-002",
+    "request_id": "REQ-001",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 3, "duration_ms": 1240 },
+    "created_at": "2026-01-11T09:30:00Z"
+  },
+  {
+    "id": "AUDIT-003",
+    "request_id": "REQ-001",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 3, "auto_included": 3, "agent_review_needed": 0, "avg_score": 4.67 },
+    "created_at": "2026-01-11T09:35:00Z"
+  },
+  {
+    "id": "AUDIT-004",
+    "request_id": "REQ-001",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "CA", "law": "CCPA/CPRA", "deadline_days": 45, "disposition_set": "full_delete", "exemptions_found": 0 },
+    "created_at": "2026-01-11T09:40:00Z"
+  },
+  {
+    "id": "AUDIT-005",
+    "request_id": "REQ-001",
+    "action": "disposition_set",
+    "actor": "system",
+    "details": { "records_count": 3, "full_delete": 3, "mask_anonymize": 0, "retain_exempt": 0 },
+    "created_at": "2026-01-11T09:45:00Z"
+  },
+  {
+    "id": "AUDIT-006",
+    "request_id": "REQ-001",
+    "action": "report_generated",
+    "actor": "system",
+    "details": { "report_type": "right_to_know_disclosure", "records_disclosed": 3, "word_count": 198 },
+    "created_at": "2026-01-30T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-007",
+    "request_id": "REQ-001",
+    "action": "approved",
+    "actor": "privacy_analyst_1",
+    "details": { "reviewer": "Sarah Kim", "approval_notes": "All matches verified. Report accurate and complete." },
+    "created_at": "2026-01-31T14:00:00Z"
+  },
+  {
+    "id": "AUDIT-008",
+    "request_id": "REQ-001",
+    "action": "executed",
+    "actor": "system",
+    "details": { "actions_completed": 3, "consumer_notified": true, "report_delivered": true },
+    "created_at": "2026-02-01T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-009",
+    "request_id": "REQ-002",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "email", "consumer_verified": true },
+    "created_at": "2026-01-20T14:30:00Z"
+  },
+  {
+    "id": "AUDIT-010",
+    "request_id": "REQ-002",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 3, "duration_ms": 1580 },
+    "created_at": "2026-01-21T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-011",
+    "request_id": "REQ-002",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 3, "auto_included": 0, "agent_review_needed": 3, "avg_score": 2.33 },
+    "created_at": "2026-01-21T10:05:00Z"
+  },
+  {
+    "id": "AUDIT-012",
+    "request_id": "REQ-002",
+    "action": "agent_resolved",
+    "actor": "match_agent",
+    "details": { "ambiguous_matches": 3, "agent_included": 3, "agent_excluded": 0, "reasoning_summary": "Maiden name change from Rodriguez to Chen confirmed via Customer Master previous_last_name field and CRM note" },
+    "created_at": "2026-01-21T14:00:00Z"
+  },
+  {
+    "id": "AUDIT-013",
+    "request_id": "REQ-002",
+    "action": "reply_received",
+    "actor": "consumer",
+    "details": { "reply_id": "REPLY-001", "category": "additional_info" },
+    "created_at": "2026-01-28T16:30:00Z"
+  },
+  {
+    "id": "AUDIT-014",
+    "request_id": "REQ-002",
+    "action": "reply_analyzed",
+    "actor": "reply_agent",
+    "details": { "reply_id": "REPLY-001", "extracted_fields": 4, "action_suggested": "re-run search with maiden name" },
+    "created_at": "2026-01-28T16:35:00Z"
+  },
+  {
+    "id": "AUDIT-015",
+    "request_id": "REQ-003",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-01-25T11:00:00Z"
+  },
+  {
+    "id": "AUDIT-016",
+    "request_id": "REQ-003",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse"], "records_found": 2, "duration_ms": 890 },
+    "created_at": "2026-01-26T08:30:00Z"
+  },
+  {
+    "id": "AUDIT-017",
+    "request_id": "REQ-003",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 2, "auto_included": 2, "agent_review_needed": 0, "avg_score": 5.0 },
+    "created_at": "2026-01-26T08:35:00Z"
+  },
+  {
+    "id": "AUDIT-018",
+    "request_id": "REQ-003",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "CT", "law": "CTDPA", "deadline_days": 45, "disposition_set": "mask_anonymize", "opt_out_actions": ["marketing_suppression", "advertising_exclusion", "vendor_notification"] },
+    "created_at": "2026-01-26T08:40:00Z"
+  },
+  {
+    "id": "AUDIT-019",
+    "request_id": "REQ-003",
+    "action": "approved",
+    "actor": "privacy_analyst_2",
+    "details": { "reviewer": "James Park", "approval_notes": "Opt-out verified. Marketing suppression flags applied." },
+    "created_at": "2026-02-10T11:00:00Z"
+  },
+  {
+    "id": "AUDIT-020",
+    "request_id": "REQ-003",
+    "action": "executed",
+    "actor": "system",
+    "details": { "actions_completed": 2, "vendors_notified": 2, "consumer_notified": true },
+    "created_at": "2026-02-15T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-021",
+    "request_id": "REQ-004",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-01T08:45:00Z"
+  },
+  {
+    "id": "AUDIT-022",
+    "request_id": "REQ-004",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 3, "duration_ms": 1350 },
+    "created_at": "2026-02-02T09:30:00Z"
+  },
+  {
+    "id": "AUDIT-023",
+    "request_id": "REQ-004",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 3, "auto_included": 1, "agent_review_needed": 2, "avg_score": 2.67 },
+    "created_at": "2026-02-02T09:35:00Z"
+  },
+  {
+    "id": "AUDIT-024",
+    "request_id": "REQ-004",
+    "action": "agent_resolved",
+    "actor": "match_agent",
+    "details": { "ambiguous_matches": 2, "agent_included": 2, "agent_excluded": 0, "reasoning_summary": "Email domain differences consistent with employer change; phone number used as primary linking identifier" },
+    "created_at": "2026-02-02T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-025",
+    "request_id": "REQ-004",
+    "action": "reply_received",
+    "actor": "consumer",
+    "details": { "reply_id": "REPLY-002", "category": "additional_info" },
+    "created_at": "2026-02-05T09:15:00Z"
+  },
+  {
+    "id": "AUDIT-026",
+    "request_id": "REQ-004",
+    "action": "reply_analyzed",
+    "actor": "reply_agent",
+    "details": { "reply_id": "REPLY-002", "extracted_fields": 2, "action_suggested": "verify Sales CRM record and search the customer app app data" },
+    "created_at": "2026-02-05T09:20:00Z"
+  },
+  {
+    "id": "AUDIT-027",
+    "request_id": "REQ-005",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-05T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-028",
+    "request_id": "REQ-005",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 0, "duration_ms": 1100 },
+    "created_at": "2026-02-06T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-029",
+    "request_id": "REQ-005",
+    "action": "report_generated",
+    "actor": "system",
+    "details": { "report_type": "no_records_found", "records_disclosed": 0 },
+    "created_at": "2026-02-06T09:10:00Z"
+  },
+  {
+    "id": "AUDIT-030",
+    "request_id": "REQ-005",
+    "action": "approved",
+    "actor": "privacy_analyst_1",
+    "details": { "reviewer": "Sarah Kim", "approval_notes": "No records found. Verified search was comprehensive." },
+    "created_at": "2026-02-07T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-031",
+    "request_id": "REQ-005",
+    "action": "executed",
+    "actor": "system",
+    "details": { "actions_completed": 0, "consumer_notified": true, "notification_type": "no_records_found" },
+    "created_at": "2026-02-07T11:00:00Z"
+  },
+  {
+    "id": "AUDIT-032",
+    "request_id": "REQ-008",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-12T09:30:00Z"
+  },
+  {
+    "id": "AUDIT-033",
+    "request_id": "REQ-008",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 2, "duration_ms": 1020 },
+    "created_at": "2026-02-13T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-034",
+    "request_id": "REQ-008",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 2, "auto_included": 2, "agent_review_needed": 0, "avg_score": 5.0 },
+    "created_at": "2026-02-13T09:05:00Z"
+  },
+  {
+    "id": "AUDIT-035",
+    "request_id": "REQ-008",
+    "action": "agent_resolved",
+    "actor": "disposition_agent",
+    "details": { "legal_hold_detected": true, "hold_reference": "LIT-2025-0442", "disposition": "retain_exempt", "records_affected": 2 },
+    "created_at": "2026-02-13T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-036",
+    "request_id": "REQ-011",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-14T11:00:00Z"
+  },
+  {
+    "id": "AUDIT-037",
+    "request_id": "REQ-011",
+    "action": "duplicate_detected",
+    "actor": "system",
+    "details": { "duplicate_of": "REQ-008", "match_method": "email+phone+name", "confidence": 0.99 },
+    "created_at": "2026-02-14T11:01:00Z"
+  },
+  {
+    "id": "AUDIT-038",
+    "request_id": "REQ-012",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "email", "consumer_verified": true },
+    "created_at": "2026-02-16T08:15:00Z"
+  },
+  {
+    "id": "AUDIT-039",
+    "request_id": "REQ-012",
+    "action": "duplicate_detected",
+    "actor": "system",
+    "details": { "duplicate_of": "REQ-008", "match_method": "phone+name", "confidence": 0.95, "note": "Different email but same phone and name" },
+    "created_at": "2026-02-16T08:16:00Z"
+  },
+  {
+    "id": "AUDIT-040",
+    "request_id": "REQ-013",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-19T15:45:00Z"
+  },
+  {
+    "id": "AUDIT-041",
+    "request_id": "REQ-013",
+    "action": "duplicate_detected",
+    "actor": "system",
+    "details": { "duplicate_of": "REQ-008", "match_method": "email+phone+fuzzy_name", "confidence": 0.92, "note": "Name variant 'Mike' matches 'Michael' via fuzzy matching" },
+    "created_at": "2026-02-19T15:46:00Z"
+  },
+  {
+    "id": "AUDIT-042",
+    "request_id": "REQ-009",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-15T11:45:00Z"
+  },
+  {
+    "id": "AUDIT-043",
+    "request_id": "REQ-009",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM"], "records_found": 2, "duration_ms": 980 },
+    "created_at": "2026-02-16T08:30:00Z"
+  },
+  {
+    "id": "AUDIT-044",
+    "request_id": "REQ-009",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 2, "auto_included": 2, "agent_review_needed": 0, "avg_score": 4.5 },
+    "created_at": "2026-02-16T08:35:00Z"
+  },
+  {
+    "id": "AUDIT-045",
+    "request_id": "REQ-009",
+    "action": "decoded",
+    "actor": "system",
+    "details": { "fields_decoded": 8, "coded_fields": ["income_code", "education_code", "occupation_code", "age_range_code", "household_size_code", "vehicle_segment_code", "marketing_segment_code", "credit_range_code"] },
+    "created_at": "2026-02-16T08:40:00Z"
+  },
+  {
+    "id": "AUDIT-046",
+    "request_id": "REQ-009",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "CT", "law": "CTDPA", "deadline_days": 45, "disposition_set": "full_delete" },
+    "created_at": "2026-02-16T08:45:00Z"
+  },
+  {
+    "id": "AUDIT-047",
+    "request_id": "REQ-009",
+    "action": "report_generated",
+    "actor": "system",
+    "details": { "report_type": "right_to_know_disclosure", "records_disclosed": 2, "coded_fields_decoded": 8 },
+    "created_at": "2026-02-25T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-048",
+    "request_id": "REQ-009",
+    "action": "approved",
+    "actor": "privacy_analyst_2",
+    "details": { "reviewer": "James Park", "approval_notes": "Decoded fields verified against cipher legend. Report complete." },
+    "created_at": "2026-02-28T14:00:00Z"
+  },
+  {
+    "id": "AUDIT-049",
+    "request_id": "REQ-009",
+    "action": "executed",
+    "actor": "system",
+    "details": { "actions_completed": 2, "consumer_notified": true, "report_delivered": true },
+    "created_at": "2026-03-01T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-050",
+    "request_id": "REQ-010",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "email", "consumer_verified": true },
+    "created_at": "2026-02-18T10:20:00Z"
+  },
+  {
+    "id": "AUDIT-051",
+    "request_id": "REQ-010",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 2, "duration_ms": 1150 },
+    "created_at": "2026-02-19T09:30:00Z"
+  },
+  {
+    "id": "AUDIT-052",
+    "request_id": "REQ-010",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 2, "auto_included": 2, "agent_review_needed": 0, "avg_score": 5.0 },
+    "created_at": "2026-02-19T09:35:00Z"
+  },
+  {
+    "id": "AUDIT-053",
+    "request_id": "REQ-010",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "TX", "law": "TDPSA", "deadline_days": 45, "disposition_set": "mixed", "federal_law_triggered": "CAN-SPAM Act 16 CFR 316.5", "exemptions_found": 1, "exemption_basis": "5-year suppression-evidence retention" },
+    "created_at": "2026-02-19T09:40:00Z"
+  },
+  {
+    "id": "AUDIT-054",
+    "request_id": "REQ-010",
+    "action": "agent_resolved",
+    "actor": "disposition_agent",
+    "details": { "conflicting_law": true, "state_law": "TDPSA right-to-delete", "federal_law": "CAN-SPAM 16 CFR 316.5 (5-yr suppression evidence)", "decision": "retain suppression record REC-032 until 2029-11-10; delete all other records", "records_affected": 3, "full_delete": 2, "retain_exempt": 1, "citation_logged": "TDPSA Sec. 541.052(b)(3) (federal-law compliance carveout)" },
+    "created_at": "2026-02-19T09:45:00Z"
+  },
+  {
+    "id": "AUDIT-055",
+    "request_id": "REQ-015",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true, "consumer_state": "CA" },
+    "created_at": "2026-02-22T14:00:00Z"
+  },
+  {
+    "id": "AUDIT-056",
+    "request_id": "REQ-015",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 3, "duration_ms": 1320 },
+    "created_at": "2026-02-23T09:00:00Z"
+  },
+  {
+    "id": "AUDIT-057",
+    "request_id": "REQ-015",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 3, "auto_included": 3, "agent_review_needed": 0, "avg_score": 5.0, "household_co_owner_detected": true, "co_owner_name": "Linda Wilson", "co_owner_state": "VA" },
+    "created_at": "2026-02-23T09:05:00Z"
+  },
+  {
+    "id": "AUDIT-058",
+    "request_id": "REQ-015",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "primary_state": "CA", "primary_law": "CCPA/CPRA", "secondary_state": "VA", "secondary_law": "VCDPA", "deadline_days": 45, "multi_jurisdictional": true, "per_record_disposition": true, "co_owner_protection_basis": "VCDPA §59.1-577" },
+    "created_at": "2026-02-23T09:30:00Z"
+  },
+  {
+    "id": "AUDIT-059",
+    "request_id": "REQ-015",
+    "action": "agent_resolved",
+    "actor": "disposition_agent",
+    "details": { "shared_records_detected": 2, "sole_records": 1, "decision": "per-record law application", "full_delete": 1, "mask_anonymize": 2, "retain_exempt": 0, "rationale": "CCPA full-delete on Thomas's sole-owner row; VCDPA-aware mask-anonymize on shared rows to preserve Linda's VA-resident rights and active warranty per CCPA §1798.105(d)(1)" },
+    "created_at": "2026-02-23T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-060",
+    "request_id": "REQ-015",
+    "action": "disposition_set",
+    "actor": "system",
+    "details": { "records_count": 3, "full_delete": 1, "mask_anonymize": 2, "retain_exempt": 0, "ready_for_review": true },
+    "created_at": "2026-02-23T10:05:00Z"
+  },
+  {
+    "id": "AUDIT-061",
+    "request_id": "REQ-016",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-02-25T11:00:00Z"
+  },
+  {
+    "id": "AUDIT-062",
+    "request_id": "REQ-016",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM", "VehicleServices", "DealerRecords"], "records_found": 4, "duration_ms": 1410, "name_collisions_detected": 1 },
+    "created_at": "2026-02-26T08:30:00Z"
+  },
+  {
+    "id": "AUDIT-063",
+    "request_id": "REQ-016",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 4, "auto_included": 3, "agent_review_needed": 1, "avg_score": 3.75 },
+    "created_at": "2026-02-26T08:35:00Z"
+  },
+  {
+    "id": "AUDIT-064",
+    "request_id": "REQ-016",
+    "action": "agent_resolved",
+    "actor": "match_agent",
+    "details": { "ambiguous_matches": 1, "agent_included": 0, "agent_excluded": 1, "excluded_record_id": "REC-036", "excluded_consumer_state": "FL", "exclusion_reason": "FL John Brown is a distinct consumer — email, phone, state, and address all diverge from the TX requester. Excluding to prevent wrongful disclosure under CCPA/TDPSA §541.052.", "wrongful_disclosure_risk": "averted" },
+    "created_at": "2026-02-26T09:00:15Z"
+  },
+  {
+    "id": "AUDIT-065",
+    "request_id": "REQ-016",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "TX", "law": "TDPSA", "deadline_days": 45, "request_type": "right_to_know" },
+    "created_at": "2026-02-26T09:10:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-001",
+    "request_id": "REQ-VIN-001",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-04-22T08:30:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-002",
+    "request_id": "REQ-VIN-001",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "DealerRecords", "VehicleServices"], "records_found": 5, "duration_ms": 1180 },
+    "created_at": "2026-04-22T08:34:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-003",
+    "request_id": "REQ-VIN-001",
+    "action": "vin_expanded",
+    "actor": "agent:vin_expansion",
+    "details": { "vins_found": 1, "vin": "WAUZZZ123XY456789", "ownership_window": "2019-03-15 → 2022-08-01", "duration_months": 40, "source_system": "DealerRecords (sale + trade-in)" },
+    "created_at": "2026-04-22T08:34:30Z"
+  },
+  {
+    "id": "AUDIT-VIN-004",
+    "request_id": "REQ-VIN-001",
+    "action": "vin_keyed_search",
+    "actor": "agent:vin_expansion",
+    "details": { "vin": "WAUZZZ123XY456789", "in_window_records": 1091, "out_of_window_records": 189, "sources": ["Telematics", "ManufacturingQA", "RecallCampaigns", "IndependentShopService"], "exclusion_reasons_summary": "189 records excluded: pre-ownership (Jane Smith) and post-ownership (Bob Wilson)" },
+    "created_at": "2026-04-22T08:35:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-005",
+    "request_id": "REQ-VIN-001",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 5, "auto_included": 5, "agent_review_needed": 0, "avg_score": 5 },
+    "created_at": "2026-04-22T08:35:25Z"
+  },
+  {
+    "id": "AUDIT-VIN-006",
+    "request_id": "REQ-VIN-001",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "TX", "law": "TDPSA", "deadline_days": 45, "request_type": "right_to_know" },
+    "created_at": "2026-04-22T08:36:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-007",
+    "request_id": "REQ-VIN-001",
+    "action": "orphan_outreach_drafted",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-VIN-001", "orphan_vin": "JT4567890ABCDEFGH", "recipient": "shivi.sharma@example.com", "template": "orphan_vin_outreach_v1", "factual_signals": ["legacy CRM archive: pre-2019 records present", "last legacy CRM activity: 2019-03 (migration cutover)", "telematics geo-cluster: Dallas TX", "independent-shop service: Dallas TX", "no record in current customer master/CRM"] },
+    "created_at": "2026-04-22T09:18:00Z"
+  },
+  {
+    "id": "AUDIT-MC-001",
+    "request_id": "REQ-MC-REPLY",
+    "action": "created",
+    "actor": "system",
+    "details": { "source": "web_portal", "consumer_verified": true },
+    "created_at": "2026-03-25T10:00:00Z"
+  },
+  {
+    "id": "AUDIT-MC-002",
+    "request_id": "REQ-MC-REPLY",
+    "action": "confirmation_drafted",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "template": "consumer_dsar_confirmation_v1", "recipient": "maria.chen@example.com" },
+    "created_at": "2026-03-25T10:03:00Z"
+  },
+  {
+    "id": "AUDIT-MC-003",
+    "request_id": "REQ-MC-REPLY",
+    "action": "outbound_approved",
+    "actor": "human:operator@instrata.com",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-OUT-001", "recipient": "maria.chen@example.com", "reviewer_email": "operator@instrata.com" },
+    "created_at": "2026-03-25T10:05:00Z"
+  },
+  {
+    "id": "AUDIT-MC-004",
+    "request_id": "REQ-MC-REPLY",
+    "action": "outbound_sent",
+    "actor": "system:execution_pipeline",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-OUT-001", "channel": "email", "recipient": "maria.chen@example.com" },
+    "created_at": "2026-03-25T10:08:00Z"
+  },
+  {
+    "id": "AUDIT-MC-005",
+    "request_id": "REQ-MC-REPLY",
+    "action": "searched",
+    "actor": "system",
+    "details": { "sources_searched": ["CustomerMaster", "DataWarehouse", "SalesCRM"], "records_found": 3, "search_keys": ["last_name=Chen", "email=maria.chen@example.com"] },
+    "created_at": "2026-03-25T10:14:00Z"
+  },
+  {
+    "id": "AUDIT-MC-006",
+    "request_id": "REQ-MC-REPLY",
+    "action": "scored",
+    "actor": "system",
+    "details": { "matches_created": 3, "auto_included": 3, "avg_score": 4.67 },
+    "created_at": "2026-03-25T10:15:00Z"
+  },
+  {
+    "id": "AUDIT-MC-007",
+    "request_id": "REQ-MC-REPLY",
+    "action": "rules_applied",
+    "actor": "system",
+    "details": { "state": "CA", "law": "CCPA/CPRA", "deadline_days": 45, "request_type": "deletion" },
+    "created_at": "2026-03-25T10:16:00Z"
+  },
+  {
+    "id": "AUDIT-MC-008",
+    "request_id": "REQ-MC-REPLY",
+    "action": "inbound_received",
+    "actor": "system",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-001", "from": "maria.chen@example.com", "received_at": "2026-05-04T14:18:00Z", "sla_clock_reset": true },
+    "created_at": "2026-05-04T14:18:00Z"
+  },
+  {
+    "id": "AUDIT-MC-009",
+    "request_id": "REQ-MC-REPLY",
+    "action": "inbound_parsed",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-001", "classification": "requests_clarification_needed", "classification_confidence": 0.91, "candidates_returned": 0, "missing_signals": ["previous_last_name", "name_change_year", "corroborating_event"], "recommended_action": "draft_clarification" },
+    "created_at": "2026-05-04T14:22:00Z"
+  },
+  {
+    "id": "AUDIT-VIN-012",
+    "request_id": "REQ-VIN-001",
+    "action": "redirect_outreach_drafted",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-VIN-001", "message_id": "MSG-VIN-OUT-002", "redirect_target": "Eric Park", "redirect_target_email": "shivi.sharma@example.com", "redirect_target_team": "Dealer Network Archives", "source_redirect_message": "MSG-VIN-IN-001", "template": "orphan_vin_redirect_outreach_v1" },
+    "created_at": "2026-04-29T10:50:00Z"
+  },
+  {
+    "id": "AUDIT-MC-010",
+    "request_id": "REQ-MC-REPLY",
+    "action": "clarification_drafted",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-OUT-002", "missing_signals": ["previous_last_name", "name_change_year", "corroborating_event"], "template": "consumer_dsar_clarification_v1" },
+    "created_at": "2026-05-04T14:24:00Z"
+  },
+  {
+    "id": "AUDIT-MC-011",
+    "request_id": "REQ-MC-REPLY",
+    "action": "outbound_approved",
+    "actor": "human:operator@instrata.com",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-OUT-002", "recipient": "maria.chen@example.com", "reviewer_email": "operator@instrata.com" },
+    "created_at": "2026-05-04T14:30:00Z"
+  },
+  {
+    "id": "AUDIT-MC-012",
+    "request_id": "REQ-MC-REPLY",
+    "action": "outbound_sent",
+    "actor": "system:execution_pipeline",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-OUT-002", "channel": "email", "recipient": "maria.chen@example.com" },
+    "created_at": "2026-05-04T14:33:00Z"
+  },
+  {
+    "id": "AUDIT-MC-013",
+    "request_id": "REQ-MC-REPLY",
+    "action": "inbound_received",
+    "actor": "system",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "from": "maria.chen@example.com", "received_at": "2026-05-05T16:32:00Z", "sla_clock_reset": true },
+    "created_at": "2026-05-05T16:32:00Z"
+  },
+  {
+    "id": "AUDIT-MC-014",
+    "request_id": "REQ-MC-REPLY",
+    "action": "inbound_parsed",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "classification": "provides_new_identity_info", "classification_confidence": 0.97, "candidates_returned": 3, "candidate_top": "Maria Salazar — Customer Master (REC-MC-SAL-001)", "recommended_action": "re_run_match_with_maiden_name" },
+    "created_at": "2026-05-05T16:33:00Z"
+  },
+  {
+    "id": "AUDIT-MC-015",
+    "request_id": "REQ-MC-REPLY",
+    "action": "cascade_run_started",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "triggering_classification": "provides_new_identity_info", "sub_agents_invoked": ["identity-resolver", "disposition-planner", "report-generator", "consumer-reply-drafter"] },
+    "created_at": "2026-05-05T16:33:30Z"
+  },
+  {
+    "id": "AUDIT-MC-016",
+    "request_id": "REQ-MC-REPLY",
+    "action": "identity_resolved",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "sub_agent": "identity-resolver", "outputs_chars": 941 },
+    "created_at": "2026-05-05T16:34:00Z"
+  },
+  {
+    "id": "AUDIT-MC-017",
+    "request_id": "REQ-MC-REPLY",
+    "action": "disposition_planned",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "sub_agent": "disposition-planner", "outputs_chars": 1187 },
+    "created_at": "2026-05-05T16:34:00Z"
+  },
+  {
+    "id": "AUDIT-MC-018",
+    "request_id": "REQ-MC-REPLY",
+    "action": "compliance_report_generated",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "sub_agent": "report-generator", "outputs_chars": 1023 },
+    "created_at": "2026-05-05T16:34:00Z"
+  },
+  {
+    "id": "AUDIT-MC-019",
+    "request_id": "REQ-MC-REPLY",
+    "action": "consumer_reply_drafted",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "sub_agent": "consumer-reply-drafter", "subject": "Your privacy request — update on your maiden-name records (REQ-MC-REPLY)" },
+    "created_at": "2026-05-05T16:34:00Z"
+  },
+  {
+    "id": "AUDIT-MC-020",
+    "request_id": "REQ-MC-REPLY",
+    "action": "cascade_run_completed",
+    "actor": "agent:coordinator",
+    "details": { "case_id": "CASE-MC-001", "message_id": "MSG-MC-IN-002", "sub_agents_completed": 4, "outputs_persisted": "extracted_facts.cascade_outputs" },
+    "created_at": "2026-05-05T16:34:30Z"
+  }
+]
