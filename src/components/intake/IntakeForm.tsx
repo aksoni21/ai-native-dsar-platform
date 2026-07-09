@@ -1101,10 +1101,10 @@ function Confirmation({ refId, deadline, email }: { refId: string; deadline: str
                   state-specific compliance rules to your request — end to end.
                 </p>
                 <Link
-                  href={`/demo?request_id=${encodeURIComponent(refId)}`}
+                  href="/demo/requests"
                   className="mt-2.5 inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-[11px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
-                  Run {refId} in the demo
+                  View {refId} in the dashboard
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>

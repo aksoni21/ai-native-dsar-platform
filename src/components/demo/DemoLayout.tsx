@@ -192,6 +192,12 @@ function ContextualHeader() {
       {/* Right side: SLA pill + theme toggle + layout toggle */}
       <div data-tour="header-controls" className="flex flex-shrink-0 items-center gap-2">
         <Link
+          href="/demo/requests"
+          className="hidden rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
+        >
+          All requests
+        </Link>
+        <Link
           href="/platform"
           className="hidden rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
         >

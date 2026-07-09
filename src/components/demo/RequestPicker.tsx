@@ -190,9 +190,17 @@ export function RequestPicker({ anchorRef, onClose }: RequestPickerProps) {
         )}
       </div>
 
-      <div className="flex items-center gap-1.5 border-t border-border px-3 py-1.5 text-[10px] text-muted-foreground">
-        <ListFilter className="h-3 w-3" />
-        Showing the {rows.length} most recent intake requests
+      <div className="flex items-center justify-between gap-1.5 border-t border-border px-3 py-1.5 text-[10px] text-muted-foreground">
+        <span className="flex items-center gap-1.5">
+          <ListFilter className="h-3 w-3" />
+          Showing the {rows.length} most recent intake requests
+        </span>
+        <a
+          href="/demo/requests"
+          className="flex-shrink-0 font-medium text-foreground hover:text-primary hover:underline"
+        >
+          View all →
+        </a>
       </div>
     </div>,
     document.body,

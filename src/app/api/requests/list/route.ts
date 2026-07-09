@@ -17,19 +17,23 @@ interface ListRow {
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const limitRaw = parseInt(url.searchParams.get('limit') ?? '25', 10);
-  const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(limitRaw, 1), 100) : 25;
+  const limit = Number.isFinite(limitRaw) ? Math.min(Math.max(limitRaw, 1), 500) : 25;
 
   try {
-    const { rows } = await getPool().query<ListRow>(
-      `SELECT request_id, first_name, last_name,
-              email::text AS email, state, request_types,
-              status, created_at
-         FROM naica_demo.intake_requests
-         ORDER BY created_at DESC
-         LIMIT $1`,
-      [limit],
-    );
-    return NextResponse.json({ requests: rows });
+    const pool = getPool();
+    const [{ rows }, { rows: countRows }] = await Promise.all([
+      pool.query<ListRow>(
+        `SELECT request_id, first_name, last_name,
+                email::text AS email, state, request_types,
+                status, created_at
+           FROM naica_demo.intake_requests
+           ORDER BY created_at DESC
+           LIMIT $1`,
+        [limit],
+      ),
+      pool.query<{ count: string }>(`SELECT count(*) FROM naica_demo.intake_requests`),
+    ]);
+    return NextResponse.json({ requests: rows, total: parseInt(countRows[0].count, 10) });
   } catch (err) {
     console.error('GET /api/requests/list failed:', err);
     return NextResponse.json(
