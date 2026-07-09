@@ -272,10 +272,10 @@ export default function AddressBookPage() {
           title="Back to demo"
         >
           <div className="h-6 w-6 rounded-md bg-primary flex items-center justify-center">
-            <span className="text-[10px] font-bold text-primary-foreground">N</span>
+            <span className="text-[10px] font-bold text-primary-foreground">I</span>
           </div>
           <span className="text-sm font-bold tracking-tight group-hover:text-primary transition-colors">
-            instrata
+            Instrata
           </span>
         </Link>
 

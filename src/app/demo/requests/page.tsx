@@ -13,6 +13,8 @@ import {
   Mail,
   Phone,
   X,
+  ChevronLeft,
+  FileText,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/demo/ThemeToggle';
 import { cn, formatDate, formatDateTime, requestTypeLabel, daysUntil } from '@/lib/utils';
@@ -45,6 +47,7 @@ export default function AllRequestsPage() {
   const [query, setQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>(ALL_STATUS);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
 
   useEffect(() => {
@@ -90,12 +93,6 @@ export default function AllRequestsPage() {
     load();
   }, []);
 
-  const statusOptions = useMemo(() => {
-    const set = new Set<string>();
-    rows.forEach((r) => set.add(r.status));
-    return [ALL_STATUS, ...Array.from(set).sort()];
-  }, [rows]);
-
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rows
@@ -127,10 +124,10 @@ export default function AllRequestsPage() {
           title="Back to demo"
         >
           <div className="h-6 w-6 rounded-md bg-primary flex items-center justify-center">
-            <span className="text-[10px] font-bold text-primary-foreground">N</span>
+            <span className="text-[10px] font-bold text-primary-foreground">I</span>
           </div>
           <span className="text-sm font-bold tracking-tight group-hover:text-primary transition-colors">
-            instrata
+            Instrata
           </span>
         </Link>
 
@@ -146,9 +143,12 @@ export default function AllRequestsPage() {
         </div>
       </header>
 
-      {/* Two-pane body */}
+      {/* Three-pane body */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Left — master list */}
+        {/* Left — status views (desktop only) */}
+        <StatusSidebar rows={rows} statusFilter={statusFilter} onSelect={setStatusFilter} />
+
+        {/* Middle — master list */}
         <div className="flex w-full flex-col overflow-hidden lg:w-auto lg:flex-1 lg:border-r lg:border-border">
           {/* Title row */}
           <div className="flex flex-shrink-0 flex-wrap items-end justify-between gap-3 border-b border-border px-4 py-3 sm:px-6">
@@ -156,7 +156,9 @@ export default function AllRequestsPage() {
               <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 Pipeline
               </p>
-              <h1 className="text-xl font-semibold tracking-tight">All requests</h1>
+              <h1 className="text-xl font-semibold tracking-tight">
+                {statusFilter === ALL_STATUS ? 'All requests' : statusFilter.replace(/_/g, ' ')}
+              </h1>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -174,7 +176,7 @@ export default function AllRequestsPage() {
             </div>
           </div>
 
-          {/* Search + status filter */}
+          {/* Search */}
           <div className="flex flex-shrink-0 items-center gap-2 border-b border-border px-4 py-3 sm:px-6">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -187,19 +189,6 @@ export default function AllRequestsPage() {
                 aria-label="Search requests"
               />
             </div>
-
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="flex-shrink-0 rounded-md border border-border bg-background px-2 py-2 text-[12px] font-medium text-foreground outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/30"
-              aria-label="Filter by status"
-            >
-              {statusOptions.map((s) => (
-                <option key={s} value={s}>
-                  {s === ALL_STATUS ? s : s.replace(/_/g, ' ')}
-                </option>
-              ))}
-            </select>
           </div>
 
           {/* List */}
@@ -230,6 +219,7 @@ export default function AllRequestsPage() {
                     active={r.request_id === selectedId}
                     onSelect={() => {
                       setSelectedId(r.request_id);
+                      setDetailOpen(true);
                       setMobileDetailOpen(true);
                     }}
                   />
@@ -239,12 +229,21 @@ export default function AllRequestsPage() {
           </div>
         </div>
 
-        {/* Right — detail panel (desktop persistent) */}
-        <div className="hidden w-full max-w-[420px] flex-shrink-0 flex-col overflow-hidden lg:flex">
-          {selectedRow ? (
-            <DetailPanel row={selectedRow} onClose={null} />
+        {/* Right — collapsible detail panel (desktop only; opens on row click) */}
+        <div
+          className={cn(
+            'hidden flex-shrink-0 flex-col overflow-hidden border-l border-border transition-[width] duration-300 ease-in-out lg:flex',
+            detailOpen ? 'w-[420px]' : 'w-11',
+          )}
+        >
+          {detailOpen ? (
+            selectedRow ? (
+              <DetailPanel row={selectedRow} onClose={() => setDetailOpen(false)} />
+            ) : (
+              <EmptyDetail />
+            )
           ) : (
-            <EmptyDetail />
+            <CollapsedDetailRail onClick={() => setDetailOpen(true)} />
           )}
         </div>
       </div>
@@ -311,6 +310,110 @@ function RequestRow({
         </div>
       </button>
     </li>
+  );
+}
+
+function StatusSidebar({
+  rows,
+  statusFilter,
+  onSelect,
+}: {
+  rows: ListRow[];
+  statusFilter: string;
+  onSelect: (status: string) => void;
+}) {
+  const counts = useMemo(() => {
+    const map = new Map<string, number>();
+    rows.forEach((r) => map.set(r.status, (map.get(r.status) ?? 0) + 1));
+    return map;
+  }, [rows]);
+
+  const statuses = useMemo(() => Array.from(counts.keys()).sort(), [counts]);
+
+  return (
+    <div className="hidden w-52 flex-shrink-0 flex-col overflow-y-auto thin-scroll border-r border-border lg:flex">
+      <div className="px-4 pb-2 pt-4 sm:px-5">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+          Views
+        </p>
+      </div>
+      <nav className="flex flex-col gap-0.5 px-2 pb-4">
+        <SidebarItem
+          label="All requests"
+          count={rows.length}
+          active={statusFilter === ALL_STATUS}
+          onClick={() => onSelect(ALL_STATUS)}
+        />
+        <div className="my-2 h-px bg-border" />
+        {statuses.map((s) => (
+          <SidebarItem
+            key={s}
+            label={s.replace(/_/g, ' ')}
+            count={counts.get(s) ?? 0}
+            active={statusFilter === s}
+            onClick={() => onSelect(s)}
+            capitalize
+          />
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function SidebarItem({
+  label,
+  count,
+  active,
+  onClick,
+  capitalize,
+}: {
+  label: string;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+  capitalize?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        'flex items-center justify-between gap-2 rounded-md px-2.5 py-1.5 text-left text-[13px] font-medium transition-colors',
+        capitalize && 'capitalize',
+        active ? 'bg-primary/[0.08] text-primary' : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground',
+      )}
+    >
+      <span className="truncate">{label}</span>
+      <span
+        className={cn(
+          'flex-shrink-0 rounded-full px-1.5 py-px text-[10px] tabular-nums',
+          active ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground',
+        )}
+      >
+        {count}
+      </span>
+    </button>
+  );
+}
+
+function CollapsedDetailRail({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="group flex h-full w-full flex-col items-center gap-3 border-0 bg-muted/40 py-3 transition-colors hover:bg-muted"
+      title="Expand detail panel"
+      aria-label="Expand detail panel"
+    >
+      <ChevronLeft className="h-3.5 w-3.5 text-muted-foreground transition-colors group-hover:text-foreground" />
+      <FileText className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" />
+      <span
+        className="mt-1 text-[10px] font-medium uppercase tracking-widest text-muted-foreground transition-colors group-hover:text-foreground"
+        style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+      >
+        Detail
+      </span>
+    </button>
   );
 }
 
