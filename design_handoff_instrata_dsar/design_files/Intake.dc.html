@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#FBFBFD;color:#12141C;font-family:'Figtree',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#2F6BFF;text-decoration:none;}
+  a:hover{color:#1E4FD6;}
+  ::selection{background:#D8E4FF;}
+  input,select,textarea{font-family:inherit;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:#2F6BFF !important;box-shadow:0 0 0 3px rgba(47,107,255,.14);}
+</style>
+</helmet>
+
+<div style="min-height:100%;background:#FBFBFD;display:flex;flex-direction:column;">
+
+  <!-- NAV -->
+  <header style="border-bottom:1px solid #E6E8EF;background:#fff;">
+    <nav style="max-width:1000px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;gap:16px;">
+      <a href="Homepage.dc.html" style="display:flex;align-items:center;gap:10px;color:#12141C;font-weight:700;font-size:16px;">
+        <span style="width:24px;height:24px;border-radius:6px;background:#12141C;display:inline-flex;align-items:center;justify-content:center;"><span style="width:10px;height:10px;border-radius:3px;background:#2F6BFF;transform:rotate(45deg);"></span></span>
+        Instrata AI
+      </a>
+      <span style="margin-left:auto;font-size:13px;color:#8A90A0;display:flex;align-items:center;gap:8px;"><span style="width:14px;height:14px;">🔒</span>Secure privacy request portal</span>
+    </nav>
+  </header>
+
+  <main style="flex:1;max-width:1000px;width:100%;margin:0 auto;padding:44px 28px 64px;display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:start;">
+
+    <!-- FORM COLUMN -->
+    <div>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:16px;padding:44px;text-align:center;">
+          <div style="width:54px;height:54px;border-radius:50%;background:#E7F6EF;color:#17936B;display:inline-flex;align-items:center;justify-content:center;font-size:26px;">✓</div>
+          <h1 style="margin:20px 0 0;font-size:26px;font-weight:800;letter-spacing:-.02em;color:#12141C;">Request submitted</h1>
+          <p style="margin:12px auto 0;font-size:16px;line-height:1.55;color:#6B7280;max-width:44ch;">Your privacy request has been received and routed to our operator queue. You'll get email updates as it moves through review.</p>
+          <div style="margin:22px auto 0;display:inline-flex;align-items:center;gap:10px;background:#F5F6FA;border:1px solid #E6E8EF;border-radius:10px;padding:11px 16px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#12141C;">Reference <b>DSAR-{{ refId }}</b></div>
+          <div style="margin-top:26px;display:flex;gap:12px;justify-content:center;">
+            <a href="Demo.dc.html" style="font-size:14.5px;font-weight:600;color:#fff;background:#2F6BFF;padding:12px 20px;border-radius:10px;" style-hover="background:#1E4FD6;color:#fff;">See how it's reviewed →</a>
+            <button onClick="{{ reset }}" style="font-size:14.5px;font-weight:600;color:#12141C;background:#fff;border:1px solid #D9DCE6;padding:12px 20px;border-radius:10px;cursor:pointer;" style-hover="border-color:#12141C;">Submit another</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">Privacy request</div>
+          <h1 style="margin:12px 0 0;font-size:32px;font-weight:800;letter-spacing:-.02em;color:#12141C;">Submit a data privacy request</h1>
+          <p style="margin:12px 0 0;font-size:16px;line-height:1.55;color:#6B7280;max-width:52ch;">Tell us what you'd like us to do with your personal data. We verify every request before acting on it.</p>
+
+          <div style="margin-top:30px;background:#fff;border:1px solid #E6E8EF;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:22px;">
+
+            <!-- request type -->
+            <div>
+              <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:10px;">Request type</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <sc-for list="{{ types }}" as="ty" hint-placeholder-count="4">
+                  <div onClick="{{ ty.pick }}" style="cursor:pointer;border:1px solid {{ ty.border }};background:{{ ty.bg }};border-radius:11px;padding:13px 14px;display:flex;align-items:flex-start;gap:10px;" style-hover="border-color:#2F6BFF;">
+                    <span style="flex:none;margin-top:1px;width:16px;height:16px;border-radius:50%;border:2px solid {{ ty.dot }};display:inline-flex;align-items:center;justify-content:center;"><span style="width:7px;height:7px;border-radius:50%;background:{{ ty.dotFill }};"></span></span>
+                    <div>
+                      <div style="font-size:13.5px;font-weight:700;color:#12141C;">{{ ty.title }}</div>
+                      <div style="font-size:11.5px;color:#8A90A0;margin-top:2px;">{{ ty.sub }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <!-- name + email -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:8px;">Full name</label>
+                <input value="{{ name }}" onInput="{{ setName }}" placeholder="Jane Doe" style="width:100%;font-size:14px;color:#12141C;background:#fff;border:1px solid #D9DCE6;border-radius:10px;padding:11px 13px;" />
+              </div>
+              <div>
+                <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:8px;">Email address</label>
+                <input value="{{ email }}" onInput="{{ setEmail }}" placeholder="jane@example.com" style="width:100%;font-size:14px;color:#12141C;background:#fff;border:1px solid #D9DCE6;border-radius:10px;padding:11px 13px;" />
+              </div>
+            </div>
+
+            <!-- state + verification -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:8px;">State / jurisdiction</label>
+                <select value="{{ state }}" onChange="{{ setState_ }}" style="width:100%;font-size:14px;color:#12141C;background:#fff;border:1px solid #D9DCE6;border-radius:10px;padding:11px 13px;">
+                  <option>California (CCPA/CPRA)</option>
+                  <option>Colorado (CPA)</option>
+                  <option>Virginia (VCDPA)</option>
+                  <option>Texas (TDPSA)</option>
+                  <option>EU / UK (GDPR)</option>
+                  <option>Other / Not sure</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:8px;">Verification detail</label>
+                <input value="{{ verify }}" onInput="{{ setVerify }}" placeholder="Last 4 of account # or order ID" style="width:100%;font-size:14px;color:#12141C;background:#fff;border:1px solid #D9DCE6;border-radius:10px;padding:11px 13px;" />
+              </div>
+            </div>
+
+            <!-- description -->
+            <div>
+              <label style="display:block;font-size:13.5px;font-weight:600;color:#12141C;margin-bottom:8px;">Description <span style="color:#8A90A0;font-weight:400;">(optional)</span></label>
+              <textarea value="{{ desc }}" onInput="{{ setDesc }}" placeholder="Any details that help us locate your data — accounts, timeframes, products…" style="width:100%;min-height:96px;resize:vertical;font-size:14px;color:#12141C;background:#fff;border:1px solid #D9DCE6;border-radius:10px;padding:11px 13px;line-height:1.5;"></textarea>
+            </div>
+
+            <!-- consent -->
+            <label style="display:flex;gap:11px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:2px;width:16px;height:16px;accent-color:#2F6BFF;cursor:pointer;" />
+              <span style="font-size:12.5px;color:#6B7280;line-height:1.5;">I confirm this request relates to my own personal data and the information above is accurate. I understand my identity will be verified before any action is taken.</span>
+            </label>
+
+            <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13px;color:#C0392B;background:#FBEAE7;border:1px solid #EAD3CF;border-radius:9px;padding:10px 13px;">Please add your name, a valid email, and confirm the checkbox.</div>
+            </sc-if>
+
+            <button onClick="{{ submit }}" style="width:100%;font-size:15px;font-weight:700;color:#fff;background:#2F6BFF;border:none;padding:14px;border-radius:11px;cursor:pointer;box-shadow:0 2px 8px rgba(47,107,255,.28);" style-hover="background:#1E4FD6;">Submit request</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- SIDE INFO -->
+    <aside style="display:flex;flex-direction:column;gap:16px;position:sticky;top:24px;">
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:20px;">
+        <div style="font-size:13px;font-weight:700;color:#12141C;">What happens next</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:11px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#EEF3FF;color:#2F6BFF;font-family:'IBM Plex Mono',monospace;font-size:11px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;">1</span><div style="font-size:12.5px;color:#6B7280;line-height:1.5;">We verify your identity before touching any data.</div></div>
+          <div style="display:flex;gap:11px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#EEF3FF;color:#2F6BFF;font-family:'IBM Plex Mono',monospace;font-size:11px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;">2</span><div style="font-size:12.5px;color:#6B7280;line-height:1.5;">A governed agent searches our systems for your records.</div></div>
+          <div style="display:flex;gap:11px;"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#EEF3FF;color:#2F6BFF;font-family:'IBM Plex Mono',monospace;font-size:11px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;">3</span><div style="font-size:12.5px;color:#6B7280;line-height:1.5;">A human reviews and approves before we act.</div></div>
+        </div>
+      </div>
+      <div style="background:#F5F6FA;border:1px solid #E6E8EF;border-radius:14px;padding:18px;">
+        <div style="font-size:12.5px;color:#6B7280;line-height:1.55;">Your request is handled under applicable privacy law. Statutory response windows typically range from <b style="color:#12141C;">30–45 days</b>.</div>
+      </div>
+    </aside>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: 0, name: "", email: "", stateSel: "California (CCPA/CPRA)", verify: "", desc: "", consent: false, submitted: false, showError: false, refId: "2042" };
+
+  renderVals() {
+    const s = this.state;
+    const typeDefs = [
+      { title: "Right to Know", sub: "What data you hold on me" },
+      { title: "Access My Data", sub: "A copy of my data" },
+      { title: "Delete My Data", sub: "Erase my personal data" },
+      { title: "Correction", sub: "Fix inaccurate data" },
+    ];
+    const types = typeDefs.map((t, i) => ({
+      title: t.title, sub: t.sub,
+      border: s.type === i ? "#2F6BFF" : "#E6E8EF",
+      bg: s.type === i ? "#F4F8FF" : "#fff",
+      dot: s.type === i ? "#2F6BFF" : "#C7CBD6",
+      dotFill: s.type === i ? "#2F6BFF" : "transparent",
+      pick: () => this.setState({ type: i }),
+    }));
+
+    return {
+      types,
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      name: s.name, email: s.email, state: s.stateSel, verify: s.verify, desc: s.desc,
+      consent: s.consent, showError: s.showError, refId: s.refId,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      setState_: (e) => this.setState({ stateSel: e.target.value }),
+      setVerify: (e) => this.setState({ verify: e.target.value }),
+      setDesc: (e) => this.setState({ desc: e.target.value }),
+      toggleConsent: (e) => this.setState({ consent: e.target.checked }),
+      submit: () => {
+        const ok = s.name.trim() && /.+@.+\..+/.test(s.email) && s.consent;
+        if (!ok) { this.setState({ showError: true }); return; }
+        this.setState({ submitted: true, showError: false, refId: String(2042 + Math.floor(Math.random() * 900)) });
+      },
+      reset: () => this.setState({ submitted: false, name: "", email: "", verify: "", desc: "", consent: false, type: 0 }),
+    };
+  }
+}
+</script>
+</body>
+</html>

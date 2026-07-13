@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#FBFBFD;color:#12141C;font-family:'Figtree',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:#2F6BFF;text-decoration:none;}
+  a:hover{color:#1E4FD6;}
+  ::selection{background:#D8E4FF;}
+  @keyframes livepulse{0%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.82);}100%{opacity:1;transform:scale(1);}}
+  @keyframes rowin{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</helmet>
+
+<div style="min-height:100%;background:#FBFBFD;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,251,253,.82);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid #E6E8EF;">
+    <nav style="max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:32px;">
+      <a href="Homepage.dc.html" style="display:flex;align-items:center;gap:10px;color:#12141C;font-weight:700;font-size:17px;letter-spacing:-.01em;">
+        <span style="width:26px;height:26px;border-radius:7px;background:#12141C;display:inline-flex;align-items:center;justify-content:center;">
+          <span style="width:11px;height:11px;border-radius:3px;background:#2F6BFF;transform:rotate(45deg);"></span>
+        </span>
+        Instrata AI
+      </a>
+      <div style="display:flex;align-items:center;gap:26px;margin-left:12px;font-size:14.5px;font-weight:500;color:#3A4152;">
+        <a href="#product" style="color:#3A4152;">Product</a>
+        <a href="#governance" style="color:#3A4152;">Governance</a>
+        <a href="Docs.dc.html" style="color:#3A4152;">Docs</a>
+        <a href="Dashboard.dc.html" style="color:#3A4152;">Dashboard</a>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:#12141C;padding:9px 14px;border:1px solid #D9DCE6;border-radius:9px;" style-hover="border-color:#12141C;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6B7280;">★</span> GitHub
+        </a>
+        <a href="Demo.dc.html" style="display:inline-flex;align-items:center;font-size:14.5px;font-weight:600;color:#fff;background:#2F6BFF;padding:10px 16px;border-radius:9px;box-shadow:0 1px 2px rgba(47,107,255,.35);" style-hover="background:#1E4FD6;color:#fff;">View the Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section style="max-width:1200px;margin:0 auto;padding:72px 32px 40px;display:grid;grid-template-columns:1.02fr 1.15fr;gap:56px;align-items:center;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:9px;padding:6px 12px;border:1px solid #D8E4FF;background:#EEF3FF;border-radius:999px;font-size:12.5px;font-weight:600;color:#1E4FD6;font-family:'IBM Plex Mono',monospace;letter-spacing:.01em;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#17936B;"></span>OPEN SOURCE · APACHE-2.0
+      </div>
+      <h1 style="margin:22px 0 0;font-size:52px;line-height:1.04;letter-spacing:-.028em;font-weight:800;color:#12141C;text-wrap:balance;">Open-source AI-native privacy ops for DSAR workflows</h1>
+      <p style="margin:22px 0 0;font-size:18.5px;line-height:1.5;color:#464C5C;max-width:33ch;">Governed AI agents that help privacy teams intake, search, reason, evidence, and approve DSAR work — without losing auditability or control.</p>
+      <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#fff;background:#2F6BFF;padding:14px 22px;border-radius:11px;box-shadow:0 2px 8px rgba(47,107,255,.28);" style-hover="background:#1E4FD6;color:#fff;">View the Demo <span style="font-size:16px;">→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#12141C;background:#fff;padding:14px 22px;border-radius:11px;border:1px solid #D9DCE6;" style-hover="border-color:#12141C;color:#12141C;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;">★</span> Explore on GitHub
+        </a>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:26px;flex-wrap:wrap;font-size:13px;color:#6B7280;">
+        <div style="display:flex;align-items:center;gap:8px;"><span style="color:#17936B;font-weight:700;">✓</span> Human-in-the-loop by default</div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="color:#17936B;font-weight:700;">✓</span> Full evidence &amp; audit trail</div>
+        <div style="display:flex;align-items:center;gap:8px;"><span style="color:#17936B;font-weight:700;">✓</span> No side effects without approval</div>
+      </div>
+    </div>
+
+    <!-- LIVE STYLIZED DASHBOARD -->
+    <div style="position:relative;">
+      <div style="position:absolute;inset:-14px -14px -14px -14px;background:radial-gradient(120% 90% at 80% 0%,#EEF3FF 0%,rgba(238,243,255,0) 60%);border-radius:24px;"></div>
+      <div style="position:relative;border:1px solid #E6E8EF;border-radius:16px;background:#fff;box-shadow:0 24px 60px -28px rgba(18,20,28,.28),0 2px 8px rgba(18,20,28,.05);overflow:hidden;">
+        <!-- window bar -->
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #EEEFF4;background:#FCFCFE;">
+          <div style="display:flex;gap:6px;"><span style="width:10px;height:10px;border-radius:50%;background:#E0E2EA;"></span><span style="width:10px;height:10px;border-radius:50%;background:#E0E2EA;"></span><span style="width:10px;height:10px;border-radius:50%;background:#E0E2EA;"></span></div>
+          <div style="margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8A90A0;">instrata · operator</div>
+          <div style="margin-left:auto;display:flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#17936B;font-weight:600;"><span style="width:7px;height:7px;border-radius:50%;background:#17936B;animation:livepulse 1.8s infinite;"></span>LIVE</div>
+        </div>
+        <!-- request header row -->
+        <div style="padding:16px 18px 14px;border-bottom:1px solid #F0F1F5;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8A90A0;">DSAR-2041</span>
+            <span style="font-size:11px;font-weight:600;color:#1E4FD6;background:#EEF3FF;border:1px solid #D8E4FF;padding:3px 9px;border-radius:999px;">Right to Know</span>
+            <span style="margin-left:auto;font-size:11px;font-weight:600;color:#B7791F;background:#FBF2E1;border:1px solid #F0E0BC;padding:3px 9px;border-radius:999px;">SLA · 6d left</span>
+          </div>
+          <div style="margin-top:10px;font-size:15px;font-weight:700;color:#12141C;">Dana Whitfield · dana.w@example.com</div>
+          <div style="margin-top:3px;font-size:12.5px;color:#8A90A0;">California (CCPA) · identity verified</div>
+        </div>
+        <!-- agent activity -->
+        <div style="padding:14px 18px;background:#FCFCFE;">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#8A90A0;text-transform:uppercase;margin-bottom:11px;">Agent activity</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;animation:rowin .5s both;">
+              <span style="margin-top:2px;width:16px;height:16px;border-radius:5px;background:#EEF3FF;color:#2F6BFF;font-size:10px;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;">›</span>
+              <div style="font-size:13px;color:#3A4152;line-height:1.4;"><span style="font-family:'IBM Plex Mono',monospace;color:#1E4FD6;">search()</span> across 4 source systems — <b style="color:#12141C;">3 matches</b></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;animation:rowin .5s .1s both;">
+              <span style="margin-top:2px;width:16px;height:16px;border-radius:5px;background:#EEF3FF;color:#2F6BFF;font-size:10px;display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;">›</span>
+              <div style="font-size:13px;color:#3A4152;line-height:1.4;">Matched on <b style="color:#12141C;">email + last name</b> in Billing &amp; CRM. Marketing match is low-confidence.</div>
+            </div>
+          </div>
+          <!-- source badges -->
+          <div style="margin-top:13px;display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#3A4152;background:#fff;border:1px solid #E6E8EF;padding:4px 9px;border-radius:7px;">Billing · 1</span>
+            <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#3A4152;background:#fff;border:1px solid #E6E8EF;padding:4px 9px;border-radius:7px;">CRM · 1</span>
+            <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#3A4152;background:#fff;border:1px solid #E6E8EF;padding:4px 9px;border-radius:7px;">Support · 1</span>
+            <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#B0708F;background:#fff;border:1px dashed #E6E8EF;padding:4px 9px;border-radius:7px;">Marketing · low</span>
+          </div>
+        </div>
+        <!-- approval gate -->
+        <div style="padding:14px 18px;border-top:1px solid #F0F1F5;display:flex;align-items:center;gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:12.5px;font-weight:700;color:#12141C;">Proposed action · Compile disclosure package</div>
+            <div style="font-size:11.5px;color:#8A90A0;margin-top:2px;">Awaiting operator approval — no export until approved</div>
+          </div>
+          <span style="font-size:11px;font-weight:700;color:#B7791F;background:#FBF2E1;border:1px solid #F0E0BC;padding:5px 10px;border-radius:8px;white-space:nowrap;">GATE</span>
+          <span style="font-size:12.5px;font-weight:600;color:#fff;background:#17936B;padding:8px 13px;border-radius:9px;white-space:nowrap;">Approve</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS / TRUST STRIP -->
+  <section style="max-width:1200px;margin:0 auto;padding:20px 32px 4px;">
+    <div style="border-top:1px solid #EEEFF4;border-bottom:1px solid #EEEFF4;padding:18px 0;display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#8A90A0;">
+      <span style="color:#3A4152;font-weight:600;">Built for:</span>
+      <span>CCPA / CPRA</span><span>GDPR</span><span>Right to Know</span><span>Delete My Data</span><span>Correction</span><span>Access requests</span>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section style="max-width:1200px;margin:0 auto;padding:76px 32px;">
+    <div style="max-width:640px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">The problem</div>
+      <h2 style="margin:14px 0 0;font-size:36px;line-height:1.1;letter-spacing:-.02em;font-weight:800;color:#12141C;">DSAR work is slow because the data is everywhere</h2>
+      <p style="margin:16px 0 0;font-size:17px;line-height:1.55;color:#464C5C;">Every request means collecting intake details, verifying identity, searching fragmented systems, deciding which records actually match, tracking regulatory deadlines, and preserving evidence for audit — mostly by hand.</p>
+    </div>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:22px;">
+        <div style="font-size:26px;font-weight:800;color:#12141C;font-family:'IBM Plex Mono',monospace;">45 days</div>
+        <div style="margin-top:8px;font-size:14px;color:#6B7280;line-height:1.45;">Typical statutory clock, with hard penalties for missing it.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:22px;">
+        <div style="font-size:26px;font-weight:800;color:#12141C;font-family:'IBM Plex Mono',monospace;">6–12</div>
+        <div style="margin-top:8px;font-size:14px;color:#6B7280;line-height:1.45;">Disconnected systems a single record can live across.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:22px;">
+        <div style="font-size:26px;font-weight:800;color:#12141C;font-family:'IBM Plex Mono',monospace;">100%</div>
+        <div style="margin-top:8px;font-size:14px;color:#6B7280;line-height:1.45;">Of actions must be defensible and evidenced on audit.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT WALKTHROUGH -->
+  <section id="product" style="background:#F5F6FA;border-top:1px solid #EEEFF4;border-bottom:1px solid #EEEFF4;">
+    <div style="max-width:1200px;margin:0 auto;padding:80px 32px;">
+      <div style="max-width:620px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">How it works</div>
+        <h2 style="margin:14px 0 0;font-size:36px;line-height:1.1;letter-spacing:-.02em;font-weight:800;color:#12141C;">From consumer request to approved action</h2>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.55;color:#464C5C;">The agent does the searching and reasoning. A human always makes the call before anything leaves the building.</p>
+      </div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step;">
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#12141C;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">1</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#8A90A0;text-transform:uppercase;">Consumer</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#12141C;">Request is submitted</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#6B7280;">A consumer files a privacy request through the intake portal — request type, identity, jurisdiction.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#12141C;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">2</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#8A90A0;text-transform:uppercase;">Operator</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#12141C;">Lands in the dashboard</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#6B7280;">It enters the operator queue with status, SLA clock, type, and a verification check.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#2F6BFF;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">3</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#1E4FD6;text-transform:uppercase;">Agent</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#12141C;">Agent searches sources</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#6B7280;">Governed tool calls query connected systems. Every call is visible and logged.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#2F6BFF;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">4</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#1E4FD6;text-transform:uppercase;">Agent</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#12141C;">Explains match reasoning</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#6B7280;">The agent shows why each record matched — and flags the ones it isn't sure about.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E6E8EF;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#12141C;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">5</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#8A90A0;text-transform:uppercase;">System</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#12141C;">Evidence is captured</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#6B7280;">Inputs, tool calls, results, and decisions are written to an immutable audit trail.</div>
+        </div>
+        <div style="background:#12141C;border:1px solid #12141C;border-radius:14px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;border-radius:8px;background:#17936B;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;display:inline-flex;align-items:center;justify-content:center;">6</span><div style="font-size:11px;font-weight:600;letter-spacing:.05em;color:#8FB7A9;text-transform:uppercase;">Human gate</div></div>
+          <div style="margin-top:14px;font-size:16.5px;font-weight:700;color:#fff;">A human approves</div>
+          <div style="margin-top:7px;font-size:14px;line-height:1.5;color:#A9AFBE;">Emails, exports, and deletions happen only after an operator approves the proposed action.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section style="max-width:1200px;margin:0 auto;padding:80px 32px;">
+    <div style="max-width:620px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">Capabilities</div>
+      <h2 style="margin:14px 0 0;font-size:36px;line-height:1.1;letter-spacing:-.02em;font-weight:800;color:#12141C;">Everything a DSAR needs, in one governed workspace</h2>
+    </div>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid #E6E8EF;border-radius:16px;overflow:hidden;background:#fff;">
+      <sc-for list="{{ capabilities }}" as="cap" hint-placeholder-count="10">
+        <div style="padding:24px 26px;border-right:1px solid #EEEFF4;border-bottom:1px solid #EEEFF4;display:flex;gap:14px;align-items:flex-start;">
+          <span style="flex:none;margin-top:1px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2F6BFF;background:#EEF3FF;width:28px;height:28px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;">{{ cap.n }}</span>
+          <div>
+            <div style="font-size:15.5px;font-weight:700;color:#12141C;">{{ cap.title }}</div>
+            <div style="margin-top:5px;font-size:13.5px;line-height:1.45;color:#6B7280;">{{ cap.desc }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section id="governance" style="background:#12141C;color:#fff;">
+    <div style="max-width:1200px;margin:0 auto;padding:84px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#7FA5FF;letter-spacing:.04em;text-transform:uppercase;">Governance</div>
+        <h2 style="margin:14px 0 0;font-size:38px;line-height:1.08;letter-spacing:-.02em;font-weight:800;color:#fff;">The agent assists. It never acts on its own.</h2>
+        <p style="margin:18px 0 0;font-size:17px;line-height:1.6;color:#B7BDCC;">Every side effect — an email to a consumer, a data export, a deletion — is approval-gated. Operators inspect the reasoning, the evidence, and the exact proposed action before anything happens.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;margin-top:1px;width:22px;height:22px;border-radius:50%;background:rgba(23,147,107,.18);color:#5FD3A6;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;">✓</span><div style="font-size:15px;color:#D6DAE6;"><b style="color:#fff;">Inspect before approve</b> — full reasoning and evidence for each proposed action.</div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;margin-top:1px;width:22px;height:22px;border-radius:50%;background:rgba(23,147,107,.18);color:#5FD3A6;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;">✓</span><div style="font-size:15px;color:#D6DAE6;"><b style="color:#fff;">Approval gates</b> block all external side effects until a human signs off.</div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;margin-top:1px;width:22px;height:22px;border-radius:50%;background:rgba(23,147,107,.18);color:#5FD3A6;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;">✓</span><div style="font-size:15px;color:#D6DAE6;"><b style="color:#fff;">Immutable audit trail</b> records who decided what, when, and on what basis.</div></div>
+        </div>
+      </div>
+      <div style="border:1px solid #262A36;border-radius:14px;background:#171A24;overflow:hidden;">
+        <div style="padding:13px 16px;border-bottom:1px solid #262A36;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8A90A0;">audit_trail · DSAR-2041</div>
+        <div style="padding:8px 0;">
+          <sc-for list="{{ auditRows }}" as="row" hint-placeholder-count="5">
+            <div style="display:flex;gap:12px;padding:10px 16px;align-items:flex-start;border-bottom:1px solid #1E212C;">
+              <span style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6172;width:52px;">{{ row.t }}</span>
+              <span style="flex:none;font-size:10px;font-weight:700;letter-spacing:.03em;padding:2px 7px;border-radius:6px;text-transform:uppercase;background:{{ row.tagBg }};color:{{ row.tagFg }};">{{ row.tag }}</span>
+              <span style="font-size:13px;color:#C6CBD8;line-height:1.4;">{{ row.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO CTA -->
+  <section style="max-width:1200px;margin:0 auto;padding:84px 32px;">
+    <div style="border:1px solid #D8E4FF;background:linear-gradient(180deg,#F4F8FF 0%,#FFFFFF 100%);border-radius:20px;padding:52px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">Live demo</div>
+        <h2 style="margin:14px 0 0;font-size:34px;line-height:1.1;letter-spacing:-.02em;font-weight:800;color:#12141C;">See a Right to Know request, end to end</h2>
+        <p style="margin:14px 0 0;font-size:16.5px;line-height:1.55;color:#464C5C;">Walk a real request from intake through operator review — agent search, match reasoning, evidence capture, and the approval gate before any action fires.</p>
+        <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="Demo.dc.html" style="display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#fff;background:#2F6BFF;padding:14px 22px;border-radius:11px;box-shadow:0 2px 8px rgba(47,107,255,.28);" style-hover="background:#1E4FD6;color:#fff;">Launch the demo <span>→</span></a>
+          <a href="Intake.dc.html" style="display:inline-flex;align-items:center;font-size:15.5px;font-weight:600;color:#12141C;padding:14px 22px;border-radius:11px;border:1px solid #D9DCE6;background:#fff;" style-hover="border-color:#12141C;">Try the intake form</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E6E8EF;border-radius:12px;padding:14px 16px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2F6BFF;">01</span><span style="font-size:14px;font-weight:600;color:#12141C;">Intake &amp; identity</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E6E8EF;border-radius:12px;padding:14px 16px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2F6BFF;">02</span><span style="font-size:14px;font-weight:600;color:#12141C;">Agent search &amp; reasoning</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E6E8EF;border-radius:12px;padding:14px 16px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#2F6BFF;">03</span><span style="font-size:14px;font-weight:600;color:#12141C;">Operator approval gate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section style="background:#F5F6FA;border-top:1px solid #EEEFF4;">
+    <div style="max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">Open source</div>
+        <h2 style="margin:14px 0 0;font-size:36px;line-height:1.1;letter-spacing:-.02em;font-weight:800;color:#12141C;">Transparent, inspectable, extensible</h2>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.55;color:#464C5C;">Read the orchestration logic, audit the agent tools, and add your own source-system connectors. Nothing about how decisions are made is hidden behind a black box.</p>
+        <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="#" style="display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#fff;background:#12141C;padding:14px 22px;border-radius:11px;" style-hover="background:#000;color:#fff;"><span style="font-family:'IBM Plex Mono',monospace;">★</span> Explore on GitHub</a>
+          <a href="Docs.dc.html" style="display:inline-flex;align-items:center;font-size:15.5px;font-weight:600;color:#12141C;padding:14px 22px;border-radius:11px;border:1px solid #D9DCE6;background:#fff;" style-hover="border-color:#12141C;">Read the architecture</a>
+        </div>
+      </div>
+      <div style="background:#12141C;border-radius:14px;padding:22px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#C6CBD8;line-height:1.7;overflow:hidden;">
+        <div style="color:#5B6172;">// register a source-system connector</div>
+        <div><span style="color:#7FA5FF;">registerConnector</span>(<span style="color:#5FD3A6;">"crm"</span>, {</div>
+        <div style="padding-left:18px;">search: <span style="color:#7FA5FF;">async</span> (identity) =&gt; { … },</div>
+        <div style="padding-left:18px;">sideEffects: <span style="color:#E0A64B;">"gated"</span>,   <span style="color:#5B6172;">// never auto-run</span></div>
+        <div style="padding-left:18px;">audit: <span style="color:#5FD3A6;">true</span></div>
+        <div>});</div>
+        <div style="margin-top:12px;color:#5B6172;">→ connector visible in operator tool-call log</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0E1017;color:#8A90A0;">
+    <div style="max-width:1200px;margin:0 auto;padding:56px 32px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:17px;">
+          <span style="width:26px;height:26px;border-radius:7px;background:#fff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:11px;height:11px;border-radius:3px;background:#2F6BFF;transform:rotate(45deg);"></span></span>
+          Instrata AI
+        </div>
+        <p style="margin:16px 0 0;font-size:14px;line-height:1.55;color:#8A90A0;max-width:32ch;">Open-source, AI-native privacy operations for DSAR workflows. Governed by design.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6172;">Product</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px;font-size:14px;">
+          <a href="Demo.dc.html" style="color:#B7BDCC;">Demo</a>
+          <a href="Dashboard.dc.html" style="color:#B7BDCC;">Operator dashboard</a>
+          <a href="Intake.dc.html" style="color:#B7BDCC;">Intake portal</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6172;">Resources</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px;font-size:14px;">
+          <a href="Docs.dc.html" style="color:#B7BDCC;">Documentation</a>
+          <a href="#" style="color:#B7BDCC;">GitHub</a>
+          <a href="#" style="color:#B7BDCC;">License · Apache-2.0</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B6172;">Company</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px;font-size:14px;">
+          <a href="#" style="color:#B7BDCC;">Contact</a>
+          <a href="Docs.dc.html" style="color:#B7BDCC;">Architecture</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #1B1E27;">
+      <div style="max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px;color:#5B6172;font-family:'IBM Plex Mono',monospace;">
+        <span>© 2026 Instrata AI · Apache-2.0</span>
+        <span>Human-in-the-loop · No side effects without approval</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      capabilities: [
+        { n: "01", title: "DSAR intake portal", desc: "Branded consumer-facing form that captures request type, identity, and jurisdiction." },
+        { n: "02", title: "Operator request dashboard", desc: "A queue with status, SLA clock, type, reviewer, and verification at a glance." },
+        { n: "03", title: "Source-system search", desc: "Governed queries across connected billing, CRM, support, and marketing systems." },
+        { n: "04", title: "Agent tool-call visibility", desc: "Every tool the agent calls is shown inline and written to the log." },
+        { n: "05", title: "Match reasoning", desc: "Plain-language explanation of why each record matched — and confidence." },
+        { n: "06", title: "Audit trail & evidence log", desc: "Immutable record of inputs, calls, results, and human decisions." },
+        { n: "07", title: "SLA & status tracking", desc: "Deadline clocks and status transitions on every request." },
+        { n: "08", title: "Approval-gated actions", desc: "Exports, emails, and deletions require explicit human sign-off." },
+        { n: "09", title: "Human-in-the-loop controls", desc: "Operators can edit, reject, or request changes to any proposed action." },
+        { n: "10", title: "Open-source architecture", desc: "Inspect the orchestration, audit the tools, add your own connectors." },
+      ],
+      auditRows: [
+        { t: "09:42", tag: "intake", tagBg: "rgba(127,165,255,.15)", tagFg: "#7FA5FF", text: "Request received · Right to Know · CA" },
+        { t: "09:42", tag: "verify", tagBg: "rgba(95,211,166,.15)", tagFg: "#5FD3A6", text: "Identity verified via email + DOB" },
+        { t: "09:43", tag: "tool", tagBg: "rgba(224,166,75,.15)", tagFg: "#E0A64B", text: "search() → 4 systems, 3 matches" },
+        { t: "09:43", tag: "reason", tagBg: "rgba(127,165,255,.15)", tagFg: "#7FA5FF", text: "Matched on email + last name (high)" },
+        { t: "09:44", tag: "gate", tagBg: "rgba(224,166,75,.15)", tagFg: "#E0A64B", text: "Awaiting approval · compile disclosure" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#FBFBFD;color:#12141C;font-family:'Figtree',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#2F6BFF;text-decoration:none;}
+  a:hover{color:#1E4FD6;}
+  ::selection{background:#D8E4FF;}
+  h2{scroll-margin-top:84px;}
+</style>
+</helmet>
+
+<div style="min-height:100%;background:#FBFBFD;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,251,253,.85);backdrop-filter:blur(10px);border-bottom:1px solid #E6E8EF;">
+    <nav style="max-width:1200px;margin:0 auto;padding:15px 32px;display:flex;align-items:center;gap:28px;">
+      <a href="Homepage.dc.html" style="display:flex;align-items:center;gap:10px;color:#12141C;font-weight:700;font-size:16px;">
+        <span style="width:24px;height:24px;border-radius:6px;background:#12141C;display:inline-flex;align-items:center;justify-content:center;"><span style="width:10px;height:10px;border-radius:3px;background:#2F6BFF;transform:rotate(45deg);"></span></span>
+        Instrata AI
+      </a>
+      <span style="font-size:13px;color:#8A90A0;font-family:'IBM Plex Mono',monospace;">docs / architecture</span>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
+        <a href="#" style="font-size:14px;font-weight:600;color:#12141C;padding:8px 13px;border:1px solid #D9DCE6;border-radius:9px;" style-hover="border-color:#12141C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;">★</span> GitHub</a>
+        <a href="Demo.dc.html" style="font-size:14px;font-weight:600;color:#fff;background:#2F6BFF;padding:9px 15px;border-radius:9px;" style-hover="background:#1E4FD6;color:#fff;">View the Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <div style="max-width:1200px;margin:0 auto;padding:48px 32px 72px;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;">
+
+    <!-- TOC -->
+    <aside style="position:sticky;top:92px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.06em;color:#8A90A0;text-transform:uppercase;">On this page</div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:2px;border-left:1px solid #E6E8EF;">
+        <a href="#overview" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">Overview</a>
+        <a href="#intake" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">1 · Intake</a>
+        <a href="#orchestration" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">2 · Orchestration</a>
+        <a href="#tools" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">3 · Agent tools</a>
+        <a href="#connectors" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">4 · Connectors</a>
+        <a href="#evidence" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">5 · Evidence &amp; audit</a>
+        <a href="#gates" style="font-size:13.5px;color:#3A4152;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;" style-hover="color:#2F6BFF;border-left-color:#2F6BFF;">6 · Approval gates</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main style="min-width:0;">
+      <div id="overview">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:#2F6BFF;letter-spacing:.04em;text-transform:uppercase;">Architecture</div>
+        <h1 style="margin:12px 0 0;font-size:36px;font-weight:800;letter-spacing:-.02em;color:#12141C;">How the open-source demo works</h1>
+        <p style="margin:16px 0 0;font-size:17px;line-height:1.6;color:#464C5C;max-width:60ch;">Instrata orchestrates a DSAR from consumer intake to an approved action. The agent handles search and reasoning; humans hold every gate that produces a side effect. Below is each layer of the pipeline.</p>
+
+        <!-- PIPELINE DIAGRAM -->
+        <div style="margin-top:28px;background:#12141C;border-radius:16px;padding:26px;overflow:hidden;" data-om-raster="true">
+          <div style="display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:120px;background:#171A24;border:1px solid #262A36;border-radius:11px;padding:14px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7FA5FF;">01</div>
+              <div style="margin-top:7px;font-size:13px;font-weight:700;color:#fff;">Intake</div>
+              <div style="margin-top:4px;font-size:11px;color:#8A90A0;line-height:1.4;">Portal form → verified request</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#3A4152;font-size:16px;">→</div>
+            <div style="flex:1;min-width:120px;background:#171A24;border:1px solid #262A36;border-radius:11px;padding:14px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7FA5FF;">02</div>
+              <div style="margin-top:7px;font-size:13px;font-weight:700;color:#fff;">Orchestration</div>
+              <div style="margin-top:4px;font-size:11px;color:#8A90A0;line-height:1.4;">Plans steps, invokes tools</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#3A4152;font-size:16px;">→</div>
+            <div style="flex:1;min-width:120px;background:#171A24;border:1px solid #262A36;border-radius:11px;padding:14px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7FA5FF;">03</div>
+              <div style="margin-top:7px;font-size:13px;font-weight:700;color:#fff;">Agent tools</div>
+              <div style="margin-top:4px;font-size:11px;color:#8A90A0;line-height:1.4;">Read-only search &amp; reasoning</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#3A4152;font-size:16px;">→</div>
+            <div style="flex:1;min-width:120px;background:rgba(23,147,107,.14);border:1px solid rgba(95,211,166,.4);border-radius:11px;padding:14px;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5FD3A6;">04</div>
+              <div style="margin-top:7px;font-size:13px;font-weight:700;color:#fff;">Approval gate</div>
+              <div style="margin-top:4px;font-size:11px;color:#8FB7A9;line-height:1.4;">Human sign-off required</div>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #262A36;display:flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8A90A0;"><span style="width:7px;height:7px;border-radius:50%;background:#5FD3A6;"></span>Every step writes to the evidence &amp; audit layer</div>
+        </div>
+      </div>
+
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
+        <div id="{{ sec.id }}" style="margin-top:44px;padding-top:8px;border-top:1px solid #EEEFF4;">
+          <div style="display:flex;align-items:center;gap:12px;margin-top:24px;">
+            <span style="width:30px;height:30px;border-radius:9px;background:{{ sec.iconBg }};color:{{ sec.iconFg }};font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;">{{ sec.n }}</span>
+            <h2 style="margin:0;font-size:23px;font-weight:800;letter-spacing:-.015em;color:#12141C;">{{ sec.title }}</h2>
+          </div>
+          <p style="margin:14px 0 0;font-size:15.5px;line-height:1.6;color:#464C5C;max-width:62ch;">{{ sec.body }}</p>
+          <sc-if value="{{ sec.hasCode }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;background:#12141C;border-radius:12px;padding:18px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#C6CBD8;line-height:1.7;white-space:pre-wrap;">{{ sec.code }}</div>
+          </sc-if>
+          <sc-if value="{{ sec.hasList }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:9px;">
+              <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="3">
+                <div style="display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:#3A4152;line-height:1.5;"><span style="flex:none;margin-top:2px;color:#2F6BFF;">•</span><span><b style="color:#12141C;">{{ it.k }}</b> — {{ it.v }}</span></div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+
+      <!-- callout -->
+      <div style="margin-top:44px;background:#E7F6EF;border:1px solid #CDEBDD;border-radius:14px;padding:22px 24px;display:flex;gap:14px;align-items:flex-start;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:#17936B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;">✓</span>
+        <div>
+          <div style="font-size:15px;font-weight:700;color:#12141C;">No side effects without human approval</div>
+          <div style="margin-top:6px;font-size:14px;line-height:1.55;color:#3A6154;">The agent's tools are read-only. Any operation that leaves the system — email, export, deletion — is registered as a gated side effect and cannot run until an operator approves it in the dashboard.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="Demo.dc.html" style="font-size:15px;font-weight:600;color:#fff;background:#2F6BFF;padding:13px 20px;border-radius:11px;" style-hover="background:#1E4FD6;color:#fff;">See it in the demo →</a>
+        <a href="#" style="font-size:15px;font-weight:600;color:#12141C;background:#fff;border:1px solid #D9DCE6;padding:13px 20px;border-radius:11px;" style-hover="border-color:#12141C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;">★</span> Read the source</a>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const blue = { iconBg: "#EEF3FF", iconFg: "#1E4FD6" };
+    const dark = { iconBg: "#12141C", iconFg: "#fff" };
+    const green = { iconBg: "#E7F6EF", iconFg: "#127857" };
+    return {
+      sections: [
+        { id: "intake", n: "1", title: "Intake", ...dark,
+          body: "The consumer-facing portal captures request type, identity, jurisdiction, and verification details. Each submission is normalized into a request record and placed in the operator queue with an SLA clock derived from the applicable jurisdiction.",
+          hasList: true, hasCode: false,
+          items: [
+            { k: "Request record", v: "type, consumer, jurisdiction, verification state" },
+            { k: "SLA clock", v: "statutory deadline set on receipt" },
+            { k: "Queue placement", v: "status = new, awaiting verification" },
+          ] },
+        { id: "orchestration", n: "2", title: "Request orchestration", ...dark,
+          body: "Orchestration turns a verified request into a plan of read-only steps. It decides which source systems to query, invokes the agent's tools in sequence, and collects results and reasoning — without ever performing an external action on its own.",
+          hasCode: true, hasList: false,
+          code: "plan = orchestrate(request)\n  → verify_identity()\n  → search_sources(identity)\n  → reason_matches(results)\n  → propose_action()   // gated, not executed" },
+        { id: "tools", n: "3", title: "Agent tools", ...blue,
+          body: "Tools are the only way the agent interacts with data, and each is explicitly typed as read-only or side-effecting. Read-only tools run freely and are logged; side-effecting tools are registered as proposals that require approval.",
+          hasList: true, hasCode: false,
+          items: [
+            { k: "search_sources()", v: "read-only lookup across connectors" },
+            { k: "reason_matches()", v: "explain confidence per record" },
+            { k: "propose_action()", v: "draft a gated side effect" },
+          ] },
+        { id: "connectors", n: "4", title: "Source-system connectors", ...blue,
+          body: "Each connected system — billing, CRM, support, marketing — implements a small connector interface. Connectors declare their search capability and mark whether they can produce side effects, which the runtime always treats as gated.",
+          hasCode: true, hasList: false,
+          code: "registerConnector(\"crm\", {\n  search: async (identity) => { /* read-only */ },\n  sideEffects: \"gated\",   // never auto-run\n  audit: true\n})" },
+        { id: "evidence", n: "5", title: "Evidence & audit layer", ...dark,
+          body: "Every input, tool call, result, reasoning step, and human decision is appended to an immutable audit trail keyed to the request. The evidence log is what makes a completed DSAR defensible on audit — it shows exactly what happened and who decided it.",
+          hasList: true, hasCode: false,
+          items: [
+            { k: "Append-only", v: "entries are never edited or deleted" },
+            { k: "Attributed", v: "each decision records the operator" },
+            { k: "Exportable", v: "full trail attaches to the request" },
+          ] },
+        { id: "gates", n: "6", title: "Approval gates", ...green,
+          body: "A gate sits in front of every side effect. When the agent proposes an action, the operator sees the reasoning, the evidence, and the exact operation, then approves, rejects, or requests changes. Only an approval releases the action for execution.",
+          hasCode: true, hasList: false,
+          code: "action.status = \"proposed\"\nif (operator.approves(action)) {\n  execute(action)          // email / export / delete\n  audit.append(\"approved\", operator)\n}" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

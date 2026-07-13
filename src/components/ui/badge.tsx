@@ -14,6 +14,13 @@ const badgeVariants = cva(
         destructive:
           'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
         outline: 'text-foreground',
+        // Tint-style chips (tint bg + tint border + colored text) used by the
+        // /dsar screens — additive, doesn't touch the variants above.
+        accent: 'border-[hsl(var(--accent-tint-border))] bg-[hsl(var(--accent-tint))] text-[hsl(var(--accent-foreground))]',
+        success: 'border-[hsl(var(--success-tint-border))] bg-[hsl(var(--success-tint))] text-[hsl(var(--success))]',
+        warn: 'border-[hsl(var(--warn-tint-border))] bg-[hsl(var(--warn-tint))] text-[hsl(var(--warning))]',
+        danger: 'border-[hsl(var(--danger-tint-border))] bg-[hsl(var(--danger-tint))] text-[hsl(var(--destructive))]',
+        neutral: 'border-[hsl(var(--neutral-tint-border))] bg-[hsl(var(--neutral-tint))] text-[hsl(var(--neutral-text))]',
       },
     },
     defaultVariants: {

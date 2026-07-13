@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:#F5F6FA;color:#12141C;font-family:'Figtree',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#2F6BFF;text-decoration:none;}
+  a:hover{color:#1E4FD6;}
+  ::selection{background:#D8E4FF;}
+</style>
+</helmet>
+
+<div style="min-height:100%;background:#F5F6FA;display:flex;flex-direction:column;">
+
+  <!-- APP BAR -->
+  <header style="background:#12141C;color:#fff;">
+    <div style="max-width:1320px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:20px;">
+      <a href="Homepage.dc.html" style="display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:15.5px;">
+        <span style="width:24px;height:24px;border-radius:6px;background:#fff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:10px;height:10px;border-radius:3px;background:#2F6BFF;transform:rotate(45deg);"></span></span>
+        Instrata AI
+      </a>
+      <div style="display:flex;align-items:center;gap:22px;margin-left:12px;font-size:14px;font-weight:500;">
+        <span style="color:#fff;">Requests</span>
+        <a href="Docs.dc.html" style="color:#B7BDCC;">Docs</a>
+        <a href="Homepage.dc.html" style="color:#B7BDCC;">Overview</a>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+        <a href="Intake.dc.html" style="font-size:13.5px;font-weight:600;color:#B7BDCC;padding:8px 12px;border:1px solid #2A2E3A;border-radius:9px;" style-hover="color:#fff;border-color:#3A4152;">+ New intake</a>
+        <span style="width:30px;height:30px;border-radius:50%;background:#2F6BFF;color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;">OP</span>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1320px;width:100%;margin:0 auto;padding:28px 28px 56px;">
+    <!-- title + stats -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <h1 style="margin:0;font-size:27px;font-weight:800;letter-spacing:-.02em;color:#12141C;">Request queue</h1>
+        <p style="margin:6px 0 0;font-size:14.5px;color:#6B7280;">DSAR requests across all connected source systems.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:13px;padding:16px 18px;"><div style="font-size:12px;color:#8A90A0;font-weight:600;">Open</div><div style="margin-top:6px;font-size:26px;font-weight:800;color:#12141C;font-family:'IBM Plex Mono',monospace;">7</div></div>
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:13px;padding:16px 18px;"><div style="font-size:12px;color:#8A90A0;font-weight:600;">Awaiting approval</div><div style="margin-top:6px;font-size:26px;font-weight:800;color:#B7791F;font-family:'IBM Plex Mono',monospace;">3</div></div>
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:13px;padding:16px 18px;"><div style="font-size:12px;color:#8A90A0;font-weight:600;">Due ≤ 7 days</div><div style="margin-top:6px;font-size:26px;font-weight:800;color:#C0392B;font-family:'IBM Plex Mono',monospace;">2</div></div>
+      <div style="background:#fff;border:1px solid #E6E8EF;border-radius:13px;padding:16px 18px;"><div style="font-size:12px;color:#8A90A0;font-weight:600;">Completed (30d)</div><div style="margin-top:6px;font-size:26px;font-weight:800;color:#17936B;font-family:'IBM Plex Mono',monospace;">41</div></div>
+    </div>
+
+    <!-- filter bar -->
+    <div style="margin-top:22px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.pick }}" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:9px;cursor:pointer;border:1px solid {{ f.border }};background:{{ f.bg }};color:{{ f.fg }};" style-hover="border-color:#12141C;">{{ f.label }}</button>
+      </sc-for>
+      <div style="margin-left:auto;font-size:13px;color:#8A90A0;font-family:'IBM Plex Mono',monospace;">{{ countLabel }}</div>
+    </div>
+
+    <!-- TABLE -->
+    <div style="margin-top:14px;background:#fff;border:1px solid #E6E8EF;border-radius:14px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:96px 1.6fr 1.1fr 1fr 1.1fr 1.2fr 92px;gap:12px;padding:12px 18px;background:#FCFCFE;border-bottom:1px solid #EEEFF4;font-size:11px;font-weight:700;letter-spacing:.04em;color:#8A90A0;text-transform:uppercase;">
+        <span>ID</span><span>Consumer</span><span>Type</span><span>Status</span><span>SLA</span><span>Reviewer</span><span></span>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:96px 1.6fr 1.1fr 1fr 1.1fr 1.2fr 92px;gap:12px;padding:14px 18px;align-items:center;border-bottom:1px solid #F4F5F9;" style-hover="background:#FCFCFE;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#12141C;font-weight:600;">{{ r.id }}</span>
+          <div style="min-width:0;">
+            <div style="font-size:13.5px;font-weight:600;color:#12141C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ r.name }}</div>
+            <div style="font-size:11.5px;color:#8A90A0;">{{ r.region }} · {{ r.verify }}</div>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#1E4FD6;background:#EEF3FF;border:1px solid #D8E4FF;padding:3px 9px;border-radius:999px;justify-self:start;">{{ r.type }}</span>
+          <span style="font-size:12px;font-weight:600;color:{{ r.statusFg }};background:{{ r.statusBg }};border:1px solid {{ r.statusBorder }};padding:3px 9px;border-radius:999px;justify-self:start;">{{ r.status }}</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:{{ r.slaDot }};"></span>
+            <span style="font-size:12.5px;font-weight:600;color:{{ r.slaFg }};">{{ r.sla }}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+            <span style="flex:none;width:22px;height:22px;border-radius:50%;background:{{ r.avaBg }};color:#fff;font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;">{{ r.initials }}</span>
+            <span style="font-size:12.5px;color:#3A4152;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ r.reviewer }}</span>
+          </div>
+          <a href="Demo.dc.html" style="justify-self:end;font-size:12.5px;font-weight:600;color:#12141C;background:#fff;border:1px solid #D9DCE6;padding:6px 12px;border-radius:8px;" style-hover="border-color:#12141C;">Open</a>
+        </div>
+      </sc-for>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: "All" };
+
+  allRows() {
+    const S = {
+      approval: { status: "Awaiting approval", statusFg: "#8A6212", statusBg: "#FBF2E1", statusBorder: "#F0E0BC" },
+      searching: { status: "Agent searching", statusFg: "#1E4FD6", statusBg: "#EEF3FF", statusBorder: "#D8E4FF" },
+      review: { status: "In review", statusFg: "#3A4152", statusBg: "#F0F1F5", statusBorder: "#E2E4EC" },
+      completed: { status: "Completed", statusFg: "#127857", statusBg: "#E7F6EF", statusBorder: "#CDEBDD" },
+    };
+    const sla = (d) => d <= 7
+      ? { sla: d + "d left", slaFg: "#C0392B", slaDot: "#C0392B" }
+      : d <= 20 ? { sla: d + "d left", slaFg: "#B7791F", slaDot: "#B7791F" }
+      : { sla: d + "d left", slaFg: "#3A4152", slaDot: "#17936B" };
+    const rev = (name, initials, bg) => ({ reviewer: name, initials, avaBg: bg });
+    return [
+      { id: "DSAR-2041", name: "Dana Whitfield", region: "CA", verify: "verified", type: "Right to Know", bucket: "approval", ...S.approval, ...sla(6), ...rev("You", "OP", "#2F6BFF") },
+      { id: "DSAR-2039", name: "Marcus Lee", region: "CO", verify: "verified", type: "Delete My Data", bucket: "approval", ...S.approval, ...sla(4), ...rev("R. Osei", "RO", "#17936B") },
+      { id: "DSAR-2038", name: "Priya Nair", region: "EU", verify: "pending", type: "Access My Data", bucket: "searching", ...S.searching, ...sla(18), ...rev("Unassigned", "—", "#8A90A0") },
+      { id: "DSAR-2036", name: "T. Alvarez", region: "TX", verify: "verified", type: "Correction", bucket: "review", ...S.review, ...sla(22), ...rev("J. Kim", "JK", "#B7791F") },
+      { id: "DSAR-2035", name: "Sofia Romero", region: "VA", verify: "verified", type: "Right to Know", bucket: "approval", ...S.approval, ...sla(11), ...rev("You", "OP", "#2F6BFF") },
+      { id: "DSAR-2031", name: "Ken Tanaka", region: "CA", verify: "verified", type: "Delete My Data", bucket: "completed", ...S.completed, ...sla(30), ...rev("R. Osei", "RO", "#17936B") },
+      { id: "DSAR-2028", name: "Amelia Ford", region: "EU", verify: "verified", type: "Access My Data", bucket: "review", ...S.review, ...sla(15), ...rev("J. Kim", "JK", "#B7791F") },
+    ];
+  }
+
+  renderVals() {
+    const buckets = { "All": null, "Awaiting approval": "approval", "Agent searching": "searching", "In review": "review", "Completed": "completed" };
+    const active = this.state.filter;
+    const all = this.allRows();
+    const rows = active === "All" ? all : all.filter(r => r.bucket === buckets[active]);
+    const filters = Object.keys(buckets).map(label => ({
+      label,
+      pick: () => this.setState({ filter: label }),
+      border: active === label ? "#12141C" : "#E0E2EA",
+      bg: active === label ? "#12141C" : "#fff",
+      fg: active === label ? "#fff" : "#3A4152",
+    }));
+    return { filters, rows, countLabel: rows.length + " of " + all.length + " requests" };
+  }
+}
+</script>
+</body>
+</html>
