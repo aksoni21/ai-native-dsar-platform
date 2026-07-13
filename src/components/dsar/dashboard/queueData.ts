@@ -1,3 +1,6 @@
+import { getRequestById } from '@/lib/data';
+import { daysUntil } from '@/lib/utils';
+
 export type Bucket = 'approval' | 'searching' | 'review' | 'completed';
 
 export interface QueueRow {
@@ -21,18 +24,54 @@ const STATUS_LABEL: Record<Bucket, string> = {
   completed: 'Completed',
 };
 
-// TODO: this is seed/mock data. In production, fetch the real request queue
-// (id, consumer, region, verification, type, bucket, SLA days remaining,
-// reviewer) from the backend, and derive the dashboard's stat cards from it.
-export const QUEUE_ROWS: QueueRow[] = [
-  { id: 'DSAR-2041', name: 'Dana Whitfield', region: 'CA', verify: 'verified', type: 'Right to Know', bucket: 'approval', status: STATUS_LABEL.approval, slaDays: 6, reviewer: 'You', initials: 'OP', avatarBg: '#2F6BFF' },
-  { id: 'DSAR-2039', name: 'Marcus Lee', region: 'CO', verify: 'verified', type: 'Delete My Data', bucket: 'approval', status: STATUS_LABEL.approval, slaDays: 4, reviewer: 'R. Osei', initials: 'RO', avatarBg: '#17936B' },
-  { id: 'DSAR-2038', name: 'Priya Nair', region: 'EU', verify: 'pending', type: 'Access My Data', bucket: 'searching', status: STATUS_LABEL.searching, slaDays: 18, reviewer: 'Unassigned', initials: '—', avatarBg: '#8A90A0' },
-  { id: 'DSAR-2036', name: 'T. Alvarez', region: 'TX', verify: 'verified', type: 'Correction', bucket: 'review', status: STATUS_LABEL.review, slaDays: 22, reviewer: 'J. Kim', initials: 'JK', avatarBg: '#B7791F' },
-  { id: 'DSAR-2035', name: 'Sofia Romero', region: 'VA', verify: 'verified', type: 'Right to Know', bucket: 'approval', status: STATUS_LABEL.approval, slaDays: 11, reviewer: 'You', initials: 'OP', avatarBg: '#2F6BFF' },
-  { id: 'DSAR-2031', name: 'Ken Tanaka', region: 'CA', verify: 'verified', type: 'Delete My Data', bucket: 'completed', status: STATUS_LABEL.completed, slaDays: 30, reviewer: 'R. Osei', initials: 'RO', avatarBg: '#17936B' },
-  { id: 'DSAR-2028', name: 'Amelia Ford', region: 'EU', verify: 'verified', type: 'Access My Data', bucket: 'review', status: STATUS_LABEL.review, slaDays: 15, reviewer: 'J. Kim', initials: 'JK', avatarBg: '#B7791F' },
+const REQUEST_TYPE_LABEL: Record<string, string> = {
+  right_to_know: 'Right to Know',
+  deletion: 'Delete My Data',
+  correction: 'Correction',
+  opt_out: 'Opt Out',
+};
+
+// Real request status -> dashboard filter bucket. There's no exact real
+// analogue for "in review" (a human actively looking, pre-decision), so
+// 'approved' — a decision made but not yet the terminal 'completed' state —
+// is mapped there as the closest fit.
+const BUCKET_BY_STATUS: Record<string, Bucket> = {
+  pending_review: 'approval',
+  processing: 'searching',
+  approved: 'review',
+  completed: 'completed',
+};
+
+const REVIEWERS = [
+  { reviewer: 'You', initials: 'OP', avatarBg: '#2F6BFF' },
+  { reviewer: 'R. Osei', initials: 'RO', avatarBg: '#17936B' },
+  { reviewer: 'J. Kim', initials: 'JK', avatarBg: '#B7791F' },
+  { reviewer: 'Unassigned', initials: '—', avatarBg: '#8A90A0' },
 ];
+
+// A curated spread of real seeded requests (src/data/requests.json) across
+// every dashboard bucket — same underlying data the Demo screen reads via
+// @/lib/data, so a row's "Open" link always lands on a request that
+// actually exists and matches what's shown here.
+const QUEUE_REQUEST_IDS = ['REQ-002', 'REQ-008', 'REQ-010', 'REQ-004', 'REQ-007', 'REQ-006', 'REQ-001', 'REQ-009'];
+
+export const QUEUE_ROWS: QueueRow[] = QUEUE_REQUEST_IDS.map((id, i) => {
+  const request = getRequestById(id);
+  if (!request) throw new Error(`queueData: seeded request ${id} not found in @/lib/data`);
+  const bucket = BUCKET_BY_STATUS[request.status] ?? 'review';
+  const reviewer = REVIEWERS[i % REVIEWERS.length];
+  return {
+    id: request.id,
+    name: request.consumer_name,
+    region: request.consumer_state,
+    verify: 'verified',
+    type: REQUEST_TYPE_LABEL[request.request_type] ?? request.request_type,
+    bucket,
+    status: STATUS_LABEL[bucket],
+    slaDays: daysUntil(request.deadline_at),
+    ...reviewer,
+  };
+});
 
 export const BUCKET_BY_FILTER: Record<string, Bucket | null> = {
   All: null,

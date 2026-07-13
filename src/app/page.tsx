@@ -9,6 +9,7 @@ import { CapabilitiesSection } from '@/components/dsar/homepage/CapabilitiesSect
 import { GovernanceSection } from '@/components/dsar/homepage/GovernanceSection';
 import { DemoCtaSection } from '@/components/dsar/homepage/DemoCtaSection';
 import { OpenSourceSection } from '@/components/dsar/homepage/OpenSourceSection';
+import { BookDemoSection } from '@/components/dsar/homepage/BookDemoSection';
 import { Footer } from '@/components/dsar/homepage/Footer';
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function Home() {
       <GovernanceSection />
       <DemoCtaSection />
       <OpenSourceSection />
+      <BookDemoSection />
       <Footer />
     </DsarThemeShell>
   );

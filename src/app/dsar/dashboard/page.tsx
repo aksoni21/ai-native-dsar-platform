@@ -16,6 +16,16 @@ export default function DsarDashboardPage() {
     return bucket ? QUEUE_ROWS.filter((r) => r.bucket === bucket) : QUEUE_ROWS;
   }, [filter]);
 
+  const stats = useMemo(
+    () => ({
+      open: QUEUE_ROWS.filter((r) => r.bucket !== 'completed').length,
+      awaitingApproval: QUEUE_ROWS.filter((r) => r.bucket === 'approval').length,
+      dueSoon: QUEUE_ROWS.filter((r) => r.slaDays <= 7).length,
+      completed: QUEUE_ROWS.filter((r) => r.bucket === 'completed').length,
+    }),
+    [],
+  );
+
   return (
     <>
       <AppBar
@@ -45,10 +55,10 @@ export default function DsarDashboardPage() {
         </div>
 
         <div className="mt-5 grid grid-cols-2 gap-3.5 lg:grid-cols-4">
-          <StatCard label="Open" value="7" />
-          <StatCard label="Awaiting approval" value="3" valueColor="hsl(var(--warning))" />
-          <StatCard label="Due ≤ 7 days" value="2" valueColor="hsl(var(--destructive))" />
-          <StatCard label="Completed (30d)" value="41" valueColor="hsl(var(--success))" />
+          <StatCard label="Open" value={String(stats.open)} />
+          <StatCard label="Awaiting approval" value={String(stats.awaitingApproval)} valueColor="hsl(var(--warning))" />
+          <StatCard label="Due ≤ 7 days" value={String(stats.dueSoon)} valueColor="hsl(var(--destructive))" />
+          <StatCard label="Completed" value={String(stats.completed)} valueColor="hsl(var(--success))" />
         </div>
 
         <FilterBar active={filter} onChange={setFilter} countLabel={`${rows.length} of ${QUEUE_ROWS.length} requests`} />

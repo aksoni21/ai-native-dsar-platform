@@ -16,6 +16,8 @@ const RESOURCE_LINKS = [
 const COMPANY_LINKS = [
   { label: 'Contact', href: '#' },
   { label: 'Architecture', href: '/dsar/docs' },
+  { label: 'AI Governance', href: '/ai-gov' },
+  { label: 'Platform', href: '/platform' },
 ];
 
 function LinkColumn({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {

@@ -15,6 +15,8 @@ export function Nav() {
           <a href="#governance" className="hover:text-foreground">Governance</a>
           <Link href="/dsar/docs" className="hover:text-foreground">Docs</Link>
           <Link href="/dsar/dashboard" className="hover:text-foreground">Dashboard</Link>
+          <Link href="/ai-gov" className="hover:text-foreground">AI Governance</Link>
+          <Link href="/platform" className="hover:text-foreground">Platform</Link>
         </div>
         <div className="ml-auto flex items-center gap-3.5">
           <Button

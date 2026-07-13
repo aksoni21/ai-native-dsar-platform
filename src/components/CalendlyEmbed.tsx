@@ -15,6 +15,10 @@ interface CalendlyEmbedProps {
   hideEventTypeDetails?: boolean;
   /** Brand color override (hex without #) for the iframe accents. */
   primaryColor?: string;
+  /** Iframe background color override (hex without #). Defaults to the original dark embed's color. */
+  backgroundColor?: string;
+  /** Iframe text color override (hex without #). Defaults to the original dark embed's color. */
+  textColor?: string;
   className?: string;
 }
 
@@ -31,6 +35,8 @@ export function CalendlyEmbed({
   height = 720,
   hideEventTypeDetails = false,
   primaryColor = '2563eb',
+  backgroundColor = '0f1626',
+  textColor = 'ffffff',
   className,
 }: CalendlyEmbedProps) {
   useEffect(() => {
@@ -58,14 +64,14 @@ export function CalendlyEmbed({
   // Calendly reads URL parameters from the data-url attribute, including theme/color overrides
   const params = new URLSearchParams();
   if (hideEventTypeDetails) params.set('hide_event_type_details', '1');
-  params.set('background_color', '0f1626');
-  params.set('text_color', 'ffffff');
+  params.set('background_color', backgroundColor);
+  params.set('text_color', textColor);
   params.set('primary_color', primaryColor);
   const dataUrl = `${url}?${params.toString()}`;
 
   return (
     <div
-      className={cn('calendly-inline-widget w-full overflow-hidden rounded-xl border border-white/10', className)}
+      className={cn('calendly-inline-widget w-full overflow-hidden rounded-xl border border-border', className)}
       data-url={dataUrl}
       style={{ minWidth: 320, height }}
     />

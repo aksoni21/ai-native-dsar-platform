@@ -56,7 +56,7 @@ export function RequestTable({ rows }: { rows: QueueRow[] }) {
             <span className="truncate text-[12.5px] text-[hsl(var(--text-secondary))]">{r.reviewer}</span>
           </div>
           <Link
-            href="/dsar/demo"
+            href={`/dsar/demo?request_id=${encodeURIComponent(r.id)}`}
             className="justify-self-end rounded-lg border border-[hsl(var(--input))] px-3 py-1.5 text-[12.5px] font-semibold text-foreground hover:border-foreground"
           >
             Open
