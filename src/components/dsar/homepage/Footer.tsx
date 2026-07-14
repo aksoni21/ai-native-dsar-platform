@@ -9,7 +9,7 @@ const PRODUCT_LINKS = [
 
 const RESOURCE_LINKS = [
   { label: 'Documentation', href: '/dsar/docs' },
-  { label: 'GitHub', href: 'https://github.com' },
+  { label: 'GitHub', href: 'https://github.com/aksoni21/ai-native-dsar-platform' },
   { label: 'License · Apache-2.0', href: '#' },
 ];
 

@@ -80,7 +80,7 @@ export default function DsarDocsPage() {
           <span className="font-mono text-[13px] text-[hsl(var(--text-faint))]">docs / architecture</span>
           <div className="ml-auto flex items-center gap-3.5">
             <Button asChild variant="outline" className="gap-1.5 rounded-[9px] border-[hsl(var(--input))] font-semibold hover:border-foreground">
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a href="https://github.com/aksoni21/ai-native-dsar-platform" target="_blank" rel="noreferrer">
                 <span className="font-mono text-xs">★</span> GitHub
               </a>
             </Button>
@@ -133,7 +133,7 @@ export default function DsarDocsPage() {
               <Link href="/dsar/demo">See it in the demo →</Link>
             </Button>
             <Button asChild variant="outline" className="gap-2 rounded-[11px] border-[hsl(var(--input))] text-[15px] font-semibold hover:border-foreground">
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a href="https://github.com/aksoni21/ai-native-dsar-platform" target="_blank" rel="noreferrer">
                 <span className="font-mono text-[13px]">★</span> Read the source
               </a>
             </Button>

@@ -19,7 +19,7 @@ export function OpenSourceSection() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3.5">
             <Button asChild className="gap-2 rounded-[11px] bg-[hsl(var(--foreground))] text-[15.5px] font-semibold text-white hover:bg-black">
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a href="https://github.com/aksoni21/ai-native-dsar-platform" target="_blank" rel="noreferrer">
                 <span className="font-mono">★</span> Explore on GitHub
               </a>
             </Button>

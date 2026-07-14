@@ -24,7 +24,7 @@ export function Nav() {
             variant="outline"
             className="gap-1.5 rounded-[9px] border-[hsl(var(--input))] font-semibold hover:border-foreground"
           >
-            <a href="https://github.com" target="_blank" rel="noreferrer">
+            <a href="https://github.com/aksoni21/ai-native-dsar-platform" target="_blank" rel="noreferrer">
               <span className="font-mono text-xs text-muted-foreground">★</span> GitHub
             </a>
           </Button>

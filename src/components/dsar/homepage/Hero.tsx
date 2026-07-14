@@ -138,7 +138,7 @@ export function Hero() {
             <Link href="/dsar/demo">View the Demo →</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="gap-2 rounded-[11px] border-[hsl(var(--input))] text-[15.5px] font-semibold hover:border-foreground">
-            <a href="https://github.com" target="_blank" rel="noreferrer">
+            <a href="https://github.com/aksoni21/ai-native-dsar-platform" target="_blank" rel="noreferrer">
               <span className="font-mono text-[13px]">★</span> Explore on GitHub
             </a>
           </Button>
